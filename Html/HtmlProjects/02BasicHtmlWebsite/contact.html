@@ -17,7 +17,23 @@
 			</nav>
 		</header>
 		<main>
-      <!-- WORK IN PROGRESS-->
+      <form action="/send" method="post">
+				<p>
+					<label for="name">Name</label>
+					<input id="name" name="name" type="text" required placeholder="Jane Doe">
+				</p>
+				<p>
+					<label for="email">Email</label>
+					<input id="email" name="email" type="email" required placeholder="test@email.com">
+				</p>
+				<p>
+					<label for="message">Message</label>
+					<textarea id="message" name="message" rows=4 required placeholder="Your message here"></textarea>
+				</p>
+				<p>
+					<button type="submit">Send</button>
+				</p>
+      </form>
 		</main>
 		<footer>
 			<p>&copy; all rights reserved 2026</p>
