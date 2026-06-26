@@ -9,7 +9,7 @@ Click any of the images below to view the live demo of the project.
 
 <p align="left">
 	01 Single Page CV<br>
-	<a href="./Html/HtmlProjects/01SinglePageCV/cv.html">
+	<a href="./Html/HtmlProjects/01SinglePageCV/">
 		<img width="48%" src="./Html/HtmlProjects/01SinglePageCV/cv.png" alt="01 Single Page CV" />
  	</a>
 </p>
