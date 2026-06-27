@@ -1,0 +1,67 @@
+<!-- 
+  <!DOCTYPE html> tells the browser to use modern HTML rules. It is not really a tag; it is a declaration. Without it, the browser may fall back to old compatibility behavior called quirks mod 
+-->
+<!DOCTYPE html>
+<!-- 
+  <html lang="en"> is the root element of the page. The lang attribute tells screen readers, search engines, and translation tools what language the content is in.
+-->
+<html lang="en">
+  <!-- <head> holds information about the page: its title, its character encoding, links to CSS, scripts, and so on. Users do not see this content directly. -->
+  <head>
+    <!-- <meta charset="UTF-8"> tells the browser how to decode the text in the file. UTF-8 covers virtually every character used by humans today. -->
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> tells mobile browsers to use the actual device width when rendering. Without it, phones may try to render the page as if it were on a wide desktop and zoom out.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- title = browser tab title-->
+    <title>My first page</title>
+    <!-- <link rel="stylesheet" href="style.css"> loads a CSS file. The rel="stylesheet" attribute tells the browser what kind of resource the link is pointing to. -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="app.js" defer></script> loads a JavaScript file. The defer attribute tells the browser to keep parsing the HTML and run the script after the document is built. Without defer, the browser stops parsing to download and run the script, which slows the page down. -->
+    <script src="app.js" defer></script>
+  </head>
+
+  <!-- <body> holds everything users actually see and interact with: headings, paragraphs, images, forms, buttons. -->
+  <body>
+    <h1>Hello, web</h1>
+    <p>This is a paragraph of text.</p><hr>
+    <h2> 3 attributes that show up everywhere:</h2>
+
+    <!-- 1. The id attribute is a unique label for one element on the page. Only one element should have a given id. CSS, JavaScript, and fragment links all use ids to find a specific element. -->
+    <h3> id="pricing">Pricing</h3>
+
+    <!-- 2. The class attribute is a shared label. Many elements can have the same class, and one element can have many classes separated by spaces. In the example below, the paragraph has two classes: lead and intro.
+     
+    Classes are mostly used by CSS to apply styles, and by JavaScript to find groups of elements.
+    -->
+    <p class="lead intro">A short summary paragraph.</p>
+
+    <!-- The data-* attributes are for your own custom data. Any attribute starting with data- is treated as valid, and the browser will not complain about it. -->
+    <button data-product-id="42">Add to cart</button><hr>
+
+    <h2>Void elements:</h2>
+    <!-- Not every element wraps content. Some elements are written as a single tag and never have a closing tag. These are called void elements. You do not write </img> or </br>. They have no content to wrap, so a closing tag would have nothing to close.-->
+    <img src="logo.png" alt="Site logo">
+    <br>
+    <hr>
+    <input type="text" name="email">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"><hr>
+
+    <h2>Comments and Entities:</h2>
+    <!-- html comments - this is a comment. Browser ignores it -->
+    <!--
+      This is a multiline. You can
+      break it down in multiple lines
+      to make it easier for you to read.
+    -->
+    <!-- 
+      HTML also has entities for characters that would otherwise be interpreted as HTML, or that are easier to write by name. The most common are:
+      &lt; for <
+      &gt; for >
+      &amp; for &
+      &copy; for © 
+    -->
+    <p>You can use &lt;meta&gt; tag to tell the browser more about the page</p>
+
+  </body>
+</html>

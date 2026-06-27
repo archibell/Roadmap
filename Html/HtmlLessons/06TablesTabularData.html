@@ -6,7 +6,13 @@
     <title>Weekly schedule</title>
   </head>
   <body>
-    <h1>Basic Structure</h1>
+    <h1>Basic Structure:</h1>
+    <!-- 
+    <table> is the container for the whole thing.
+    <tr> is a table row.
+    <th> is a header cell. Browsers usually render it bold and centered, but the meaning is "this cell labels a row or column".
+    <td> is a data cell. This is where the table's values go.
+    -->
     <table>
       <tr>
         <th>Plan</th>
@@ -23,9 +29,63 @@
         <td>$29</td>
         <td>5</td>
       </tr>
-    </table>
+    </table><hr>
     
-    <h1>This week</h1>
+    <h2>Captions, head, and body:</h2>
+    <!--
+    A practical table usually benefits from 3 more elements.
+    <caption> is the table's title. It belongs directly inside <table> as the first child.
+    <thead> and <tbody> group the header rows and data rows. You can make a table without them, but adding them makes the structure clearer and easier to style, print, scan, and maintain. 
+    There is also <tfoot> for a footer row, often used for totals.
+    -->
+    <table>
+      <caption>2026 pricing plans</caption>
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Price</th>
+          <th>Users</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter</td>
+          <td>$9</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Team</td>
+          <td>$29</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table><hr>
+
+    <h2>The Scope Attribute:</h2>
+    <!-- When a header cell labels a column, set scope="col". When it labels a row, set scope="row". This makes the relationship between headers and data cells explicit. -->
+    <thead>
+      <tr>
+        <th scope="col">Plan</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Starter</th>
+        <td>$9</td>
+      </tr>
+    </tbody><hr>
+
+    <h2>Spanning cells:</h2>
+    <!-- A cell can span more than one column or row. -->
+    <!-- 
+      colspan="2" makes this cell take up two columns. rowspan="3" would make a cell span three rows. Use these when the table really needs a merged cell, such as a section header above two columns, not as a styling shortcut.
+    -->
+    <tr>
+      <th colspan="2">Pricing</th>
+    </tr><hr>
+
+    <h2>Try it:</h2>
     <table>
       <caption>Study schedule</caption>
       <thead>

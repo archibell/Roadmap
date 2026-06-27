@@ -6,32 +6,54 @@
     <title>Text and Content Structure</title>
   </head>
   <body>
-    <h1>How browsers work</h1>
-    <h2>What the browser is for</h2>
-    <h2>How a page is rendered</h2>
-    <h3>Building the DOM</h3>
-    <h3>Painting and layout</h3>
-    <h2>Where JavaScript fits in</h2>
-    
+    <!-- 
+      Headings give a page its structure. There are six heading levels, from <h1> down to <h6>
+      A few conventions to follow:
+      - Use one <h1> per page that describes the whole page.
+      - Step down one level at a time. Do not jump from <h2> to <h4>.
+      - Use headings for real section titles, not just to make text bigger.
+    -->
+    <h1>h1 Headings:</h1>
+    <h2>h2 What the browser is for</h2>
+    <h3>h3 Building the DOM</h3>
+    <h4>h4 Painting and layout</h4>
+    <h5>h5 Where JavaScript fits in</h5>
+    <h6>h6 Looks like this</h6><hr>
+
+    <h2> Paragraphs, breaks, and rules: </h2>
+    <!-- A paragraph is written with the <p> element-->
     <p>HTML is a markup language. It describes the structure of a document so the browser can build a page from it.</p>
     <p>HTML alone is enough to put text on a page, but CSS and JavaScript usually come along for the ride.</p>
+    <!-- When you do need a line break inside a block of text, like in an address, poem, or other line-by-line text, use <br> -->
     <p>
       221B Baker Street<br>
       London<br>
       England
-    </p>
+    </p><hr>
+
+    <h2> Emphasis and Importance:</h2>
     <p>You can write HTML in any text editor, but <i>save the file with a .html extension</i> so the browser knows what it is.</p>
-    <p><b>Never share your <mark>API keys</mark> in client-side code.</b></p>
+    <!-- 
+      <mark> highlights text, like this <mark>highlighted text</mark>.
+      A horizontal rule is written with the <hr> element
+    -->
+    <p><b>Never share your <mark>API keys</mark> in client-side code.</b></p><hr>
     
+    <h2> Lists:</h2>
+    <h3> Unordered Lists: </h3>
     <ul>
       <li>Coffee</li>
       <li>Tea</li>
       <li>Water</li>
     </ul>
 
+    <h3> Ordered Lists: </h3>
     <ol>
       <li>Open the editor.</li>
-      <li>Create a file named index.html.</li>
+      <!-- <b> for bold, <i> for italicize -->
+      <li>Create a <b>file</b> named <i>index.html</i>.</li>
+      <!-- <strong> can also be used for bold, and <em> for italicize-->
+      <li>Create a <strong>file</strong> named <em>index.html</em>.</li>
       <li>Paste the skeleton.</li>
       <li>Open it in your browser.</li>
     </ol>
@@ -44,27 +66,33 @@
         </ul>
       </li>
       <li>Snacks</li>
-    </ul>
+    </ul><hr>
 
+    <h2> Quotes: </h2>
     <blockquote>
       <p>This paragraph is quoted from another source.</p>
     </blockquote>
 
+    <!-- <q> is for short, inline quotes. Browsers add quotation marks for you, so you do not type them yourself. -->
     <p>She said <q>let us ship the page already</q> and closed the laptop.</p>
 
     <blockquote>
       <p>A clear document explains its structure before it asks the reader to remember details.</p>
       <p><cite>A Guide to Web Documents</cite></p>
-    </blockquote>
+    </blockquote><hr>
 
+    <h2> Code in HTML:</h2>
+    <!-- <code> marks a piece of inline code. It is for short fragments inside running text. Browsers render it in a monospace font -->
     <p>The <code>defer</code> attribute tells the browser to keep parsing the HTML.</p>
 
+    <!-- <pre> is for preformatted blocks of text. Inside <pre>, the browser preserves whitespace exactly as you wrote it. -->
     <pre>
     function greet(name) {
       return "Hello, " + name;
     }
     </pre>
 
+    <!-- The common combination is <pre><code> for code blocks: -->
     <pre><code>function greet(name) {
       return "Hello, " + name;
     }</code></pre>

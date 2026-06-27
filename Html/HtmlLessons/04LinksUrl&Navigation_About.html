@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+  </head>
+  <body>
+    <h1 id="top">About</h1>
+    <p>This page tells you about the site.</p>
+    <h2 id="contact">Contact</h2>
+    <!-- href = hyperlink reference -->
+    <a href="/about">
+        <img src="alina.jpg" alt="Alina" width="284" height="356">
+    </a><hr>
+
+    <h2>Absolute, root-relative, and relative URLS</h2>
+    <!-- Absolute URLs include the full protocol and host. Use them when linking to a different site.-->
+    <a href="https://example.com/articles/intro">External article</a><br>
+
+    <!-- 
+      Root-relative URLs start with / and are interpreted from the root of the current site. Use them for internal links across an app.
+      A link with href="/articles/intro" from https://acme.com/about points to https://acme.com/articles/intro.
+      -->
+    <a href="/articles/intro">Intro article</a><br>
+
+    <!-- Relative URLs are interpreted from the current page's location. Use them when linking between sibling files.-->
+    <a href="about.html">About</a><br>
+    <a href="articles/intro.html">Intro article</a><br>
+    <a href="../index.html">Back to home</a><br><hr>
+
+    <h2>Framented Links:</h2>
+    <!-- A URL can include a # followed by an id. The browser uses that to jump to an element with the matching id on the page. -->
+    <a href="#pricing">Jump to pricing</a>
+    <p id="pricing">Pricing</p>
+    <!-- Clicking the link scrolls the page to the Pricing heading. Fragment links work inside the same page or across pages: -->
+    <a href="/about#team">Meet the team</a><hr>
+
+    <h2> Opening Links in New Tabs</h2>
+    <!-- 
+      By default, a link replaces the current tab. To open the link in a new tab, set target="_blank".
+      The rel="noopener" attribute is good practice whenever you use target="_blank". It prevents the new page from getting a JavaScript reference back to the page that opened it, which is a small but real security and performance improvement. Modern browsers add this behavior automatically, but writing it is still the convention. 
+      You may also see rel="noreferrer", which goes further by hiding the referring URL from the destination. Use it when you do not want the destination to know where the click came from.
+    -->
+    <a href="https://google.com" target="_blank" rel="noopener">External site</a><hr>
+
+    <h2> Link text matters:</h2>
+    <!-- Avoid generic text. Prefer text that describes the destination:-->
+    See our <a href="/pricing">pricing plans</a>.<hr>
+
+    <h2> mailto and tel links:</h2>
+    <!-- A few special URL schemes start a different kind of action when clicked. mailto: opens the user's email client; tel: starts a phone call on capable devices.-->
+    <a href="mailto:hello@example.com">Email us</a><br>
+    <a href="tel:+12025550123">Call us</a><br>
+
+    <p>Get in touch at <a href="mailto:you@example.com">you@example.com</a>.</p>
+    <!-- #top references HTML id="top"-->
+    <p><a href="#top">Back to top</a> · <a href="04LinksUrl&Navigation_Index.html">Back to home</a></p>
+  </body>
+</html>

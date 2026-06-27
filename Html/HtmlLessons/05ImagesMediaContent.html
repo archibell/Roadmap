@@ -7,13 +7,30 @@
   </head>
   <body>
     <h1>Images Media Content</h1>
-    <p>This is the images, video, and audio page.</p>
+    <p>This is the images, video, and audio page.</p><hr>
 
+    <h2>Images: the &lt;img&gt; element:</h2>
+    <!-- 
+      - img = element loads an image to the page
+      - src = source of the image. It can be an absolute URL, a root-relative path, or a relative path.
+      - alt = is what screen readers read aloud, what search engines can use, and what the browser shows when the image fails to load.
+      - width = width of the image
+      - height = height of the image
+    -->
+    <!--
+      When an image needs a visible caption, wrap it in <figure> and put the caption in <figcaption>.
+    -->
     <figure>
-    <img src="chart.png" alt="Bar chart showing signups increasing each month" width="312" height="222">
-    <figcaption>Monthly signups from January to June.</figcaption>
-    </figure>
+      <img src="chart.png" alt="Bar chart showing signups increasing each month" width="312" height="222">
+      <figcaption>Monthly signups from January to June.</figcaption>
+    </figure><hr>
 
+    <h2>Video and Audio:</h2>
+    <!--
+      The <video> and <audio> elements work similarly to <img>, but unlike <img>, they have content and a closing tag.
+      - controls tells the browser to show play, pause, and volume controls. Without it, the video has no visible controls.
+      - poster is a placeholder image shown before the video starts playing.
+    -->
     <video src="intro.mp4" controls width="640" height="360" poster="photo.jpg">
       Your browser does not support video playback.
     </video><br>
@@ -22,11 +39,15 @@
       Your browser does not support audio playback.
     </audio><br>
 
+    <!--
+      If you need to provide more than one file format, use <source> elements inside the video or audio.
+    -->
     <video controls>
       <source src="intro.webm" type="video/webm">
       <source src="intro.mp4" type="video/mp4">
-    </video><br>
+    </video><hr>
 
+    <h2> Embedded content with &lt;iframe&gt; </h2>
     <iframe src="https://www.youtube.com/embed/abcd1234"
             width="560"
             height="315"
