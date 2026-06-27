@@ -1,0 +1,39 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+h1 {
+  font-size: 40px;
+}
+a {
+  color: #047857;
+}
+p {
+  color: #444;
+  font-size: 18px;
+  line-height: 1.6;
+}
+/* The dot . references a class, so .card means any element with the class="card" */
+.card {
+  padding: 24px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+}
+.primary-button {
+  background-color: #2563eb;
+  color: white;
+}
+.secondary-button {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+.card.featured-card {
+  background-color: #f6ad46;
+}
+.card .featured-card {
+  background-color: #b73b3b;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>02 Selectors & Style Rules</title>
+    <link rel="stylesheet" href="02SelectorsStyleRules_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <h1>02 Selectors & Style Rules</h1>
+      <article class="card">
+        <h2>Starter plan</h2>
+        <p>Good for small projects.</p>
+      </article><br>
+      <article class="card">Starter plan</article>
+      <section class="card">Team plan</section>
+      <div class="card">Enterprise plan</div><br>
+
+      <button class="button primary-button">Save changes</button>
+      <button class="button secondary-button">Cancel</button>
+      <br><br>
+
+      <article class="card featured-card">A combined selector part with no space between them means one element must match all the parts, and means an element must have both `card` and `featured-card` in its class list.</article>
+      <br>
+
+      <article class="card">
+        <section class="featured-card">
+          A combined selector with a space in between means an element with class `featured-card` must be a descendant of an element with class `card`.
+        </section>
+      </article>
+
+    </main>
+  </body>
+</html>

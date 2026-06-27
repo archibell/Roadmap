@@ -3,6 +3,7 @@ body {
   background-color: #d1d1d1da;
   color: #111827;
 }
+/* The dot . references a class, so .page means any element with the class="page" */
 .page {
   max-width: 720px;
   margin: 40px auto;
