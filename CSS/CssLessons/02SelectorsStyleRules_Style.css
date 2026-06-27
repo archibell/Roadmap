@@ -31,9 +31,11 @@ p {
   background-color: #e5e7eb;
   color: #111827;
 }
+/*A combined selector part with no space between them means one element must match all the parts, and means an element must have both `card` and `featured-card` in its class list.*/
 .card.featured-card {
   background-color: #f6ad46;
 }
+/*A combined selector with a space in between means an element with class `featured-card` must be a descendant of an element with class `card`.*/
 .card .featured-card {
   background-color: #b73b3b;
 }
