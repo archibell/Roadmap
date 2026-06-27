@@ -11,7 +11,7 @@ p {
   font-size: 14px;
   line-height: 1.6;
 }
-/* The dot . references a class, so .card means any element with the class="card" */
+/* The dot . references a HTML class, so .card means any element with the class="card" */
 .card {
   padding: 24px;
   margin-bottom: 16px;
