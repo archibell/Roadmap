@@ -6,7 +6,213 @@
     <title>Form practice</title>
   </head>
   <body>
-    <h1>Sign up</h1>
+    <h2>The Form Element:</h2>
+    <form action="/signup" method="post">
+      ...
+    </form>
+    <!-- 
+    action is the URL the form sends its data to. If you don't provide it, the form submits data back to the current page's URL.
+    method is the HTTP method used. The two normal choices in plain HTML are get and post. 
+    When the user clicks the submit button, the browser does three things in order:
+    - It collects every form control that has a name attribute.
+    - It builds a list of name and value pairs from those controls.
+    - It sends that list to the URL in action, using the method in method.
+    -->
+    <hr>
+
+    <h2>Get vs Post: where the data goes:</h2>
+    <!-- 
+    The method attribute decides how the form data travels to the server.
+    A GET form puts the data into the URL as a query string:
+    -->
+    <h3>Get:</h3>
+      text: <br>
+      GET /search?q=html&page=2 <br><br>
+    <!--
+    This is right for things like searches, filters, and pagination. The data is short, not sensitive, and the URL can be bookmarked or shared. Reloading the page just runs the same query again.
+
+    A POST form puts the data into the request body instead:
+    -->
+    <h3>Post:</h3>
+      text: <br>
+      POST /signup <br>
+      Content-Type: application/x-www-form-urlencoded <br>
+      email=alice%40example.com&password=secret123 <br>
+    <!--
+    This is right for anything that changes data on the server: signups, logins,comments, settings updates, etc. The data is no longer in the URL, which keeps passwords and other private values out of browser history, link previews, and server access logs.
+
+    A rough rule of thumb: use GET when the form is asking for information, and POST when the form is making something happen.
+
+    There are other HTTP methods, like PUT, PATCH, and DELETE, but plain HTML forms only natively support GET and POST. The others are reached through JavaScript or through framework-specific overrides, which you will meet later.
+    -->
+    <hr>
+
+    <h2>Inputs, names and values:</h2>
+    <!--
+    The core building block inside a form is the <input> element.
+    -->
+      <input type="text" name="username" value="">
+    <!--
+      3 attributes do the work.
+      1. type is the kind of input: text, email, password, checkbox, and so on. It controls what UI the browser shows and what data the browser will accept.
+      2. name is the key the server receives. This attribute is the most important one on any input. If you leave name off, the input is not submitted at all. The browser will not include it in the name and value pairs. A missing name is one of the most common reasons a form "submits" but the server appears to receive nothing.
+      3. value is the input's current data. For text inputs, it is the initial text. For checkboxes and radio buttons, it is the value the server gets if the user selects that option. As the user types or clicks, the live value updates in the DOM.
+    -->
+    <h3>When the form is submitted, the browser builds pairs that look roughly like this:</h3>
+      text: <br>
+      username=alice <br>
+      email=alice@example.com <br><br>
+    <!--
+    If two inputs share the same name, the server receives both values under that key. That is how multiple-choice patterns like grouped checkboxes and multi-select dropdowns work.
+    -->
+    <hr>
+
+    <h2>Labels and why they pair with inputs:</h2>
+    <!--
+    Every input should have a label that tells the user what it is for.
+    -->
+    <h3>Use the &lt;label&gt; element with a for attribute that points to the input's id:</h3>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email">
+    <!--
+    There are 2 valid ways to write the pairing.
+      1. The first is the for and id pattern shown above. The for attribute on the label matches the id on the input.
+    -->
+    <h3>2. The second is to wrap the input directly inside the label:</h3>  
+    <label>
+      Email address
+      <input type="email" name="email">
+    </label>
+    <!--
+    Both work. The for and id pattern gives you more freedom to position the label and input separately with CSS, which is why it is the more common choice in real apps.
+    -->
+    <hr>
+
+    <h2>Input Types:</h2>
+    <!-- 
+    The type attribute changes what kind of value an input collects and how the browser presents it.
+    -->
+    <img src="InputTypes.png" alt="Input Types" width="450"><br>
+    <!--
+    Modern browsers adapt the UI to the type. For example, on a mobile device, type="email" shows an email-optimized keyboard, and type="number" shows a numeric keypad. Picking the right type is one of the easiest ways to make a form feel right on mobile.<br>
+    For groups of related radio buttons, give every option the same name. The browser then treats the group as a single choice and submits only the selected value:
+    -->
+    <fieldset>
+      <legend>Choose a plan</legend>
+      <label><input type="radio" name="plan" value="starter"> Starter</label>
+      <label><input type="radio" name="plan" value="team"> Team</label>
+      <label><input type="radio" name="plan" value="business"> Business</label>
+    </fieldset>
+    <!--
+    The <fieldset> element groups related controls, and <legend> is the label for the whole group. Screen readers announce the legend when the user enters the fieldset, which gives the choice some context. Use a fieldset whenever a set of inputs only makes sense together: an address block, a pair of date fields, a group of radios.
+    
+    A hidden input is useful for passing along data the user does not need to see or edit, like a record ID or a CSRF token. It is still visible in the DOM and on the network, so it is not for secrets. Use it only for values your server wants back with the form.
+    -->
+    <hr>
+
+    <h2>Beyond &lt;input&gt;: textarea, select, and button:</h2>
+    <!--
+    3 more elements complete the form vocabulary.
+    -->
+    <h3>&lt;textarea&gt; is for multi-line text:</h3>
+    <!-- 
+    Unlike <input>, a textarea has content and a closing tag.
+    The rows attribute is a starting visible height; the user can usually drag the corner to make it bigger.
+    -->
+      <label for="bio">Short bio</label>
+      <textarea id="bio" name="bio" rows="4"></textarea>
+
+    <h3>&lt;select&gt; is a dropdown of choices:</h3>
+    <!--
+    Each <option> has its own value attribute (what the server receives) and visible text (what the user sees). The first option above has an empty value and acts as a "no selection yet" placeholder. Add multiple on the <select> to allow more than one selection at once.
+    -->
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="">Choose a country</option>
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+
+    <h3>&lt;button&gt; is the element that submits the form:</h3>
+    <!--
+    The type on a button matters more than it looks. Inside a <form>, type="submit" is the default and submits the form when clicked. type="button" is a plain button that does nothing on its own and is meant for JavaScript to wire up. type="reset" clears the form but is rarely useful in practice.
+
+    If you leave type off a <button> inside a <form>, the browser treats it as a submit button. That is convenient but can cause accidental submissions when you only meant a clickable element. Set type explicitly whenever a button is doing something other than submitting.
+    -->
+      <button type="submit">Sign up</button>
+      <hr>
+
+    <h2>Browser validation: helpful but not security:</h2>
+    <!--
+    HTML has built-in attributes that ask the browser to check the input before it submits the form:
+    - required: the field must not be empty.
+    - minlength / maxlength: bounds on the text length.
+    - min / max: bounds on numeric or date values.
+    - pattern="[A-Za-z0-9]+": a regular expression the value must match.
+    - type="email" / type="url": the browser checks that the value looks like that kind of value.
+    -->
+    <input type="email" name="email" required minlength="3">
+    <!-- 
+    When the user tries to submit, the browser checks these constraints, shows an error message next to the first bad field, and blocks the submission until everything passes.
+
+    That is a UX feature. It is not security. The user can edit the HTML in DevTools, send the request directly from the terminal, or skip the browser entirely. The server must validate every value again, on its own, before doing anything with it. Treat browser validation as a help to honest users, not as a defense against dishonest ones.
+    -->
+    <hr>
+
+    <h2>File Uploads:</h2>
+    <h3>To let users upload files, use type="file". To make the upload actually work, the form needs a special encoding:</h3>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="avatar">Profile picture</label>
+      <input type="file" id="avatar" name="avatar">
+      <button type="submit">Upload</button>
+    </form>
+    <!-- 
+    enctype="multipart/form-data" tells the browser to send the file as a structured upload rather than as URL-encoded text. Without it, the file's contents are not sent properly. Usually only the file name is sent, which is not what you want.
+    -->
+    <h3>You can let users pick more than one file with multiple, and steer the file picker with accept:</h3>
+    <input type="file" name="photos" multiple accept="image/*">
+    <!--
+    The accept attribute is a UX hint: it sets the default filter in the file picker. It does not stop the user from sending other file types.
+    -->
+    <hr>
+
+    <h2>What the server actually receives:</h2>
+    <!--
+    The clearest way to understand a form is to look at the request the browser sends. 
+    -->
+    <h3>A search form with method="get" and two inputs:</h3>
+    <form action="/search" method="get">
+      <input type="text" name="q" value="html">
+      <input type="number" name="page" value="2">
+      <button type="submit">Search</button>
+    </form>
+    <h3>Produces a request like:</h3>
+      text: <br>
+      GET /search?q=html&page=2 HTTP/1.1 <br>
+      Host: example.com <br>
+    
+    <h3>The same form switched to method="post":</h3>
+    <form action="/search" method="post">
+      <input type="text" name="q" value="html">
+      <input type="number" name="page" value="2">
+      <button type="submit">Search</button>
+    </form>
+    <h3>Produces a request like:</h3>
+      text: <br>
+      POST /search HTTP/1.1 <br>
+      Host: example.com <br>
+      Content-Type: application/x-www-form-urlencoded <br>
+      q=html&page=2 <br>
+    <!--
+    The same shape, name and value pairs, moves from the URL to the body. That is the only real difference between the two methods at the HTML level.
+
+    If you do not see a name attribute on a form control, that control will not appear in either place. Empty input boxes still get submitted (with an empty value) as long as they have a name. A label without a for, or an input without a name, will both submit "successfully" but leave gaps you may not notice until the server complains.
+    -->
+    <hr>
+
+    <h2>Try it:</h2>
+    <h2>Sign up</h2>
     <form action="/signup" method="post">
 
       <p>
