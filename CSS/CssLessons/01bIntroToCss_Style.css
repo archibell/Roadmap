@@ -3,7 +3,12 @@ body {
   background-color: #d1d1d1da;
   color: #111827;
 }
-/* The dot . references a HTML class, so .page means any element with the class="page" */
+/* 
+CSS can also match by class:
+A class selector targets elements by their class attribute. 
+  - In HTML, the class is written without a dot.
+  - In CSS the dot . references a HTML class, so .card means any element with the class="card".  
+*/
 .page {
   max-width: 720px;
   margin: 40px auto;

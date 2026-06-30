@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>02 Selectors & Style Rules</title>
-    <!-- link language below attaches the CSS file to the HTML document -->
+    <!--
+    The <link> element tells the browser to load style.css and treat it as a stylesheet. The href value is the path to the CSS file, just like an image src is the path to an image.
+    -->
     <link rel="stylesheet" href="02SelectorsStyleRules_Style.css">
   </head>
   <body>
@@ -18,10 +20,15 @@
       <section class="card">Team plan</section>
       <div class="card">Enterprise plan</div><br>
 
+      <!--
+      Multiple classes on one element:
+      One element can have more than one class. In HTML, separate class names with spaces.
+        - This lets you split shared styles from variant styles.
+        - Both buttons share the .button styles. Each button also gets its own variant style.
+      -->
       <button class="button primary-button">Save changes</button>
       <button class="button secondary-button">Cancel</button>
-      <br><br>
-
+      
       <article class="card featured-card">A combined CSS selector part with no space between them means one HTML element must match all the parts, and means a HTML element must have both `card` and `featured-card` in its class list.</article>
       <br>
 

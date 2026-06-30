@@ -1,3 +1,8 @@
+/*
+What CSS can change:
+CSS can change a lot, but start with the visible stuff: how text reads, how things are spaced, and where they sit.
+CSS can match it by element name:
+*/
 body {
   font-family: system-ui, sans-serif;
   background-color: #eeeeee;
@@ -11,7 +16,27 @@ p {
   font-size: 14px;
   line-height: 1.6;
 }
-/* The dot . references a HTML class, so .card means any element with the class="card" */
+img {
+  width: 20%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+button {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+}
+/* 
+Spacing and box styles turn plain content into interface pieces.
+*/
+/*
+CSS can also match by class:
+A class selector targets elements by their class attribute. 
+  - In HTML, the class is written without a dot.
+  - In CSS the dot . references a HTML class, so .card means any element with the class="card". 
+*/
 .card {
   padding: 24px;
   margin-bottom: 16px;
@@ -19,3 +44,6 @@ p {
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(96, 95, 95, 0.67);
 }
+/*
+That is why HTML attributes like class matter so much. A class gives CSS a clear hook
+*/

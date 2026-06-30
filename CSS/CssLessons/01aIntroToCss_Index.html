@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>1A Intro To CSS</title>
-    <!-- link language below attaches the CSS file to the HTML document -->
+    <!--
+    In the HTML pack, you learned how HTML describes the structure and meaning of a page. HTML gives the browser headings, paragraphs, links, images, forms, and sections to work with.
+
+    CSS is the next layer: it tells the browser how that HTML should look, including the font size, text color, background color, spacing, borders, rounded corners, layout, and how the page should adapt to different screen sizes.
+
+    HTML and CSS work together, but they do different jobs: HTML says what something is, and CSS says how it should be presented.
+
+    The <link> element tells the browser to load style.css and treat it as a stylesheet. The href value is the path to the CSS file, just like an image src is the path to an image.
+
+    Now style.css can style the HTML.
+    -->
     <link rel="stylesheet" href="01aIntroToCss_Style.css">
   </head>
   <body>
     <h1>1A Intro To CSS</h1>
     <p>This paragraph will be styled by the CSS file.</p>
     <section class="card">
-      <img src="photo.jpg" alt="CB2 planter photo" width="320"><br>
+      <img src="photo.jpg" alt="CB2 planter photo"><br>
       <h2>Card Title</h2>
       <p>This is a card with some content.</p>
+      <button>Learn More</button>
     </section>
   </body>
 </html>
