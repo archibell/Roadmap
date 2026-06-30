@@ -19,24 +19,61 @@
       <article class="card">Starter plan</article>
       <section class="card">Team plan</section>
       <div class="card">Enterprise plan</div><br>
+      <hr>
 
+      <h2>Multiple classes on one element:</h2>
       <!--
-      Multiple classes on one element:
       One element can have more than one class. In HTML, separate class names with spaces.
         - This lets you split shared styles from variant styles.
         - Both buttons share the .button styles. Each button also gets its own variant style.
       -->
       <button class="button primary-button">Save changes</button>
       <button class="button secondary-button">Cancel</button>
+      <hr>
       
-      <article class="card featured-card">A combined CSS selector part with no space between them means one HTML element must match all the parts, and means a HTML element must have both `card` and `featured-card` in its class list.</article>
+      <h2>Combining Selectors:</h2>
+      <article class="card featured-card">
+        <p>A combined CSS selector part with no space between them means one HTML element must match all the parts, and means a HTML element must have both `card` and `featured-card` in its class list.</p>
+      </article>
       <br>
 
       <article class="card">
         <section class="featured-card">
-          A combined CSS selector with a space in between means a HTML element with class `featured-card` must be a descendant of a HTML element with class `card`.
+          <p>A combined CSS selector with a space in between means a HTML element with class `featured-card` must be a descendant of a HTML element with class `card`.</p>
         </section>
       </article>
+      <hr>
+
+      <h2>ID selectors:</h2>
+      <p>An ID selector targets one element by its id attribute. In HTML, the ID is written without a #:</p>
+      <section id="pricing">
+        <h3>Pricing</h3>
+      </section>
+      <p>IDs are meant to be unique. Only one element on a page should use a given ID. That makes IDs useful for things like page anchors:</p>
+      <a href="#pricing">Jump to pricing</a>
+      <p>When the user clicks that link, the browser jumps to the element with id="pricing".<br><br>
+      For styling, classes are usually the better default because they are reusable, while IDs are unique per page. If you style with IDs everywhere, your CSS becomes harder to reuse and harder to adjust later.
+      </p>
+      <hr>
+
+      <h1>Group Selectors</h1>
+      <h2>h2 text</h2>
+      <h3>h3 text</h3>
+      <hr>
+
+      <h2>Descendant Selectors</h2>
+      <p>
+      A descendant selector targets elements inside another element.<br>
+      - This rule applies to links inside a nav. It does not apply to every link on the page.<br>
+      - That is useful when the same HTML element should look different in different places.<br>
+      </p>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/pricing">Pricing</a>
+      </nav>
+      <main>
+        <p>Read the <a href="/docs">full documentation</a>.</p>
+      </main>
 
     </main>
   </body>

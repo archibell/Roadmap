@@ -1,5 +1,5 @@
 /*
-Element selectors:
+Element Selectors:
 An element selector targets every element with a given tag name.
 */
 body {
@@ -20,7 +20,8 @@ p {
   line-height: 1.6;
 }
 /* 
-CSS can also match by class:
+Class Selectors:
+CSS can also match by class.
 A class selector targets elements by their class attribute. 
   - In HTML, the class is written without a dot.
   - In CSS the dot . references a HTML class, so .card means any element with the class="card". 
@@ -31,7 +32,7 @@ A class selector targets elements by their class attribute.
   border-radius: 8px;
 }
 /*
-Multiple classes on one element:
+Multiple Classes on One Element:
 One element can have more than one class, this lets you split shared styles from variant styles.
 */
 .button {
@@ -48,7 +49,7 @@ One element can have more than one class, this lets you split shared styles from
   color: #111827;
 }
 /*
-Combining selectors:
+Combining Selectors:
 A combined CSS selector part with no space between them means one HTML element must match all the parts, and means a HTML element must have both `card` and `featured-card` in its class list.
 */
 .card.featured-card {
@@ -59,4 +60,31 @@ A combined CSS selector with a space in between means a HTML element with class 
 */
 .card .featured-card {
   background-color: #b73b3b;
+}
+/*ID Selectors: in CSS, you select id with #:*/
+#pricing {
+  background-color: #ffa4e4;
+}
+/*
+Group Selectors: Sometimes several selectors should get the same declarations. Instead of writing the same rule multiple times, separate the selectors with commas.
+  - That rule applies to all h1, h2, and h3 elements.
+  - The comma matters because it means "match this selector, and also this selector, and also this selector."
+*/
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+/*
+Descendant Selectors: A descendant selector targets elements inside another element.
+  - This rule applies to links inside a nav. It does not apply to every link on the page.
+  - That is useful when the same HTML element should look different in different places.
+*/
+.site-nav a {
+  color: #c815ad;
+  text-decoration: none;
+}
+main a {
+  color: #eb8525;
+  text-decoration: underline;
 }
