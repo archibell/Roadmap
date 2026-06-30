@@ -6,17 +6,42 @@
     <title>Containers and Semantic Layout</title>
   </head>
   <body>
+    <h2>Block versus inline elements:</h2>
+    <!--
+    Most elements fall into two layout categories:
+    - Block elements start on a new line and stretch to fill the available width. Headings, paragraphs, lists, and most container elements behave this way.
+    - Inline elements sit inside a line of text without breaking it. <a>, <em>, <strong>, <code>, and <img> are inline by default.
+    -->
     <p>This paragraph is a block element.</p>
     <p>This sentence contains <strong>an inline element</strong> in the middle.</p>
+    <hr>
 
+    <h2>Generic containers: div and span:</h2>
+    <!-- 
+    When you just need to group elements with no implied meaning, HTML has two generic boxes.
+
+    <div> is a generic block container. It is usually used for larger chunks of content.
+    -->
     <div>
       <p>This paragraph and the next one are inside the same group.</p>
       <p>Anything CSS does to the div applies to both.</p>
     </div>
-
+    <!--
+    <span> is a generic inline container. It groups a small piece of text inside a line.
+    -->
     <p>Hover over <span class="hint">this word</span> to see a tooltip.</p>
+    <!--
+    Neither element means anything on its own. They are there to give you a hook for CSS classes, JavaScript event handlers, or layout adjustments. The browser, the screen reader, and the search engine all treat them as "an element you wanted to group", no more and no less.
 
-    <!-- <div class="page-header">
+    Generic containers are useful, but they are also the lazy default. The next sections are about why a more specific container is almost always a better choice.
+    -->
+    <hr>
+
+    <h2>When generic containers add up: div soup:</h2>
+    <!--
+    A page written entirely with <div> and <span> is sometimes called "div soup". Every region is a div. Every navigation menu is a div. Every header, every sidebar, every footer is a div.
+    -->
+    <div class="page-header">
       <div class="logo">...</div>
       <div class="navigation">...</div>
     </div>
@@ -27,10 +52,23 @@
       </div>
       <div class="sidebar">...</div>
     </div>
-    <div class="page-footer">...</div> -->
+    <div class="page-footer">...</div>
+    <!--
+    A page like this renders fine, and CSS can make it look great. But the structure has lost something important:
+    - Screen readers see one undifferentiated stream of divs. They cannot offer "skip to main content" or "jump to navigation" because there is no main content or navigation element to jump to.
+    - Search engines have to guess what each region is from the class names, which they may or may not get right.
+    - Browser features like reader mode rely on knowing where the main content of the page is. With div soup, they fall back to fuzzy heuristics.
+    - Future developers have to read the CSS to figure out what each div is for.
+    -->
+    <hr>
 
+    <h2>Semantic Layout Elements:</h2>
+    <!--
+    HTML provides named container elements for the parts of a page that show up almost everywhere. They look like divs to CSS, but they carry meaning.
+    -->
+    <img src="SemanticLayoutElements.png" alt="Semantic Layout Elements" width="550"><br>
+    <h3>Used together, the same div-soup page above becomes:</h3>
     <header>
-      <img src="logo.svg" alt="Acme">
       <nav>
         <a href="/">Home</a>
         <a href="/pricing">Pricing</a>
@@ -50,7 +88,40 @@
     <footer>
       <p>© 2026 Acme. All rights reserved.</p>
     </footer>
-  
+    <!--
+    The layout can still look exactly the same, but every container now tells the browser, the screen reader, and the next developer what its job is. Semantic elements do not replace CSS. CSS still does the visual work. The win is structural.  
+    -->
+    <hr>
+
+    <h2>Picking the Right Semantic Element:</h2>
+    <!--
+    A few patterns help when deciding which element to use.
+      - <main> appears at most once per page. It holds the part of the page that is unique to that route: not the header, not the footer, not the sidebar. Browsers, screen readers, and reader-mode features all use <main> as the anchor for "this is the content the user actually came for".
+      - <article> and <section> look similar but mean different things. An <article> is something that would still make sense on its own if you lifted it out and put it somewhere else: a blog post, a news story, a comment, a product card. A <section> is a thematic group of content with its own heading inside a larger document. If you cannot give it a clear heading, it is probably a <div>, not a <section>.
+      - <nav> is for major navigation blocks. A short list of links at the bottom of a paragraph does not need to be wrapped in <nav>. Use it for navigation that helps users move around the site as a whole. Too many <nav> elements weaken the signal that the important ones carry.
+      - <aside> is for content related to the surrounding content but not part of its main flow: callouts in the margin, lists of related posts, pull quotes. It is not just "anything on the side of the page". It is content the page could survive without.
+    When no semantic element fits, fall back to <div> or <span>. There is nothing wrong with using them; the goal is to use them only when nothing more specific applies.
+    -->
+    <hr>
+
+    <h2>Why Semantic HTML matters:</h2>
+    <!--
+    Semantic markup is one of the cheapest improvements you can make to a page. The same code that renders identically in the browser also brings:
+      - Accessibility. Screen readers expose semantic regions as "landmarks" that users can jump between with a single keystroke. "Skip to main content" is a real shortcut in many assistive tools, and <main> is what makes it work.
+      - SEO and crawlers. Search engines use semantic structure as a hint for what the page is about. Tools that summarize or excerpt pages do the same.
+      - Tooling. Reader modes, browser extensions, screen capture tools, and translation tools all behave more reliably on semantic markup.
+      - Maintenance. A future developer, often you six months from now, can read the page's HTML and immediately see what each region is for, without digging through the CSS.
+    None of these wins require any new tags you have not already met. They come from using <header>, <nav>, <main>, <section>, <article>, <aside>, and <footer> instead of a generic <div>.
+    -->
+    <hr>
+
+    <h2>When layout comes from app data:</h2>
+    <!--
+    Most real pages are not hand-written one file at a time. They are built from templates and components. A few habits keep the semantic structure intact:
+      - Pick semantic containers at the component level. A Header component should render a <header>, not a <div className="header">. The naming and the markup should agree.
+      - Keep one main element per page. Even if your layout has several panes, only one of them should be the page's <main> content. Components that just wrap their children should usually use a generic element, not <main>.
+      - Keep heading levels in sync with the structure. A <section> without a heading is usually a sign you need a <div> instead. If the template puts a <section> on the page, it should also put a real <h2> or <h3> inside it.
+    -->
   </body>
 
 </html>
