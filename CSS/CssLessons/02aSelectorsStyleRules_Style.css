@@ -68,7 +68,7 @@ A combined CSS selector with a space in between means a HTML element with class 
 /*
 Group Selectors: Sometimes several selectors should get the same declarations. Instead of writing the same rule multiple times, separate the selectors with commas.
   - That rule applies to all h1, h2, and h3 elements.
-  - The comma matters because it means "match this selector, and also this selector, and also this selector."
+  - The comma means all of these selectors.
 */
 h1,
 h2,
@@ -79,6 +79,8 @@ h3 {
 Descendant Selectors: A descendant selector targets elements inside another element.
   - This rule applies to links inside a nav. It does not apply to every link on the page.
   - That is useful when the same HTML element should look different in different places.
+  - Navigation links and content links are both <a> elements, but they live in different parts of the DOM. Selectors let you style them differently.
+  - Space means inside.
 */
 .site-nav a {
   color: #c815ad;
@@ -88,3 +90,9 @@ main a {
   color: #eb8525;
   text-decoration: underline;
 }
+/*
+Descendant selectors are practical, but do not make them too long, as it is hard to read and easy to break. Do NOT do this:
+  main article section div p a {
+    color: red;
+  }
+*/
