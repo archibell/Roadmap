@@ -1,0 +1,111 @@
+/*
+Add a Base Style:
+- font-family changes the typeface.
+- color sets the default text color.
+- background-color sets the page background.
+- system-ui tells the browser to use the operating system's normal interface font. The sans-serif part is a fallback. If the browser cannot use the first font, it tries the next one.
+*/
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+/*
+To keep the content from stretching too wide:
+*/
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+}
+/*
+Make headings and paragraphs readable:
+  - The most common text properties are font-size, font-weight, and line-height.
+  - font-size controls how large the text is. Beginners often start with px because it is easy to see: 16px, 18px, 40px. You will also see rem and em later. They scale with font size and user preferences, which matters for accessibility. px is fine while you are learning the basics.
+  - font-weight controls how thick the text is. Normal text is usually 400, and bold text is often 700.
+  - line-height controls the space between lines of text. Body text usually needs more line height than a heading, and a paragraph with line-height: 1.6, for example, is often easier to read than one where the lines are packed tightly together.
+  - The .lead rule makes the intro paragraph slightly larger and softer than the main body text. That tells the reader, "this paragraph introduces the page."
+  - text-align controls horizontal text alignment inside a block. The common values are left, right, center, and justify.
+*/
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+h2 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+p {
+  font-size: 18px;
+  color: #3c3ca0;
+  line-height: 1.6;
+}
+.lead {
+  font-size: 20px;
+  color: #4b5563;
+}
+/*
+Text and Background color:
+The names are easy to mix up at first.
+  - color changes the text color.
+  - background-color changes the color behind the element.
+You can use both on the same element. That kind of pair is useful for messages, notes, warnings, and status labels. The text color and background color should work together so the message is readable.
+*/
+.notice {
+  color: #5e0ff1;
+  background-color: #fadf75;
+}
+/*
+You can also give a section its own background:
+*/
+.article-preview {
+  background-color: rgb(255, 221, 221);
+}
+/*
+Decorate Text:
+  - text-decoration can add or remove lines around text.
+  - Links are underlined by default in browsers. Removing the underline can be fine in navigation or repeated interface links, but make sure the link still clearly looks clickable through color, placement, or another visual cue. 
+  - The line-through value is useful elsewhere, like striking out an old price.
+*/
+.read-more {
+  color: #2563eb;
+  text-decoration: none;
+}
+.old-price {
+  color: #6b7280;
+  text-decoration: line-through;
+}
+/*
+Recognize common color formats:
+  - Named colors are readable in tiny examples:
+*/
+.error-message {
+  color: red;
+}
+/* 
+Hex colors are more common in real projects:
+  - A hex color starts with #, followed by numbers and letters. You will see hex values in design tools, codebases, and documentation.
+*/
+.error-message {
+  color: #b91c1c;
+}
+/*
+rgb() describes a color with red, green, and blue values:
+*/
+.button {
+  background-color: rgb(37, 99, 235);
+}
+/*
+hsl() describes a color with hue, saturation, and lightness:
+*/
+.button {
+  background-color: hsl(221, 83%, 53%);
+}
+/*
+Some color formats can include transparency too:
+  - The a in rgba() stands for alpha, which is the transparency value. The last value, 0.12, means the color is mostly transparent: 1 is fully visible, and 0 is fully transparent.
+*/
+.highlight {
+  background-color: rgba(37, 99, 235, 0.12);
+}
