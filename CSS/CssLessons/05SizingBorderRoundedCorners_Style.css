@@ -1,0 +1,97 @@
+/*
+Use border-box sizing:
+  - * is the universal selector, and it matches every element. box-sizing: border-box tells the browser to include content, padding, and border inside the set width.
+  - The default behavior has a name too: box-sizing: content-box. With content-box, width applies to the content only, and padding and border are added outside it.
+      * {
+        box-sizing: content-box;
+      }
+  - border-box flips that: padding and border are pulled inside the width.
+  - Most modern projects make sizing easier with this rule (add it near the top of your CSS).
+  - Use border-box in real projects - box-sizing: border-box is a practical default because it makes width and height include padding and border, which usually matches how people expect boxes to behave.
+*/
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+}
+.plan-card {
+  background-color: white;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  /*
+  Set a width:
+    - The width property sets how wide an element should be.
+      ex: 
+        width: 320px;
+    - For a block element like <article>, width: 100% is often technically redundant because block elements already use the available width. You will still see this pattern in real projects because it makes the intent explicit and also works well when the element is not a normal block.
+  */  
+  width: 100%;
+  /*
+  Prefer max-width for flexible boxes:
+    - A fixed width can be useful for a small demo, but it can be too rigid in real pages.
+    - Often, you want the box to be flexible up to a limit. This is where a combination of width and max-width comes in.
+    - You can also use percentages for width: 100% means the full available width, 80% means 80% of the available width, and 50% means half.
+    - If you want the card to work on smaller and larger screens, set width: 100% so it can use the available space, then constrain it with max-width: 420px
+    - width: 100% lets the card use the available space, and max-width: 420px stops it from becoming wider than 420px. On narrow screens, the card can shrink with the page. On wider screens, it stops at 420px.
+    - You may also see min-width, which sets a minimum width. Use it carefully, because a minimum width can make layouts harder on small screens.
+  */
+  max-width: 420px;
+  /*
+  Avoid fixed height for text:
+    - The height property sets an exact height. That can be useful for things like icons, avatars, thumbnails, and fixed-size controls. But fixed heights can cause trouble for text-heavy boxes. Avoid this for normal cards:
+      .plan-card {
+        height: 180px;
+      }
+      If the text gets longer, it may overflow or feel squeezed.
+    - Use min-height when you want a box to have at least a certain height while still allowing it to grow
+  */
+  min-height: 260px;
+  /*
+  Rounded Corners:
+    - The border-radius property rounds the corners of a box.
+    - Values like 4px, 6px, 8px, or 12px are usually enough.
+  */
+  border-radius: 12px;
+  /*
+  Add a Light Shadow:
+    - The box-shadow property draws a shadow around a box.
+    - Shadow has 4 parts:
+      1. Horizontal offset (how far to the right)
+      2. Vertical offset (how far down)
+      3. Blur radius (how blurry the shadow is)
+      4. Color
+    - Shadows usually use rgba() so the alpha value keeps them subtle. A solid rgb() or hex shadow can feel too heavy.
+  */
+  box-shadow: 0px 8px 24px rgba(15, 23, 42, 0.25);
+}
+/*
+Write a .secondary-card rule that changes only the border color or shadow. This uses the multi-class pattern from Lesson 2. The card gets all the .plan-card styles and adds your .secondary-card variant on top.
+*/
+.secondary-card {
+  border-color:rgb(7, 136, 35);
+  box-shadow: 0px 8px 24px rgba(32, 198, 51, 0.347);
+}
+.eyebrow {
+  color: #2563eb;
+  font-weight: 700;
+}
+.summary {
+  color: #4b5563;
+  line-height: 1.6;
+}
+.price {
+  font-size: 24px;
+  font-weight: 700;
+}
+.card-action {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 700;
+}
