@@ -56,6 +56,10 @@ You can use both on the same element. That kind of pair is useful for messages, 
   color: #5e0ff1;
   background-color: #fadf75;
 }
+.success-message {
+  color: #b800cc;
+  background-color: #d4fbd1;
+}
 /*
 You can also give a section its own background:
 */
