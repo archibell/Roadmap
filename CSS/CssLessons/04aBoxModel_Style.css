@@ -1,0 +1,77 @@
+/*
+Every element has a box:
+  Even when you do not draw a border, the browser still treats each element as a box. That box has 4 main parts:
+  - Content: the actual text, image, button label, or other content.
+  - Padding: space inside the element, between the content and the edge. Use padding when the inside of a box needs more room.
+  - Border: a line around the padding and content.
+  - Margin: space outside the element, between this box and other boxes.
+*/
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+}
+/*
+Padding Property as Shorthand Property:
+  - The padding property is a shorthand property. One value applies to all sides.
+*/
+/*
+Border Shorthand:
+  The border shorthand usually includes three parts:
+  - Width: 1px
+  - Style: solid
+  - Color: #e5e7eb
+The border property targets all sides of the element. 
+*/
+/*
+Add Margin Outside the Box:
+  - Margin creates space outside an element.
+  - Margin has shorthand patterns too:
+    margin: 16px;
+    margin: 12px 16px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    The pattern is similar to padding: one value applies to all sides, two values mean top/bottom then left/right, and side-specific properties target one side.
+*/
+.article-preview {
+  background-color: white;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+/*
+Padding Property with 2 Values:
+  - The 1st value is top and bottom. 
+  - The 2nd value is left and right.
+*/
+/*
+Add Border Around the Box:
+  - A border is a line around the element. It can give a box a clearer edge, or it can add emphasis to one side.
+  - A left border can emphasize a box by adding a colored stripe to a specific side.
+*/
+.notice {
+  color: #92400e;
+  background-color: #fffbeb;
+  padding: 8px 16px;
+  border-left: 4px solid #f59e0b;
+  margin-bottom: 24px;
+}
+
+/*
+Padding Properties Targeting One Side:
+  - You can also target one side with properties like padding-left, padding-right, padding-top, or padding-bottom.
+*/
+.success-message {
+  color: #166534;
+  background-color: #c6ffd7;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
