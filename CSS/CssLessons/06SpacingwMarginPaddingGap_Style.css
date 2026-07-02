@@ -1,0 +1,116 @@
+/*
+Spacing with margin, padding, and gap:
+  - Good spacing starts with one practical question: where should the space belong?
+    - Use padding for space inside a box.
+    - Use margin for space outside a box.
+    - Use gap for space between items in a group.
+*/
+/*
+Choose a Small Spacing Scale:
+  You do not need a perfect design system yet. The point is to reuse a few values instead of inventing a new number for every property. For example, you might use:
+  - 8px for small gaps.
+  - 16px for comfortable inner spacing.
+  - 24px or 32px for larger section spacing.
+*/
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+.page {
+  max-width: 760px;
+  margin: 40px auto;
+}
+.intro,
+.lesson-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  /*
+  Add padding inside boxes:
+    - Padding creates room inside a box.
+  */
+  padding: 24px;
+}
+/*
+Add margin between sections:
+  - Margin creates space outside an element.
+  - Use margin when the whole element needs distance from another element. Do not use margin to fix text touching the inside of a box.
+  - That distinction matters because the two properties solve different spacing problems:
+    - Padding fixes cramped content inside a background or border.
+    - Margin separates one element from another.
+  - Do not use empty HTML for spacing - Avoid adding empty <p>, <br>, or extra blank elements just to push things apart. Spacing belongs in CSS, not in fake HTML content.
+*/
+.intro {
+  margin-bottom: 32px;
+}
+/*
+Group the Cards with Gap:
+  - The lesson cards are also a group. Instead of adding margin-bottom to every card, let the parent manage the space.
+  - Add the gap to the card list.
+  - You will learn flexbox properly later. For now, notice the spacing behavior: the cards get consistent space between them because the parent .lesson-list owns the gap.
+  - This is usually cleaner than putting margin on every card
+*/
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.eyebrow {
+  color: #2563eb;
+  font-weight: 700;
+}
+.summary,
+.lesson-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+/*
+Use Gap Between Grouped Items:
+  - gap creates space between items inside a group.
+  - For gap to work, the group needs a layout mode like flex or grid. You will learn both properly later. For now, use one small flex row so you can see what gap does.
+  - Reload the page and the action links should sit in a row with space between them. The useful part is the parent-owned gap. You do not need to add margin to each link. The parent group owns the space between its children.
+*/
+.actions {
+  display: flex;
+  gap: 12px;
+}
+/*
+Now style the links enough to see the row clearly:
+*/
+.primary-action,
+.secondary-action {
+  padding: 10px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.primary-action {
+  color: white;
+  background-color: #2563eb;
+}
+.secondary-action {
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+/*
+Where should the space belong?
+  - When a page feels cramped or messy, ask where the space should live.
+  - If the text is too close to the inside edge of a card, use padding:
+    .lesson-card {
+      padding: 16px;
+    }
+  - If two sections are too close together, use margin:
+    .intro {
+      margin-bottom: 32px;
+    }
+  - If items in a group need even space between them, use gap:
+    .lesson-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+*/
