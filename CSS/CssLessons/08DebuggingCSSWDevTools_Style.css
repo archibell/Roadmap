@@ -1,0 +1,71 @@
+/*
+Difficult to display notes here.
+See https://roadmap.sh/packs/css/debugging-css-with-devtools for additional info.
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 760px;
+  margin: 40px auto;
+}
+
+.intro,
+.card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.lead,
+.card-text {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.featured-card {
+  border-color: #2563eb;
+}
+
+.tag-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tag-row span {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.notice {
+  color: #047857;
+  background-color: #fef3c7;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.card .notice {
+  color: #92400e;
+}
