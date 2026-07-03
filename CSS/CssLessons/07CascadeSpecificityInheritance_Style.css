@@ -1,0 +1,109 @@
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f9fafb;
+}
+/*
+Inheritance passes some styles down:
+  - One important thing that trips beginners up is inheritance. Some CSS properties applied to a parent element can pass down to child elements automatically.
+  - In the practice page, .page sets a text color.
+    .page {
+      color: #111827;
+    }
+  - That color becomes the default for text inside .page unless a more direct rule sets another value.
+  - In the starting CSS, paragraphs also have a direct rule:
+    p {
+      color: #065325;
+    }
+  - That means the paragraphs use the direct p color, not the inherited .page color.
+  - Text-related properties often inherit, which is why this kind of rule is so useful:
+    body {
+      font-family: system-ui, sans-serif;
+    }
+  - That is why you can set font-family once on body and most text on the page uses it.
+  - Links are a common inheritance surprise. A link may stay browser-blue even when nearby text inherits a different color, because the browser gives links their own direct color by default. Inheritance is a fallback; direct declarations on the element win.
+*/
+/*
+Box and layout properties usually do not inherit:
+    .page {
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+    }
+  - The children inside .page do not each get their own padding and border. Those styles belong to the .page box.
+*/
+/*
+Direct styles beat inherited styles:
+  - Inheritance gives children a default value, but a direct declaration on the child wins.
+    .page {
+      color: #111827;
+    }
+    p {
+      color: #444;
+    }
+  - The p rule wins for paragraphs because it directly targets the paragraph. The inherited .page color is just the fallback.
+  - Inherited values are defaults for descendants, not locked-in commands.
+*/
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+  color: #111827;
+}
+/*
+The Cascade Chooses a Value:
+  - p, .lead, #intro have a conflict. All 3 declarations set color on the same element. The broswer needs to decide which value wins.
+  - The cascade looks at three things:
+    1. Specificity: how strong each selector is. A more specific selector wins over a less specific one. In the example above, #intro is stronger than .lead, which is stronger than p, so the lead paragraph is red.
+    2. Source order: when two rules have the same specificity, the one that appears later in the CSS file wins. The button in the practice page has two class selectors, .button and .primary-button, so source order decides which shared background color shows up.
+    3. Importance: a declaration marked !important can beat normal declarations. You can force CSS to use the styles from a less specific selector using the !important declaration. For example you can have color: #2563eb !important; to make CSS force the color. It is meant for rare overrides, not everyday styling.
+*/
+p {
+  color: #065325;
+}
+/*
+Be careful with important:
+  - You can force a declaration to win with !important
+  - That tells the browser to treat this declaration as more important than normal declarations.
+  - !important can be useful when you are dealing with third-party styles or a very specific override. But it is a bad everyday habit. Once you use it, normal source order and specificity become harder to reason about, and future CSS may need even more !important to override it.
+*/
+.lead {
+  color: #ce0993 !important;
+  font-size: 20px;
+}
+#intro {
+  color: #b91c1c;
+}
+/*
+Source Order Breaks Ties:
+  - Source order matters when selectors have the same specificity.
+  - The button has both classes in its HTML:
+    <button class="button primary-button">Save changes</button>
+  - Both .button and .primary-button are class selectors, so they have the same specificity. For shared properties like background-color and color, the later rule wins.
+  - That is why the button is blue with white text.
+  - If you move .primary-button above .button, the shared .button rule comes later and wins those same properties. The button becomes gray again.
+  - Source order does not help if specificity is different. If you move .lead below #intro, the lead paragraph is still red because #intro is more specific.
+  - One thing to note about class selectors: as discussed, if you have two selectors with the same specificity that target the same element (e.g. .button and .primary-button), CSS applies the rule that appears later in the stylesheet.
+  - If you don't want to rely on the order of the rules, you can make a selector more specific. For example, button.primary-button or .parent .primary-button are more specific than .primary-button alone, so their styles would take precedence even if competing rules appear later in the stylesheet.
+*/
+.button {
+  background-color: #e5e7eb;
+  color: #111827;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+}
+.primary-button {
+  background-color: #2563eb;
+  color: white;
+}
+/*
+More Specific Is Not Always Better:
+  - Once you learn specificity, it is tempting to make selectors stronger whenever something does not work.
+  - This selector is strong, but it is tied to the current HTML structure:
+    main .page p.lead {
+      color: #2563eb;
+    }
+  - If the paragraph moves, or the class is reused somewhere else, the selector may stop being helpful. This is usually easier to understand and reuse:
+    .lead {
+      color: #2563eb;
+    } 
+  - Use enough specificity to target the thing clearly. Avoid adding extra element names, IDs, or ancestor chains just to win.
+*/

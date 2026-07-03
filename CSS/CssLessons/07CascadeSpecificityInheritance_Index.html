@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cascade practice</title>
+    <link rel="stylesheet" href="07CascadeSpecificityInheritance_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <h1>Cascade practice</h1>
+      <p class="lead" id="intro">This paragraph matches several rules.</p>
+      <p>This paragraph helps us compare inherited and direct styles.</p>
+      <button class="button primary-button">Save changes</button><hr>
+
+      <h2>Specificity Ranking:</h2>
+      <img src="SpecificityRanking.png" alt="Specificity Ranking" width="450"><hr>
+
+      <h2>Box and layout properties usually do not inherit:</h2>
+      <img src="BoxAndLayoutDontInherit.png" alt="Box and Layout Properties Usually Do Not Inherit" width="450"><hr>
+
+      <h2>Crossed-out styles are clues</h2>
+      <p>
+      When a declaration loses, DevTools often shows it crossed out.<br><br>
+      
+      Inspect the lead paragraph in the browser. You may see the p color and .lead color crossed out, while the #intro color is active.<br><br>
+      
+      That does not mean the p selector failed. It matched, but its color declaration lost to a more specific rule.<br>
+      This distinction matters when you debug:<br>
+      - If a rule does not appear in DevTools, the selector probably did not match.<br>
+      - If a declaration appears crossed out, the selector matched, but another declaration won.<br>
+      </p>
+      <img src="CrossedOutStylesAreClues.png" alt="Crossed Out Styles Are Clues" width="450"><hr>
+
+    </main>
+  </body>
+</html>
