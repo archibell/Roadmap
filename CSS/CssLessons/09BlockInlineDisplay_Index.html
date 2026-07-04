@@ -1,0 +1,83 @@
+<!--
+See https://roadmap.sh/packs/css/block-inline-and-display
+for add info.
+-->
+<!--
+Block elements stack:
+  - A block element starts on a new line and usually takes the full available width. Common block elements include:
+    - <h1> through <h6>
+    - <p>
+    - <div>
+    - <section>
+    - <article>
+    - <header>
+    - <footer>
+    - <nav>
+  - That is why in our webpage example, the intro, card, and notice stack one after another. Their default display behavior is block-like.
+  - Inspect the notice in DevTools. In the Computed panel, search for display; you should see that the paragraph is display: block.
+  - You can make this behavior explicit:
+    .notice {
+      display: block;
+    }
+  - That does not change much because the paragraph was already block by default. It just names the behavior the browser was already using.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Display practice</title>
+    <link rel="stylesheet" href="09BlockInlineDisplay_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Block, inline, and display</h1>
+        <p class="summary">Some elements stack like sections. Some sit inside a sentence like links and badges.</p>
+      </section>
+
+      <nav class="lesson-nav" aria-label="Lesson sections">
+        <a href="#card">Card</a>
+        <a href="#notice">Notice</a>
+        <a href="#actions">Actions</a>
+      </nav>
+
+      <article class="card" id="card">
+        <!--
+        A span is inline by default, so it sits near the text around it instead of becoming a full-width box.
+        -->
+        <span class="badge">New</span>
+        <h2>Display controls how an element participates in layout</h2>
+        <!--
+        Inline elements flow with text:
+        - An inline element stays inside the current line of text. Common inline elements include:
+          - <a>
+          - <span>
+          - <strong>
+          - <em>
+          - <code>
+        - That is why the link inside the paragraph sits inside the sentence.
+        -->
+        <p class="card-text">
+          A paragraph is a block element by default, but a
+          <a href="/docs">link</a>
+          sits inline with the sentence.
+        </p>
+        <h2>Change display when the default is wrong:</h2>
+        <img src="ChangeDisplay.png" alt="Change Display" width="550">
+      </article>
+
+      <p class="notice" id="notice">
+        This notice is a paragraph, so it starts on its own line and takes the available width.
+      </p>
+
+      <div class="actions" id="actions">
+        <a class="action-link" href="/start">Start practice</a>
+        <a class="action-link secondary-action" href="/notes">Read notes</a>
+      </div>
+
+    </main>
+
+  </body>
+</html>

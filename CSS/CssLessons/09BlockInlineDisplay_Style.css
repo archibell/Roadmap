@@ -1,0 +1,114 @@
+/*
+See https://roadmap.sh/packs/css/block-inline-and-display
+for add info.
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 760px;
+  margin: 40px auto;
+}
+
+.intro,
+.card,
+.notice {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.intro,
+.lesson-nav,
+.card,
+.notice {
+  margin-bottom: 24px;
+}
+
+/*
+Hide elements with display none:
+  - You can hide an element with display: none;
+    .notice {
+      display: none;
+    }
+  - The notice disappears, and the page closes the space where it used to be.
+  - There is a related property worth knowing: visibility: hidden. It hides the element, but it leaves the space the element would have taken up. Use display: none when the element should not exist in the layout.
+  - Use visibility: hidden when it should still hold its space, but not show.
+*/
+
+.eyebrow {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.summary,
+.card-text {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.badge {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/*
+Inline elements do not behave like full boxes:
+  - Inline elements can accept many visual styles, but they do not behave like full block boxes.
+  - Look at the action links:
+    .action-link {
+      width: 180px;
+      padding: 12px 16px;
+    }
+  - The padding is visible, but width: 180px does not create a consistent button width because links are inline by default.
+  - That is a common beginner surprise: width and height do not work on most normal inline elements the way they work on block elements. Some elements, like images and inputs, are exceptions. You will see those later.
+  - Inspect an action link in DevTools. The width declaration may appear in the Styles panel, but the final layout still follows inline behavior. The CSS is not broken; the display type is the missing piece.
+*/
+.action-link {
+  /*
+  Change display when the default is wrong:
+  - The display property changes how an element participates in layout.
+  - For action-style links, inline-block is often useful.
+  - inline-block is a middle ground.
+    - It sits in a line like inline content.
+    - It can use width, height, padding, border, and margin more like a block box.
+    - That makes it useful for small things like badges, labels, and simple button-style links.
+  */
+  display: inline-block;
+  width: 25%;
+  /*
+  Use display block for full-width actions:
+    - Sometimes you want a link to behave like a full-width block.
+      .action-link {
+      display: block;
+      width: 100%;
+      }
+    - Now each action link starts on its own line and fills the available width.
+    - That may be useful for a vertical menu or a stacked mobile layout, but it is not the right choice for every link. 
+  */
+  padding: 12px 16px;
+  color: white;
+  background-color: #2563eb;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.secondary-action {
+  color: #2563eb;
+  background-color: white;
+  border: 1px solid #bfdbfe;
+}
