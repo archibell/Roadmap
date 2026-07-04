@@ -112,3 +112,19 @@ Inline elements do not behave like full boxes:
   background-color: white;
   border: 1px solid #bfdbfe;
 }
+/*
+Display grows into layout systems:
+  - You used display: flex in the spacing lesson to make gap work. That was a display value all along. It told the browser to use a flex layout mode for that parent's children.
+    .tag-row {
+      display: flex;
+      gap: 8px;
+    }
+  - grid is also a display value.
+  - You do not need to learn them fully in this lesson. For now, the important idea is that display chooses the layout mode for an element.
+    - block stacks as a full-width box.
+    - inline flows with text.
+    - inline-block flows with text but behaves more like a box.
+    - none removes the element from layout.
+    - flex and grid create layout systems for an element's children.
+  - Flexbox and grid get their own lessons later. This lesson gives you the foundation for why those layout systems start with display.
+*/
