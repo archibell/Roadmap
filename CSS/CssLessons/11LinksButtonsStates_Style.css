@@ -1,0 +1,205 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 760px;
+  margin: 40px auto;
+}
+
+.intro,
+.panel,
+.state-selectors,
+.keyboard-focus-states {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.intro,
+.site-nav,
+.panel,
+.state-selectors {
+  margin-bottom: 24px;
+}
+
+.eyebrow,
+.site-nav a {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.summary,
+.panel-text {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  color: #1d4ed8;
+  background-color: #eff6ff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/*
+Visited links can look different:
+  - Browsers can style links the user has already visited with :visited
+  - This can help users remember which pages they have already opened.
+  - The selector above targets normal text links inside .panel-text. 
+  - There is one cascade detail worth knowing: a link can be visited and hovered at the same time. When state selectors have the same specificity, source order decides. That is why .panel-text a:hover comes after .panel-text a:visited in the example. The hover color can still win while the user is interacting with a visited text link.
+  - A common order for link states is :link, :visited, :hover, :active, often remembered as LVHA. The :link state means an unvisited link. 
+  - Browsers limit what you can style with :visited for privacy reasons. Color changes are the main safe use. You do not need to use :visited for every site, but it is worth recognizing when you see it.
+*/
+.panel-text a:visited {
+  color: #d94828;
+}
+
+/*
+Keep links recognizable:
+  - Links should look like links, especially inside paragraphs.
+  - The base rule keeps paragraph links underlined and adjusts the underline.
+  - text-decoration-thickness controls how thick the underline is.
+  - text-underline-offset controls how far the underline sits from the text.
+*/
+a:hover {
+  color: #bd26b8;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.panel-text a:hover {
+  color: #bd26b8;
+}
+
+/*
+Add keyboard focus states:
+  - Focus is the state an element enters when it is selected for keyboard interaction.
+  - Press Tab in the browser, and the focus should move through the navigation links, the action link, and the buttons.
+  - The disabled Syncing button should be skipped. Disabled controls cannot receive focus, which is one reason they need a clear disabled style.
+  - Use :focus-visible for a keyboard-friendly focus style.
+*/
+a:focus-visible,
+button:focus-visible {
+  /*
+  outline draws a focus ring outside the element without changing the element's size. 
+  */
+  outline: 3px solid #93c5fd;
+  /*
+  outline-offset moves the ring away from the edge so it is easier to see.
+  */
+  outline-offset: 3px;
+}
+
+/*
+For navigation links, removing the underline can be okay because their placement and grouping already signal that they are links.
+  text-decoration: none;
+*/
+.site-nav a {
+  display: inline-block;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.primary-link,
+.secondary-button,
+.danger-button {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/*
+Add active states:
+  - :active matches while the user is pressing the element. Add this small pressed state:
+  - Click and hold one of the controls, and it should feel slightly pressed.
+  - The transform property can move, scale, or rotate an element visually. Here it moves the element down by 1px. 
+  - Keep active states subtle because the goal is to show that the click registered, not to make the layout jump around.
+*/
+.primary-link:active,
+.secondary-button:active,
+.danger-button:active {
+  transform: translateY(1px);
+}
+
+/*
+Add Hover states:
+  - :hover matches when the user's pointer is over an element. 
+  - color: changes the color of normal links on hover.
+  - background-color: changes the background color of the button-link controls.
+*/
+.primary-link:hover {
+  color: white;
+  background-color: #2563eb;
+}
+
+.secondary-button,
+.danger-button {
+  background-color: white;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  color: #2563eb;
+  background-color: #c0d0f3;
+}
+
+/*
+Style disabled buttons:
+  - A disabled button cannot be clicked or focused, so style it with :disabled.
+*/
+button:disabled {
+  /*
+  opacity: 0.55; fades the whole button.
+  */
+  opacity: 0.55;
+  /*
+  cursor: not-allowed; changes the pointer cue when someone hovers over it.
+  */
+  cursor: not-allowed;
+}
+/*
+The button:disabled:hover rule keeps the disabled button from picking up the normal hover background.
+
+Do not use color alone to communicate disabled state. Lower opacity, cursor change, and text like Syncing help make the state clearer.
+
+FYI, links do not have a real disabled attribute. If a navigation option should not be available, it is often better to remove the link, explain why it is unavailable, or use a button if the control is truly an action.
+*/
+button:disabled:hover {
+  background-color: white;
+}
+
+.danger-button:hover {
+  color: #b91c1c;
+  background-color: #ffe1e1;
+  border: 1px solid #fecaca;
+}
+
+.cursors-image,
+.links-and-buttons-image,
+.state-selectors-image,
+.keyboard-focus-states-image {
+  display: block;
+  width: 100%;
+  height: auto;
+} 

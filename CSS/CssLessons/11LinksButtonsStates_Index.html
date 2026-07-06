@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Links and buttons practice</title>
+    <link rel="stylesheet" href="11LinksButtonsStates_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Links, buttons, and states</h1>
+        <p class="summary">Interactive elements should look clickable, show focus, and respond when a user interacts with them.</p>
+      </section>
+
+      <!--
+      Links and buttons have different jobs:
+        - In the practice HTML, links are used for navigation.
+      -->
+      <nav class="site-nav" aria-label="Practice navigation">
+        <a href="/lessons">Lessons</a>
+        <a href="/projects">Projects</a>
+        <a href="/account">Account</a>
+      </nav>
+
+      <article class="panel">
+        <p class="badge">Draft lesson</p>
+        <h2>Publish your CSS notes</h2>
+        <p class="panel-text">
+          Review the <a href="11StyleGuide.html">style guide</a> before publishing.
+          If the lesson is ready, use the action buttons below.
+        </p>
+
+        <div class="actions">
+          <a class="primary-link" href="/preview">Preview lesson</a>
+          <!--
+          Links and buttons have different jobs:
+            - Buttons are used for actions.
+          -->
+          <button class="secondary-button" type="button">Save draft</button>
+          <button class="danger-button" type="button">Delete draft</button>
+          <button class="secondary-button" type="button" disabled>Syncing</button>
+        </div>
+        <div class="cursors">
+          <h2>Cursors:</h2>
+          <img class="cursors-image" src="cursors.png" alt="Cursors">
+        </div>
+        <div class="links-and-buttons">
+          <h2>Links and buttons have different jobs:</h2>
+          <img class="links-and-buttons-image" src="LinksAndButtons.png" alt="Links and Buttons">
+        </div>
+      </article>
+
+      <section class="state-selectors">
+        <h2>State selectors match interaction states:</h2>
+        <p>A state selector is a selector that matches an element in a specific condition.</p>        
+        <p>The practice page currently has base styles, but it does not have state styling yet. The controls do not visibly respond when someone hovers, tabs, presses, or reaches a disabled state. CSS handles these conditions with pseudo-classes.</p>
+        <p>For example, :hover is a pseudo-class that matches when the pointer is over an element:</p>
+          <pre><code>
+            a:hover {
+            color: #1d4ed8;
+            }
+          </code></pre>
+        <p>The colon is the clue: selectors like :hover, :focus-visible, :active, :visited, and :disabled are called pseudo-classes.</p>
+        <img class="state-selectors-image" src="StateSelectorsPseudoClass.png" alt="State Selectors Psuedo Class">
+      </section>
+
+      <section class="keyboard-focus-states">
+        <h2>Add Keyboard Focus States:</h2>
+        <p>Focus is the state an element enters when it is selected for keyboard interaction.</p>
+        <p>Press Tab in the browser, and the focus should move through the navigation links, the action link, and the buttons.</p>
+        <p>The disabled Syncing button should be skipped. Disabled controls cannot receive focus, which is one reason they need a clear disabled style.</p>
+        <p>Use :focus-visible for a keyboard-friendly focus style.</p>
+        <img class="keyboard-focus-states-image" src="KeyboardFocusStates.png" alt="Keyboard Focus States">
+      </section>
+    </main>
+  </body>
+</html>
