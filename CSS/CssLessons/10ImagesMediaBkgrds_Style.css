@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 760px;
+  margin: 40px auto;
+}
+
+.intro,
+.course-card,
+.promo,
+.media-elements {
+  margin-bottom: 24px;
+}
+
+.intro,
+.course-card,
+.media-elements {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro,
+.course-body,
+.promo,
+.media-elements {
+  padding: 24px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.summary,
+.course-text {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  color: #1d4ed8;
+  background-color: #eff6ff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+/*
+For normal content images, display: block; width: 100%; height: auto; is a safe beginner pattern. It makes the image fit its container without distorting it.
+*/
+.course-image {
+  /*
+  display: block connects back to the last lesson. Images are inline by default, which can leave a tiny bit of space under them. Making the image block-level removes that inline spacing behavior and makes the card edge cleaner.
+  */
+  display: block;
+  /*
+  width: 100% makes the image fill the width of the card.
+  */
+  width: 100%;
+  /*
+  height: auto preserves the image's natural aspect ratio, so the image does not stretch.
+  */
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+/*
+Crop an image with object-fit:display:
+  - Sometimes you want every card image to have the same shape, even if the original images have different dimensions. You can do that with aspect-ratio and object-fit. For the sample image, update the style like this:
+    .course-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px 8px 0 0;
+    }
+  - aspect-ratio: 16 / 9 gives the image box a consistent wide shape.
+  - object-fit: cover fills that box without stretching the image. If the image does not match the box shape, the browser crops the extra part.
+*/
+.object-fit {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px 8px 0 0;
+}
+
+/*
+Use background images for decoration:
+  - The card image is real content. It is in the HTML as <img>, and it has alt text.
+  - The HTML also has a .promo section near the end. Use the same image as a decorative background with background-image.
+  - Notice that background images use background-size and background-position instead of object-fit and object-position.
+  - Depending on your image, the text may be hard to read. You can fix that by adding a dark overlay to the background image.
+  - Background images do not have alt text - A CSS background image is not content. Screen readers do not get alt text for it. If the image is important to understanding the page, use <img> in the HTML instead.
+*/
+.promo {
+  color: white;
+  background-color: #111827;
+  /*
+  background-image paints an image behind the content.
+  */
+  background-image: 
+    /*
+    linear-gradient(fromColor, toColor) creates a gradient. In this example, both color stops are the same dark transparent color, so it acts like a solid overlay. CSS gradients count as images, which is why they can sit inside background-image with url(...).
+    */
+    linear-gradient(rgba(17, 24, 39, 0.78), rgba(17, 24, 39, 0.78)),  
+    url("course-cover.jpg");
+  /*
+  background-size: cover makes the background fill the section.
+  */
+  background-size: cover;
+  /*
+  background-position: center chooses which part of the image is centered.
+  */
+  background-position: center;
+  /*
+  background-repeat: no-repeat prevents the image from tiling if the background does not fully cover the box.
+  */
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  padding: 32px;
+}
+/*
+Choose img or background-image:
+  - Use an <img> when the image is content:
+    - Product photo.
+    - Avatar.
+    - Chart or diagram.
+    - Screenshot.
+    - Article image that helps explain the article.
+  - Use background-image when the image is decoration:
+    - Texture.
+    - Abstract hero background.
+    - Decorative pattern.
+    - Image behind text where the text already says the important thing.
+*/
+.promo .eyebrow {
+  color: #bfdbfe;
+}
+
+/*
+Media elements are boxes too:
+  - For a normal video element, the same responsive idea works:
+    video {
+    display: block;
+    width: 100%;
+    height: auto;
+    }
+  - For an embedded video inside an iframe, developers often wrap the iframe in a box with an aspect ratio:
+*/
+.video-frame {
+  aspect-ratio: 16 / 9;
+}
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
