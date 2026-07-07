@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 920px;
+  margin: 40px auto;
+}
+
+.page-header,
+.lesson-card,
+.gap-for-button-rows,
+.cards-share-available-space,
+.align-small-rows-inside-card,
+.flexbox-rules-summary {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+/*
+Put the header on one row:
+  - The header has two direct children: the text group and the New lesson link. Those two pieces belong on the same row, with space between them.
+  - Add Flexbox to the header:
+*/
+.page-header {
+  /*
+  display: flex turns .page-header into a flex container. Its two direct children now sit in a row.
+  */
+  display: flex;
+  /*
+  justify-content controls the main axis. In the default row direction, that means horizontal distribution. space-between pushes the first item to the start, the last item to the end, and leaves the extra space between them
+  */
+  justify-content: space-between;
+  /*
+  align-items controls the cross axis. In a row, that means vertical alignment. flex-start keeps the action link aligned near the top of the header instead of stretching or floating awkwardly.
+  */
+  align-items: flex-start;
+  /*
+  gap creates space between flex items. It is safer than adding margin to only one item because the spacing belongs to the group, not to a specific child.
+  */
+  gap: 16px;
+}
+
+.eyebrow,
+.card-label {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.summary {
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.header-action,
+.filter,
+.card-link {
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.header-action,
+.card-link {
+  color: #2563eb;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.header-action {
+  display: inline-block;
+  color: white;
+  background-color: #2563eb;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+.gap-for-button-rows,
+.cards-share-available-space,
+.align-small-rows-inside-card,
+.flexbox-rules-summary{
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+/*
+Use gap for button rows:
+  - The filter buttons are a group. The space between them should belong to the group, so gap is a better fit than random margins on each button.
+  - Add Flexbox to .toolbar
+*/
+.toolbar {
+  /*
+  display: flex makes the buttons flex items.
+  */
+  display: flex;
+  /*
+  Flexbox uses a row by default.
+    - You can switch the main axis with flex-direction: column;
+    - flex-direction: column stacks the direct children vertically, but keeps Flexbox features like gap and alignment. Use a row when items should sit beside each other. Use a column when items should stack but still behave like a managed group.
+    - Flexbox is best for one direction at a time. If you need strong control over rows and columns together, that is usually a grid layout problem, which is the next lesson.
+  */
+  flex-direction: row;
+  /*
+  gap: 8px creates consistent space between them.
+  */
+  gap: 8px;
+  /*
+  flex-wrap: wrap lets items move onto a new line when there is not enough horizontal space. Without wrapping, Flexbox tries to keep items on one line, which can make a row feel cramped or overflow on smaller screens. 
+  */
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.flexbox-image,
+.flexwrap-image,
+.flex-container-image,
+.align-small-rows-inside-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+} 
+
+.filter {
+  color: #2563eb;
+  background-color: white;
+  border: 1px solid #bfdbfe;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.filter.is-active {
+  color: white;
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/*
+Let cards share available space:
+  - .lesson-list is the parent, so its direct children, the cards, become flex items.
+  - flex: 1 tells each card it can grow and share the available space with the other cards. For now, read it as "let this item take an equal share of the row."
+  - min-width: 220px protects each card from becoming too narrow. When there is not enough room for all cards to stay at least 220px wide, flex-wrap: wrap lets the next card move to a new line.
+  - margin-bottom: 0 removes the old vertical spacing from the stacked version. Once the cards are in a flex group, gap owns the spacing between them.
+*/
+.lesson-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.lesson-card {
+  flex: 1;
+  min-width: 220px;
+  margin-bottom: 0;
+}
+
+/*
+Align small rows inside a card:
+  - Flexbox is not only for big page sections. It is also useful for small rows inside components.
+  - Each card has a footer with two direct children.
+    <div class="card-footer">
+      <span>7 min</span>
+      <a class="card-link" href="/flexbox">Open</a>
+    </div>
+  - The time label and the link are direct children of .card-footer, so .card-footer is the parent that needs Flexbox.
+*/
+.card-footer {
+  display: flex;
+  /*
+  justify-content: space-between pushes the time label and link apart
+  */
+  justify-content: space-between;
+  /*
+  align-items: center lines them up vertically
+  */
+  align-items: center;
+  /*
+  gap: 12px keeps a little space between them if the row gets tight.
+  */
+  gap: 12px;
+  margin-top: 18px;
+  color: #6b7280;
+  font-size: 14px;
+}

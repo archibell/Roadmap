@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flexbox practice</title>
+    <link rel="stylesheet" href="12FlexboxLayout_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">CSS practice</p>
+          <h1>Plan your next CSS session</h1>
+          <p class="summary">Flexbox helps groups of items line up, share space, and wrap when needed.</p>
+          <h1>Flexbox starts on the parent:</h1>
+          <p>Flexbox is a parent-child layout mode. You put display: flex on a parent element, and the direct children of that parent become flex items.</p>
+          <p>By default, when you apply display: flex on an element, flexbox arranges the direct children in a row. That row is called the main axis. The opposite direction is called the cross axis.</p>
+          <img class="flexbox-image" src="Flexbox.png" alt="Flexbox">
+        </div>
+
+        <a class="header-action" href="/new">New lesson</a>
+      </header>
+
+      <section class="gap-for-button-rows">
+        <h2>Use Gap For Button Rows:</h2>
+        <p>The filter buttons are a group. The space between them should belong to the group, so gap is a better fit than random margins on each button.</p>
+        <p>Add Flexbox to .toolbar</p>
+        <p>display: flex makes the buttons flex items.</p>
+        <p>gap: 8px creates consistent space between them.</p>
+        <p>flex-wrap: wrap lets items move onto a new line when there is not enough horizontal space. Without wrapping, Flexbox tries to keep items on one line, which can make a row feel cramped or overflow on smaller screens.</p>
+        <img class="flexwrap-image" src="Flexwrap.png" alt="Flexwrap">
+      </section>
+
+      <section class="toolbar" aria-label="Lesson filters">
+        <button class="filter is-active" type="button">All</button>
+        <button class="filter" type="button">Layout</button>
+        <button class="filter" type="button">Practice</button>
+        <button class="filter" type="button">Review</button>
+      </section>
+
+      <section class="cards-share-available-space">
+        <h2>Let Cards Share Available Space:</h2>
+        <p>.lesson-list is the parent, so its direct children, the cards, become flex items.</p>
+        <p>flex: 1 tells each card it can grow and share the available space with the other cards. For now, read it as "let this item take an equal share of the row."</p>
+        <p>min-width: 220px protects each card from becoming too narrow. When there is not enough room for all cards to stay at least 220px wide, flex-wrap: wrap lets the next card move to a new line.</p>
+        <p>margin-bottom: 0 removes the old vertical spacing from the stacked version. Once the cards are in a flex group, gap owns the spacing between them.</p>
+        <pre><code>
+          .lesson-list {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+          }
+          .lesson-card {
+            flex: 1;
+            min-width: 220px;
+            margin-bottom: 0;
+          }
+        </code></pre>
+        <img class="flex-container-image" src="FlexContainer.png" alt="Flex Container">
+      </section>
+
+      <section class="align-small-rows-inside-card">
+        <h2>Align small rows inside a card:</h2>
+        <p>Flexbox is not only for big page sections. It is also useful for small rows inside components.</p>
+        <p>Each card has a footer with two direct children.</p>
+        <p>The time label and the link are direct children of .card-footer, so .card-footer is the parent that needs Flexbox.</p>
+        <p>justify-content: space-between pushes the time label and link apart</p>
+        <p>align-items: center lines them up vertically</p>
+        <p>ap: 12px keeps a little space between them if the row gets tight.</p>
+        <img class="align-small-rows-inside-card-image" src="AlignSmallRowsInsideCard.png" alt="Align Small Rows Inside Card">
+      </section>
+
+      <section class="lesson-list">
+        <article class="lesson-card">
+          <p class="card-label">Layout</p>
+          <h2>Flexbox basics</h2>
+          <p>Use a row or column layout when a group of items needs alignment and spacing.</p>
+          <div class="card-footer">
+            <span>7 min</span>
+            <a class="card-link" href="/flexbox">Open</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <p class="card-label">Practice</p>
+          <h2>Spacing decisions</h2>
+          <p>Compare padding, margin, and gap so each kind of space has a clear job.</p>
+          <div class="card-footer">
+            <span>9 min</span>
+            <a class="card-link" href="/spacing">Open</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <p class="card-label">Review</p>
+          <h2>DevTools check</h2>
+          <p>Inspect the final layout and confirm which elements became flex items.</p>
+          <div class="card-footer">
+            <span>5 min</span>
+            <a class="card-link" href="/devtools">Open</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="flexbox-rules-summary">
+        <h2>Put the Flexbox rules together:</h2>
+        <p>The pattern is the same each time: choose the parent, decide whether its direct children should form a row or column, then use gap, justify-content, align-items, wrapping, or flexible item sizing to solve the layout problem.</p>
+      </section>
+
+    </main>
+  </body>
+</html>
