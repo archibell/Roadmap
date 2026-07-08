@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid practice</title>
+    <link rel="stylesheet" href="13GridLayout_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Organize a learning dashboard</h1>
+        <p class="summary">Grid helps a page use rows and columns instead of only stacking boxes from top to bottom.</p>
+      </section>
+
+      <section class="dashboard">
+        <aside class="sidebar">
+          <h2>Topics</h2>
+          <a href="/layout">Layout</a>
+          <a href="/spacing">Spacing</a>
+          <a href="/debugging">Debugging</a>
+        </aside>
+
+        <section class="workspace">
+          <section class="stats" aria-label="Lesson stats">
+            <article class="stat-card">
+              <span class="stat-number">12</span>
+              <span class="stat-label">Lessons</span>
+            </article>
+
+            <article class="stat-card">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Projects</span>
+            </article>
+
+            <article class="stat-card">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Reviews</span>
+            </article>
+          </section>
+
+          <section class="lesson-grid">
+            <article class="lesson-card featured-card">
+              <p class="card-label">Featured</p>
+              <h2>Build a responsive card grid</h2>
+              <p>Practice columns, gaps, and spanning so the layout feels intentional.</p>
+            </article>
+
+            <article class="lesson-card">
+              <p class="card-label">Layout</p>
+              <h2>Flexbox recap</h2>
+              <p>Review parent-child layout, direct children, and one-direction alignment.</p>
+            </article>
+
+            <article class="lesson-card">
+              <p class="card-label">Grid</p>
+              <h2>Track sizing</h2>
+              <p>Use fixed and flexible column sizes to divide space.</p>
+            </article>
+
+            <article class="lesson-card">
+              <p class="card-label">DevTools</p>
+              <h2>Inspect grid lines</h2>
+              <p>Use the browser overlay to see columns, rows, and gaps.</p>
+            </article>
+          </section>
+
+          <section class="flexbox-or-grid">
+            <article class="lesson-card featured-card">
+              <p class="card-label">Featured</p>
+              <h2>Flexbox or Grid:</h2>
+              <p>Flexbox and Grid are both layout tools, but they solve different problems.</p>
+              <img class="flexbox-or-grid-image" src="FlexboxOrGrid.png" alt="Flexbox Or Grid">
+              <p>The short version: use Flexbox when the layout mainly flows in one direction. Use Grid when the layout needs rows and columns working together.</p>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

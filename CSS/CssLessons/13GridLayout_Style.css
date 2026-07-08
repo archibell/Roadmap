@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 40px auto;
+}
+
+.intro,
+.sidebar,
+.stat-card,
+.lesson-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow,
+.card-label {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.summary {
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/*
+Split the dashboard into columns:
+  - The dashboard has two direct children: .sidebar and .workspace. Those two pieces should sit beside each other, so the .dashboard parent needs Grid.
+  - Add Grid to the dashboard parent.
+*/
+.dashboard {
+  /*
+  display: grid turns .dashboard into a grid container.
+  */
+  display: grid;
+  /*
+  grid-template-columns defines the columns. In this case, the first column is 220px wide for the sidebar. The second column is 1fr for the workspace.
+    - fr means a fraction of the available space. After the fixed 220px sidebar and the gap are accounted for, 1fr takes the remaining space.
+  */
+  grid-template-columns: 220px 1fr;
+  /*
+  gap creates space between grid tracks. You already used gap with Flexbox. In Grid, it creates space between rows and columns.
+  */
+  gap: 24px;
+}
+
+.sidebar {
+  /*
+  The .sidebar had margin-bottom in the stacked version. Once the dashboard uses a grid gap, that old margin is no longer the right spacing tool, so the rule sets it back to 0.
+  */
+  margin-bottom: 0;
+}
+
+.sidebar a {
+  display: block;
+  color: #2563eb;
+  font-weight: 700;
+  margin-top: 10px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/*
+Build equal stat columns:
+  - The stat cards are another grid problem. There are three cards, and each should get an equal column.
+  - Add Grid to the stats parent
+*/
+.stats {
+  /*
+  display: grid makes .stats the parent grid container. Its direct children, the three .stat-card elements, become grid items
+  */
+  display: grid;
+  /*
+  grid-template-columns: repeat(3, 1fr); creates three equal columns. You could write 1fr 1fr 1fr, but repeat(3, 1fr) says the same thing with less repetition.
+    - Each 1fr column gets one share of the available space. Because all three columns use the same value, they are equal
+  */
+  grid-template-columns: repeat(3, 1fr);
+  /*
+  The stats also use gap for the space between cards.
+  */
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  /*
+  The old margin-bottom on each .stat-card is removed because the grid parent now owns the spacing.
+  */
+  margin-bottom: 0;
+}
+
+/*
+Let cards flow into rows:
+  - Grid can create rows automatically. If a grid has two columns and four cards, the first two cards fill the first row, and the next two cards move into the second row.
+  - Add a two-column grid for the lesson cards.
+*/
+.lesson-grid {
+  display: grid;
+  /*
+  The .lesson-grid parent defines two equal columns. The cards are placed into those columns in HTML order.
+    - You did not define rows here. The browser creates the rows as needed because there are more grid items than columns. This is called auto-placement: the browser places items into the next available grid cell.
+    - Define the columns first - In many beginner Grid layouts, you define the columns and let the rows appear automatically. That is enough for card grids, galleries, dashboards, and many content sections.
+  */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.lesson-card {
+  margin-bottom: 0;
+}
+
+/*
+Make one card span columns:
+  - Sometimes one item should take more space than the others. In this page, the featured card can span both columns to feel more important.
+  - Add the spanning rule.
+*/
+.featured-card {
+  /*
+  grid-column controls how a grid item uses columns. span 2 means "take up two columns." Because .lesson-grid has two columns, the featured card becomes a full-width card across that grid.
+    - The item still keeps its place in the HTML order. Grid changes where the item appears visually inside the grid, but it does not change the document meaning.
+  */
+  grid-column: span 2;
+}
+.stat-number {
+  display: block;
+  color: #2563eb;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.stat-label {
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.lesson-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.flexbox-or-grid-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
