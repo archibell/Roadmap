@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+/*
+Use a fluid container:
+  - The following .page rule is the first responsive habit.
+*/
+.page {
+  /*
+  max-width: 960px says the page should not grow wider than 960px. That keeps long lines from becoming hard to read on wide screens.
+   - The page does not set a fixed width. That means it can shrink naturally when the viewport is narrower than 960px.
+  */
+  max-width: 960px;
+  /*
+  margin: 32px auto adds space above and below the page, and centers it horizontally when there is extra room.
+    - top and bottom | left and right
+  */
+  margin: 32px auto;
+  /*
+  padding: 0 16px gives the content breathing room on small screens so text and cards do not touch the edge of the viewport.
+    - top and bottom | left and right
+  */
+  padding: 0 16px;
+}
+
+.hero-card,
+.feature-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.hero-card {
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.summary,
+.feature-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.primary-action,
+.secondary-action {
+  border-radius: 6px;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+.primary-action {
+  color: white;
+  background-color: #2563eb;
+}
+
+.secondary-action {
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+/*
+Make images flexible:
+  - Images have a natural size from the file. If that natural size is wider than the screen, the image can overflow.
+  - This rule keeps the image inside its parent.
+*/
+.hero-image {
+  /*
+  display: block removes inline image spacing behavior, which you saw in the images lesson.
+  */
+  display: block;
+  /*
+  width: 100% makes the image fill the available width of its parent.
+  */
+  width: 100%;
+  /*
+  height: auto keeps the image's natural proportions, so the browser does not stretch it.
+  */
+  height: auto;
+  /*
+  The border-radius is visual polish that rounds the image corners so the image matches the card shape.
+  */
+  border-radius: 8px;
+}
+
+/*
+Add a breakpoint when the layout needs one:
+  - The single-column layout works well on narrow screens. On wider screens, the hero image has enough room to sit beside the text.
+  - That is what a media query is for. A media query applies CSS only when a condition is true.
+  - @media (min-width: 720px) means "use these rules when the viewport is at least 720px wide."
+  - The normal CSS handles small screens first, and the media query adds a wider layout only when there is enough space.
+  - Resize the browser. Below 720px, the hero should stack; at 720px and above, it should become a two-column hero.
+*/
+@media (min-width: 960px) {
+  /*
+  Inside the media query, .hero-card becomes a flex container. Its direct children, .hero-copy and .hero-image, sit in a row.
+  */
+  .hero-card {
+    display: flex;
+    /*
+    align-items: center lines the text and image up vertically, and gap: 24px creates space between them.
+    */
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  .hero-copy,
+  .hero-image {
+    /*
+    flex: 1 lets the text area and image share the available row space.
+    */
+    flex: 1;
+    max-width: 300px;
+  }
+
+  /*
+  Make the cards responsive too:
+    - The feature cards stack on small screens, which is a good default. On wider screens, they can sit in a row.
+    - Add this to the same media query:
+  */
+  .feature-list {
+    /*
+    The .feature-list becomes a flex container only on wider screens. Its direct children, the .feature-card elements, become flex items.
+    */
+    display: flex;
+    /*
+    gap: 16px owns the space between the cards.
+    */
+    gap: 16px;
+  }
+
+  .feature-card {
+    /*
+    flex: 1 lets each card share the row evenly.
+    */
+    flex: 1;
+    /*
+    margin-bottom: 0 removes the stacked-card spacing from the small-screen version. On wide screens, gap handles the spacing between cards.
+    */
+    margin-bottom: 0; 
+  }
+  /*
+  ^ This is a common responsive pattern: stack by default, then switch to a row when there is enough room.
+  */
+
+  /*
+  Check text size and spacing:
+    - Responsive design is not only layout. Text and spacing can also feel different at different viewport sizes.
+    - The base h1 is large enough for the small layout.
+    - On wider screens, the heading can grow a little because it has more room.
+  */
+  h1 {
+    font-size: 48px;
+    /*
+    Do this carefully. Bigger text can make a wide layout feel stronger, but it can also create awkward wrapping. Resize the browser after changing heading size and check where the lines break.
+    */
+  }
+}
+
+
+
+.make-images-flexible-image,
+.breakpoint-changes-layout-image,
+.media-query-image {
+  display: block;
+  width: 75%;
+  height: auto;
+  /*
+  By setting the image to display: block and applying margin: auto, you can center it horizontally within its container.
+  */
+  margin: auto;
+}

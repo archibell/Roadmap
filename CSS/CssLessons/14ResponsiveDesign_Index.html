@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive practice</title>
+    <link rel="stylesheet" href="14ResponsiveDesign_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">CSS practice</p>
+          <h1>Design a page that adapts</h1>
+          <p class="summary">A responsive page should stay readable and usable as the browser gets narrower or wider.</p>
+
+          <div class="actions">
+            <a class="primary-action" href="/start">Start practice</a>
+            <a class="secondary-action" href="/notes">Read notes</a>
+          </div>
+        </div>
+
+        <img class="hero-image" src="https://dummyimage.com/960x640/dbeafe/1e3a8a.png?text=Responsive+preview" alt="A placeholder preview image for responsive layout practice">
+      </section>
+
+      <section class="feature-list" aria-label="Responsive design habits">
+        <article class="feature-card">
+          <h2>Fluid containers</h2>
+          <p>Let the page use available space without forcing one fixed width.</p>
+        </article>
+
+        <article class="feature-card">
+          <h2>Flexible media</h2>
+          <p>Let images shrink with their parent so they do not overflow.</p>
+          <img class="make-images-flexible-image" src="MakeImagesFlexible.png" alt="Make Images Flexible">
+        </article>
+
+        <article class="feature-card">
+          <h2>Useful breakpoints</h2>
+          <p>Change the layout when the content needs more room, not because of a device name.</p>
+          <h2>Add a breakpoint when the layout needs one:</h2>
+          <p>The single-column layout works well on narrow screens. On wider screens, the hero image has enough room to sit beside the text.</p>
+          <p>That is what a media query is for. A media query applies CSS only when a condition is true.</p>
+          <p>@media (min-width: 720px) means "use these rules when the viewport is at least 720px wide."</p>
+          <p>The normal CSS handles small screens first, and the media query adds a wider layout only when there is enough space.</p>
+          <p>Resize the browser. Below 720px, the hero should stack; at 720px and above, it should become a two-column hero.</p>
+          <img class="media-query-image" src="MediaQuery.png" alt="Media Query Image">
+          <p>Inside the media query, .hero-card becomes a flex container. Its direct children, .hero-copy and .hero-image, sit in a row.</p>
+          <p>align-items: center lines the text and image up vertically, and gap: 24px creates space between them.</p>
+          <p>flex: 1 lets the text area and image share the available row space.</p>
+          <img class="breakpoint-changes-layout-image" src="BreakpointChangesLayout.png" alt="Breakpoint Changes Layout">
+          <h2>Use breakpoints for content, not devices:</h2>
+          <p>A breakpoint is the point where your CSS changes because the layout needs a different shape.</p>
+          <p>The breakpoint should come from the content. If the hero feels cramped at 680px, do not force it into two columns. If it has enough room at 720px, that may be a good breakpoint.</p>
+          <p>Avoid thinking only in device names like "phone", "tablet", and "desktop". Device sizes change, and content needs are easier to reason about.</p>
+          <p>Resize until the layout complains - To choose a breakpoint, resize the browser slowly. Add a media query where the content starts to feel cramped, stretched, or awkward.</p>
+          <h2>The pattern is simple: write the small-screen layout first, then add media queries when wider screens have enough room for a different layout.</h2>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
