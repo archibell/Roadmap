@@ -1,0 +1,204 @@
+/*
+Container Queries:
+  - In the last lesson, media queries changed the page when the viewport reached a certain width. That works when the whole page needs to respond to the browser size, but sometimes a component needs to respond to the space it gets inside a container.
+  - Imagine the same lesson card appears in two places:
+    - A narrow sidebar.
+    - A wider main content area.
+  - The browser viewport might be wide, but the sidebar card is still narrow. A media query can only ask, "How wide is the viewport?" A container query can ask, "How wide is the space around this component?" That is the point of container queries.
+
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f9fafb;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.intro,
+.sidebar,
+.workspace,
+.lesson-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro,
+.sidebar,
+.workspace {
+  padding: 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow,
+.card-label {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.summary,
+.lesson-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.layout {
+  /*
+  .layout uses Flexbox only to place the sidebar and workspace beside each other.
+  */
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  /*
+  .sidebar uses width: 280px so one card has a narrow container.
+  */
+  width: 280px;
+}
+
+.workspace {
+  /*
+  .workspace uses flex: 1 so the other card gets the remaining space.
+  */
+  flex: 1;
+}
+
+.lesson-card {
+  /*
+  .lesson-card uses overflow: hidden so the image respects the rounded card corners.
+  */
+  overflow: hidden;
+}
+
+/*
+.card-image uses display: block, width: 100%, and height: auto so the image fits the stacked card before any container query runs.
+*/
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.card-link {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/*
+Why a media query is not enough:
+  - You might try a media query like this:
+    @media (min-width: 800px){
+      .lesson-card {
+        display: flex;
+      }
+      .card-image,
+      .card-body {
+        flex: 1;
+      }
+    }
+  - This asks a viewport question: "Is the browser at least 800px wide?"
+  - On a wide browser, the answer is yes. Both cards match the rule, including the sidebar card, and that is the problem. The sidebar card is still narrow even when the viewport is wide.
+  - The component does not need to know the viewport width. It needs to know the width of the space it was placed in.
+  - Viewport size and component size are different - A wide browser does not mean every component has wide space. Sidebars, cards, panels, and columns can all be narrow inside a wide viewport.
+*/
+
+/*
+Container queries have two parts:
+  - A container query needs two pieces:
+    1. A container to measure.
+    2. A query that runs when that container reaches a size.
+  - The container is usually a wrapper around the component. In this HTML, .card-shell wraps each .lesson-card:
+    <div class="card-shell">
+      <article class="lesson-card">
+        ...
+      </article>
+    </div>
+  - That wrapper is useful because it gives CSS a clear box to measure. The card can then change its internal layout based on the wrapper's width.
+  - The wrapper also avoids a common confusion: a container query styles elements based on an ancestor container. The card should not try to query itself and style itself at the same time. A small wrapper makes the relationship clear: .card-shell is measured, and .lesson-card changes.
+*/
+
+/*
+Mark the container:
+  - Before CSS can query an element's size, you need to mark that element as a query container.
+  - Mark .card-shell as the container:
+*/
+.card-shell {
+  /*
+  container-type: inline-size says this element can be queried by its inline size.
+  */
+  container-type: inline-size;
+  /*
+  ^ In normal English-language pages, inline size means width. So for this lesson, read it as: "allow CSS to query how wide .card-shell is."
+    - This rule does not style the card visually by itself. It gives the browser permission to use .card-shell as a measurable container.
+  */
+  margin: 16px;
+}
+
+/*
+Query the Container:
+  - Now that .card-shell is a query container, CSS can ask whether that container is wide enough for a different card layout.
+  - Add the container query:
+*/
+@container (min-width: 520px) {
+  /*
+  ^ @container (min-width: 520px) means "use these rules when the nearest query container is at least 520px wide."
+    - The sidebar .card-shell is narrower than 520px, so its card stays stacked.
+    - The workspace .card-shell is wider than 520px, so its card becomes a side-by-side layout.
+    - Inside the query, .lesson-card becomes a flex container. The image and body become flex items.
+  */
+  .lesson-card {
+    display: flex;
+  }
+  .card-image {
+    /*
+    width: 42% gives the image a clear share of the row. It is not exactly half because text often needs a little more room than the image.
+    */
+    width: 42%;
+    /*
+    object-fit: cover keeps the image from looking stretched when it shares a row with the text. The image may crop slightly, but it keeps its proportions.
+    */
+    object-fit: cover;
+  }
+  .card-body {
+    /*
+    flex: 1 lets .card-body take the remaining space.
+    */
+    flex: 1;
+  }
+}
+
+.card-shell-html-image,
+.container-query-image,
+.container-query-2-image {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
