@@ -159,7 +159,16 @@ Mark the container:
   ^ In normal English-language pages, inline size means width. So for this lesson, read it as: "allow CSS to query how wide .card-shell is."
     - This rule does not style the card visually by itself. It gives the browser permission to use .card-shell as a measurable container.
   */
+  /*
+  Give space between card-shells
+  */
   margin: 16px;
+  /*
+  Name a container when needed:
+    - The query above uses the nearest query container. That is enough for many component examples.
+    - Sometimes a component sits inside several containers, and you want to query a specific one. You can give a container a name:
+  */
+  container-name: card;
 }
 
 /*
@@ -167,12 +176,17 @@ Query the Container:
   - Now that .card-shell is a query container, CSS can ask whether that container is wide enough for a different card layout.
   - Add the container query:
 */
-@container (min-width: 520px) {
+@container card (min-width: 520px) {
   /*
   ^ @container (min-width: 520px) means "use these rules when the nearest query container is at least 520px wide."
     - The sidebar .card-shell is narrower than 520px, so its card stays stacked.
     - The workspace .card-shell is wider than 520px, so its card becomes a side-by-side layout.
     - Inside the query, .lesson-card becomes a flex container. The image and body become flex items.
+  */
+  /*
+  ^ Name a container when needed by querying the named container.
+    - container-name gives the query container a label. @container card (...) says the query should use a container named card.
+    - You do not need a name for every container. Use names when they make the query clearer or prevent CSS from accidentally using the wrong ancestor.
   */
   .lesson-card {
     display: flex;
