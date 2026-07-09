@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <!--
+    The meta viewport line in the head matters:
+      - It tells mobile browsers to use the real device width as the layout width. Without it, a phone browser may pretend the page is much wider than the screen, then shrink the whole page down. That makes responsive CSS harder to reason about.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Responsive practice</title>
     <link rel="stylesheet" href="14ResponsiveDesign_Style.css">

@@ -141,7 +141,7 @@ Add a breakpoint when the layout needs one:
     flex: 1 lets the text area and image share the available row space.
     */
     flex: 1;
-    max-width: 300px;
+    max-width: 400px;
   }
 
   /*
