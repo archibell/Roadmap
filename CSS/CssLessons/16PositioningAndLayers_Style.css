@@ -14,7 +14,20 @@ a {
   font-weight: 700;
 }
 
+/*
+Keep the header visible while scrolling:
+  - The header is part of the page, but it can be useful to keep it visible while the learner scrolls through the content. This is a good job for position: sticky.
+  - Sticky positioning is useful for headers, table headings, section navigation, and small toolbars. It is not a replacement for normal page layout.
+*/
 .site-header {
+  /*
+  position: sticky starts like normal flow, so the header still keeps its space at the top of the document.
+  */
+  position: sticky;
+  /*
+  top: 0 tells the browser when the sticky behavior should start. When the top of the header reaches the top of the viewport, it sticks there. Without an offset like top: 0, sticky positioning has no threshold to stick to. The browser needs to know where the element should become stuck.
+  */
+  top: 0;
   background-color: white;
   border-bottom: 1px solid #e5e7eb;
 }
