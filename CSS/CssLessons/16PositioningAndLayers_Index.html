@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Positioning practice</title>
+    <link rel="stylesheet" href="16PositioningAndLayers_Style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <strong>CSS Studio</strong>
+        <a href="/lessons">All lessons</a>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Position small pieces without breaking the page</h1>
+        <p class="summary">The page layout should stay normal, but a few details need to be anchored in specific places.</p>
+      </section>
+
+      <article class="course-card">
+        <div class="card-media">
+          <img src="https://dummyimage.com/900x520/dbeafe/1e3a8a.png?text=Course+preview" alt="A course preview placeholder">
+          <p class="status-badge">New</p>
+        </div>
+
+        <div class="card-body">
+          <h2>Build responsive interfaces</h2>
+          <p>Learn how layout, spacing, media, and component rules work together in real pages.</p>
+        </div>
+        
+        <div class="card-body">
+          <h2>Position the badge inside the card image:</h2>
+          <p>Modify the CSS like this:</p>
+          <img class="position-badge-html-image" src="PositionBadgeHtml.png" alt="Position Badge Inside Card Html">
+          <p>Now the badge should sit correctly over the image.</p>
+          <p>position: relative does not move .card-media by itself. The card is still where it was, but it can now act as the reference box for absolute children.</p>
+          <p>position: absolute removes .status-badge from normal flow. The badge no longer takes up a row below the image; it is placed 12px from the top and 12px from the right of .card-media.</p>
+          <p>In CSS, a positioned element is any element whose position value is not static, which is the default.</p>
+          <img class="absolutely-positioned-image" src="AbsolutelyPositioned.png" alt="Absolutely Positioned Elements">
+        </div>
+      </article>
+
+      <section class="notes">
+        <h2>Lesson notes</h2>
+        <p>Normal flow is still doing most of the work. The sections stack, the card takes its own space, and the text stays readable.</p>
+        <p>Positioning should be saved for the pieces that need special placement, such as the label on the image or the help link in the corner.</p>
+        <p>Add enough content here so the page can scroll. That makes the sticky header and fixed help link easier to test.</p>
+        <p>When the page scrolls, notice which elements move with the document and which elements stay attached to the viewport.</p>
+      </section>
+    </main>
+
+    <a class="help-link" href="/help">Need help?</a>
+  </body>
+</html>

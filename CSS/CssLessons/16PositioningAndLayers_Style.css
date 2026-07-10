@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+a {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.site-header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-inner,
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header-inner {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page {
+  padding-top: 32px;
+  padding-bottom: 160px;
+}
+
+.intro,
+.course-card,
+.notes {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro,
+.card-body,
+.notes {
+  padding: 24px;
+}
+
+.intro,
+.course-card {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin-top: 0;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.summary,
+.course-card p,
+.notes p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+Position the badge inside the card image:
+  - The badge should belong visually on the image, not below it. position: absolute lets you remove that badge from normal flow and place it with offsets such as top and right.
+*/
+.status-badge {
+  /*
+  Update .status-badge like this:
+  */
+  position: absolute;
+  /*
+  ^ position: absolute removes .status-badge from normal flow. The badge no longer takes up a row below the image; it is placed 12px from the top and 12px from the right of .card-media.
+  */
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  /*
+  ^ If you open the browser, the badge jumps to the top-right corner of the page instead of the card.
+    - That happens because an absolutely positioned element needs a reference box. If you do not give it a clear positioned ancestor, the browser uses a larger reference area, so top: 12px; right: 12px is measured from the page instead of the card image.
+  */
+  padding: 6px 10px;
+  color: #065f46;
+  background-color: #d1fae5;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/*
+To fix that, the image wrapper needs to become the badge's reference box. Give .card-media position: relative, then the absolute badge can position itself against that parent.
+*/
+.card-media {
+  position: relative;
+  /*
+  ^ Now the badge should sit correctly over the image.
+    - position: relative does not move .card-media by itself. The card is still where it was, but it can now act as the reference box for absolute children.
+    - In CSS, a positioned element is any element whose position value is not static, which is the default.
+    - Pair absolute with a clear parent - When you use position: absolute on a child, look for the parent that should own the placement. Give that parent position: relative so the relationship is obvious.
+  */
+}
+
+.help-link {
+  display: inline-block;
+  margin: 24px;
+  padding: 10px 14px;
+  color: white;
+  background-color: #2563eb;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.position-badge-html-image,
+.absolutely-positioned-image {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: auto;
+}
