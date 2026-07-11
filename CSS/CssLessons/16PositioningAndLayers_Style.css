@@ -28,6 +28,13 @@ Keep the header visible while scrolling:
   top: 0 tells the browser when the sticky behavior should start. When the top of the header reaches the top of the viewport, it sticks there. Without an offset like top: 0, sticky positioning has no threshold to stick to. The browser needs to know where the element should become stuck.
   */
   top: 0;
+  /*
+  Layers decide what appears on top:
+    - Positioned elements can overlap. When that happens, the browser needs to know which one should appear closer to the user, and that is what z-index controls.
+    - z-index only matters when elements are in layers that can overlap. A higher z-index usually appears above a lower one.
+    - The sticky header may overlap page content while scrolling, so it gets z-index: 10.
+  */
+  z-index: 10;
   background-color: white;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -67,7 +74,8 @@ Keep the header visible while scrolling:
 }
 
 .intro,
-.course-card {
+.course-card,
+.notes {
   margin-bottom: 24px;
 }
 
@@ -116,6 +124,10 @@ Position the badge inside the card image:
   ^ If you open the browser, the badge jumps to the top-right corner of the page instead of the card.
     - That happens because an absolutely positioned element needs a reference box. If you do not give it a clear positioned ancestor, the browser uses a larger reference area, so top: 12px; right: 12px is measured from the page instead of the card image.
   */
+  /*
+  Here, the badge only needs to sit above the image, so z-index: 1 is enough.
+  */
+  z-index: 1;
   padding: 6px 10px;
   color: #065f46;
   background-color: #d1fae5;
@@ -137,7 +149,26 @@ To fix that, the image wrapper needs to become the badge's reference box. Give .
   */
 }
 
+/*
+Fix the help link to the viewport:
+  - The help link is different from the sticky header.
+  - It should not keep its normal place in the document. It should stay in the bottom-right corner of the browser window even while the page scrolls.
+*/
 .help-link {
+  /*
+  position: fixed removes the help link from normal flow and anchors it to the viewport.
+  */
+  position: fixed;
+  /*
+  The viewport is the visible browser area. So right: 24px and bottom: 24px mean the help link sits 24px from the right and bottom edges of the browser window.
+    - Fixed positioning is common for floating help buttons, cookie banners, persistent mobile actions, and modal backdrops. Use it carefully, because fixed elements can cover content if they are too large or placed in the wrong spot.
+  */
+  right: 24px;
+  bottom: 24px;
+  /*
+  The fixed help link should stay above normal page content, so it gets z-index: 20.
+  */
+  z-index: 20;
   display: inline-block;
   margin: 24px;
   padding: 10px 14px;
@@ -148,9 +179,29 @@ To fix that, the image wrapper needs to become the badge's reference box. Give .
 }
 
 .position-badge-html-image,
-.absolutely-positioned-image {
+.absolutely-positioned-image,
+.z-index-image {
   display: block;
   width: 75%;
   height: auto;
   margin: auto;
+}
+
+/*
+Add gridlines to table.
+*/
+table, th, td {
+  border: 1px solid #adadad;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
+}
+
+/*
+The selector td:nth-child(1) targets any <td> element that is the first child of its parent container.
+
+The :nth-child(n) pseudo-class matches elements based on their position among a group of siblings. Using 1 as the argument selects the very first element in that series.
+*/
+td:nth-child(1) {
+  font-weight: bold;
 }

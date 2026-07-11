@@ -31,17 +31,6 @@
           <h2>Build responsive interfaces</h2>
           <p>Learn how layout, spacing, media, and component rules work together in real pages.</p>
         </div>
-        
-        <div class="card-body">
-          <h2>Position the badge inside the card image:</h2>
-          <p>Modify the CSS like this:</p>
-          <img class="position-badge-html-image" src="PositionBadgeHtml.png" alt="Position Badge Inside Card Html">
-          <p>Now the badge should sit correctly over the image.</p>
-          <p>position: relative does not move .card-media by itself. The card is still where it was, but it can now act as the reference box for absolute children.</p>
-          <p>position: absolute removes .status-badge from normal flow. The badge no longer takes up a row below the image; it is placed 12px from the top and 12px from the right of .card-media.</p>
-          <p>In CSS, a positioned element is any element whose position value is not static, which is the default.</p>
-          <img class="absolutely-positioned-image" src="AbsolutelyPositioned.png" alt="Absolutely Positioned Elements">
-        </div>
       </article>
 
       <section class="notes">
@@ -51,8 +40,70 @@
         <p>Add enough content here so the page can scroll. That makes the sticky header and fixed help link easier to test.</p>
         <p>When the page scrolls, notice which elements move with the document and which elements stay attached to the viewport.</p>
       </section>
-    </main>
 
+      <section class="notes">
+        <h2>Position the badge inside the card image:</h2>
+        <p>Modify the CSS like this:</p>
+        <img class="position-badge-html-image" src="PositionBadgeHtml.png" alt="Position Badge Inside Card Html">
+        <p>Now the badge should sit correctly over the image.</p>
+        <p>position: relative does not move .card-media by itself. The card is still where it was, but it can now act as the reference box for absolute children.</p>
+        <p>position: absolute removes .status-badge from normal flow. The badge no longer takes up a row below the image; it is placed 12px from the top and 12px from the right of .card-media.</p>
+        <p>In CSS, a positioned element is any element whose position value is not static, which is the default.</p>
+        <img class="absolutely-positioned-image" src="AbsolutelyPositioned.png" alt="Absolutely Positioned Elements">
+      </section>
+
+      <section class="notes">
+        <h2>Layers Decide What Appears on Top:</h2>
+        <p>Positioned elements can overlap. When that happens, the browser needs to know which one should appear closer to the user, and that is what z-index controls.</p>
+        <p>z-index only matters when elements are in layers that can overlap. A higher z-index usually appears above a lower one.</p>
+        <p>The numbers are not magic; they are just a small scale. You usually do not need values like 999999. If you feel tempted to use a huge number, inspect the elements and find out which layer is actually competing.</p>
+        <img class="z-index-image" src="ZIndex.png" alt="Z-Index">
+      </section>
+
+      <section class="notes">
+        <h2>Positioning Values in One Place:</h2>
+        <p>Here is the practical map:</p>
+        <!-- 
+        <thead> and <tbody> group the header rows and data rows. You can make a table without them, but adding them makes the structure clearer and easier to style, print, scan, and maintain.
+      
+        <table> is the container for the whole thing.
+        <tr> is a table row.
+        <th> is a header cell. Browsers usually render it bold and centered, but the meaning is "this cell labels a row or column".
+        <td> is a data cell. This is where the table's values go.
+        -->
+        <table>
+          <thead>
+            <tr>
+              <th>Value</th>
+              <th>What it's good for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>static</td>
+              <td>The default. The element stays in normal flow.</td>
+            </tr>
+            <tr>
+              <td>relative</td>
+              <td>Keeps the element in normal flow and can create a reference box for absolute children.</td>
+            </tr>
+            <tr>
+              <td>absolute</td>
+              <td>Removes the element from normal flow and anchors it to a positioned ancestor.</td>
+            </tr>
+            <tr>
+              <td>sticky</td>
+              <td>Starts in normal flow, then sticks to an offset while scrolling.</td>
+            </tr>
+            <tr>
+              <td>fixed</td>
+              <td>Removes the element from normal flow and anchors it to the viewport.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
     <a class="help-link" href="/help">Need help?</a>
   </body>
 </html>
