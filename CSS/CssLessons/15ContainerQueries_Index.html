@@ -79,7 +79,52 @@
                 <h4>Use container queries for reusable components - If the same component can appear in a narrow sidebar, a wide content area, or a dashboard panel, a container query often fits better than a viewport media query.</h4>
               </div>
             </article>
+          </div>
 
+          <div class="card-shell">
+            <article class="lesson-card">
+              <div class="card-body">
+                <h3>Container Queries Are Component Breakpoints:</h3>
+                <p>Media queries create viewport breakpoints, while container queries create component breakpoints.</p>
+                <p>That difference is practical because the two tools ask different questions:</p>
+                <!-- 
+                <thead> and <tbody> group the header rows and data rows. You can make a table without them, but adding them makes the structure clearer and easier to style, print, scan, and maintain.
+
+                <table> is the container for the whole thing.
+                <tr> is a table row.
+                <th> is a header cell. Browsers usually render it bold and centered, but the meaning is "this cell labels a row or column".
+                <td> is a data cell. This is where the table's values go.
+                -->
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Question</th>
+                      <th>Use</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Is the browser wide enough for the whole page layout to change?</td>
+                      <td>Media query</td>
+                    </tr>
+                    <tr>
+                      <td>Is this card's container wide enough for the card layout to change?</td>
+                      <td>Container query</td>
+                    </tr>
+                    <tr>
+                      <td>Should the header, page shell, or main navigation change?</td>
+                      <td>Media query</td>
+                    </tr>
+                    <tr>
+                      <td>Should a reusable card, panel, or widget change based on where it appears?</td>
+                      <td>Container query</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>A container query does not replace every media query; it solves a different problem.</p>
+                <p>Use container queries for reusable components - If the same component can appear in a narrow sidebar, a wide content area, or a dashboard panel, a container query often fits better than a viewport media query.</p>
+              </div>
+            </article>
           </div>
 
         </section>
