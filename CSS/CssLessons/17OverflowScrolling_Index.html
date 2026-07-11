@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Overflow practice</title>
+    <link rel="stylesheet" href="17OverflowScrolling_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Decide what happens when content does not fit</h1>
+        <p class="summary">Some content should make the page taller. Some content should scroll. Some content should be clipped on purpose.</p>
+      </section>
+
+      <section class="layout">
+        <article class="release-card">
+          <h2>Release notes</h2>
+          <p>Version 2.4 improves layout tools, fixes several mobile spacing issues, and adds clearer empty states for lesson dashboards.</p>
+
+          <pre class="code-sample"><code>pnpm roadmap lesson publish --pack css --lesson overflow-and-scrolling --environment production --verify-rendered-output</code></pre>
+
+          <h3 class="long-title">A very long lesson title that needs to stay on one line inside a compact card header</h3>
+          <p>The title above is not a paragraph. It is a compact label, so it may need a different overflow strategy from normal body text.</p>
+        </article>
+
+        <aside class="message-panel">
+          <h2>Recent messages</h2>
+
+          <div class="message-list">
+            <p><strong>Ada:</strong> The card layout looks good on desktop.</p>
+            <p><strong>Sam:</strong> The mobile header needs another pass.</p>
+            <p><strong>Priya:</strong> The code sample is making the page too wide.</p>
+            <p><strong>Lee:</strong> The release notes panel should not take over the whole page.</p>
+            <p><strong>Noor:</strong> The long title needs a compact treatment.</p>
+            <p><strong>Maya:</strong> The final screenshot is ready for review.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

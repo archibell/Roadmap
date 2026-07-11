@@ -1,0 +1,94 @@
+/*
+Overflow and scrolling:
+  - In the last lesson, you positioned a few elements outside normal flow.
+  - This lesson looks at a different kind of problem: content that is larger than the box it lives inside.
+  - That happens all the time in real interfaces:
+    - A notification panel has more messages than fit in the space.
+    - A code sample is wider than the card around it.
+    - A long title does not fit on one row.
+    - An image or decorative shape needs to be clipped to a rounded container.
+  - Overflow is the browser's answer to one question:
+  - What should happen when the content is bigger than the box?
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.intro,
+.release-card,
+.message-panel {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro,
+.release-card,
+.message-panel {
+  padding: 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin-top: 0;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.summary,
+.release-card p,
+.message-list p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.release-card {
+  flex: 1;
+}
+
+.message-panel {
+  width: 320px;
+}
+
+.code-sample {
+  padding: 16px;
+  color: #e5e7eb;
+  background-color: #111827;
+  border-radius: 8px;
+}
+
+.long-title {
+  padding: 12px;
+  background-color: #eff6ff;
+  border-radius: 8px;
+}
