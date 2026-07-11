@@ -66,6 +66,47 @@ p {
   line-height: 1.6;
 }
 
+/*
+Overflow needs a constrained box:
+  - Overflow problems happen when you have more content than a constrained box can contain. So far, most of the pages in this pack have simply grown taller when they needed more vertical space.
+  - Before we discuss overflow, the browser needs a box with a limit.
+  - If a normal section has a lot of text, the browser usually makes the section taller. No overflow problem appears because the box grows to fit the content.
+  - To create a real overflow decision, give the messages list a maximum height:
+*/
+.message-list {
+  /*
+  max-height: 220px says the list may be shorter, but it should not grow taller than 220px.
+    - Now the messages may not all fit inside that height. The content is larger than the box.
+  */
+  max-height: 220px;
+  /*
+  padding-right: 8px adds a little breathing room on the right. It will matter once a scrollbar appears.
+  */
+  padding-right: 8px;
+  /*
+  The default is visible overflow:
+    - The default value is overflow: visible, which means content is allowed to paint outside the box.
+    - Add it explicitly so you can see the default.
+      overflow: visible;
+  */
+  /*
+  Use auto when the user should scroll:
+    - For a message list, the extra content is still important. You should not hide it because the user needs a way to reach it.
+    - That is a good job for overflow: auto.
+    - overflow: auto lets the browser add scrolling only when the content needs it.
+    - If the messages fit, there may be no scrollbar. If the messages do not fit, the list becomes scrollable.
+    - That is why auto is usually better than forcing scrollbars everywhere: it lets the content decide.
+    - Use this for panels, menus, sidebars, log viewers, notification lists, and other bounded areas where the user should still reach all the content.
+    - Prefer auto for real content - If the content matters and the box has a size limit, start with overflow: auto. It preserves access to the content while keeping the layout under control
+  */
+  overflow: auto;
+  /*
+  Use hidden only when clipping is intentional:
+    - Sometimes overflow should be clipped. For example, a decorative image inside a rounded card might need to stay inside the rounded corners, a badge glow might need to stay inside a compact component, or a preview thumbnail might crop extra visual detail.
+    - That is when overflow: hidden can make sense.
+  */
+}
+
 .layout {
   display: flex;
   gap: 24px;
