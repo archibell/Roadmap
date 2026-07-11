@@ -5,7 +5,6 @@ Container Queries:
     - A narrow sidebar.
     - A wider main content area.
   - The browser viewport might be wide, but the sidebar card is still narrow. A media query can only ask, "How wide is the viewport?" A container query can ask, "How wide is the space around this component?" That is the point of container queries.
-
 */
 * {
   box-sizing: border-box;

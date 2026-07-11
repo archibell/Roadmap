@@ -1,3 +1,14 @@
+/*
+Positioning and layers:
+  - Most CSS layout you have written so far follows normal flow.
+  - Normal flow is the browser's default way of placing elements: headings stack above paragraphs, block elements create rows, inline elements sit inside text, Flexbox arranges direct children, and Grid creates rows and columns. That should stay your default way to build most layouts.
+  - But some interface pieces do not belong in the normal flow:
+    - A small label needs to sit on top of an image.
+    - A header should stay visible while the page scrolls.
+    - A help link should stay in the corner of the viewport.
+    - One overlapping piece should appear above another.
+  - Those are positioning problems because a specific element needs to be anchored to a specific reference box.
+*/
 * {
   box-sizing: border-box;
 }
