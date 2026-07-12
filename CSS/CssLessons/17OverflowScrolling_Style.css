@@ -100,11 +100,37 @@ Overflow needs a constrained box:
     - Prefer auto for real content - If the content matters and the box has a size limit, start with overflow: auto. It preserves access to the content while keeping the layout under control
   */
   overflow: auto;
+}
+
+/*
+Use hidden only when clipping is intentional:
+  - Sometimes overflow should be clipped. For example, a decorative image inside a rounded card might need to stay inside the rounded corners, a badge glow might need to stay inside a compact component, or a preview thumbnail might crop extra visual detail.
+  - That is when overflow: hidden can make sense.
+  - Add a small clipped preview to the card:
+    <div class="preview-box">
+      <div class="preview-shape"></div>
+    </div>
+  - Place it inside .release-card, above the code sample, then add this CSS.
+*/
+.preview-box {
+  height: 120px;
+  margin-bottom: 16px;
+  background-color: #dbeafe;
+  border-radius: 12px;
   /*
-  Use hidden only when clipping is intentional:
-    - Sometimes overflow should be clipped. For example, a decorative image inside a rounded card might need to stay inside the rounded corners, a badge glow might need to stay inside a compact component, or a preview thumbnail might crop extra visual detail.
-    - That is when overflow: hidden can make sense.
+  The circle is taller than the preview box. overflow: hidden clips the part that sticks out.
+    - This works because the extra part is decorative. The user is not losing an important message or control.
+    - That distinction matters because overflow: hidden does not delete content from the HTML. It only makes the overflowing part invisible and unreachable visually.
+    - Do not hide important content - Avoid using overflow: hidden to make real text, form fields, buttons, or warnings disappear. If users need the content, use a layout that fits it or use scrolling.
   */
+  overflow: hidden;
+}
+.preview-shape {
+  width: 180px;
+  height: 180px;
+  margin-left: auto;
+  background-color: #60a5fa;
+  border-radius: 999px;
 }
 
 .layout {
