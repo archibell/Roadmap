@@ -44,19 +44,16 @@ Keep labels visible:
   font-size: 14px;
   font-weight: 700;
 }
-
 h1,
 p {
   margin-top: 0;
 }
-
 .summary,
 .field-hint,
 .field-error {
   color: #4b5563;
   line-height: 1.6;
 }
-
 label {
   color: #374151;
   /*
@@ -64,7 +61,6 @@ label {
   */
   font-weight: 700;
 }
-
 .field-hint,
 .field-error {
   margin: 0;
@@ -76,6 +72,8 @@ label {
 /*
 ^ Do not use placeholder text as the only label - If the only label is inside the input, the user loses that label once they type. Keep a real visible label for normal form fields.
 */
+
+
 
 /*
 .support-form becomes a one-column grid so the fields have consistent space between them.
