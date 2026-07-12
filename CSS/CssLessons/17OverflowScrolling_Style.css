@@ -66,6 +66,110 @@ p {
   line-height: 1.6;
 }
 
+.layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+/*
+Keep the page from getting wider by accident:
+  - Horizontal page overflow is one of the most common CSS bugs.
+  - You see it when the whole page gets a sideways scrollbar. Usually, one child element is wider than the viewport or wider than its parent.
+  - The release card is a flex item because .layout uses Flexbox. The card is supposed to take the available space.
+*/
+.release-card {
+  /*
+  flex: 1 lets the card take the available space in the row.
+  - But Flexbox has a detail that can surprise you: flex items have an automatic minimum size based on their content. A long code line can make the card refuse to shrink.
+  */
+  flex: 1;
+  /*
+  Add this:
+  */
+  min-width: 0;
+  /*
+  ^ min-width: 0 allows the card to shrink inside the layout, so the code block can handle its own horizontal scrolling.
+  - This is not an overflow property, but it often fixes overflow bugs in Flexbox layouts.
+  - If a page has a mystery horizontal scrollbar, inspect the wide child first. Then check whether a flex item needs min-width: 0.
+  */
+}
+.code-sample {
+  padding: 16px;
+  color: #e5e7eb;
+  background-color: #111827;
+  border-radius: 8px;
+  /*
+  Control one direction when needed:
+    - Sometimes only one direction is the problem.
+    - The code sample is a good example. The command is one long line. You do not want the whole page to become wider just because one command is wide.
+    - The fix is horizontal scrolling on the code box.
+    - overflow-x controls horizontal overflow, and auto means the browser only adds horizontal scrolling when the content is wider than the box.
+    - Use directional overflow when the problem is clearly one direction: wide tables, long code lines, tag rows, or tall panels.
+  */
+  overflow-x: auto;
+}
+
+/*
+Use hidden only when clipping is intentional:
+  - Sometimes overflow should be clipped. For example, a decorative image inside a rounded card might need to stay inside the rounded corners, a badge glow might need to stay inside a compact component, or a preview thumbnail might crop extra visual detail.
+  - That is when overflow: hidden can make sense.
+  - Add a small clipped preview to the card:
+    <div class="preview-box">
+      <div class="preview-shape"></div>
+    </div>
+  - Place it inside .release-card, above the code sample, then add this CSS.
+*/
+.preview-box {
+  height: 120px;
+  margin-bottom: 16px;
+  background-color: #dbeafe;
+  border-radius: 12px;
+  /*
+  The circle is taller than the preview box. overflow: hidden clips the part that sticks out.
+    - This works because the extra part is decorative. The user is not losing an important message or control.
+    - That distinction matters because overflow: hidden does not delete content from the HTML. It only makes the overflowing part invisible and unreachable visually.
+    - Do not hide important content - Avoid using overflow: hidden to make real text, form fields, buttons, or warnings disappear. If users need the content, use a layout that fits it or use scrolling.
+  */
+  overflow: hidden;
+}
+.preview-shape {
+  width: 180px;
+  height: 180px;
+  margin-left: auto;
+  background-color: #60a5fa;
+  border-radius: 999px;
+}
+
+.long-title {
+  padding: 12px;
+  background-color: #eff6ff;
+  border-radius: 8px;
+  /*
+  Truncate one-line text carefully:
+    - The long title is not normal paragraph text. It is a compact card heading. In some interfaces, you may want it to stay on one line and show that it was shortened.
+    - That needs three declarations working together:
+  */
+  /*
+  white-space: nowrap keeps the title on one line.
+  */
+  white-space: nowrap;
+  /*
+  overflow: hidden clips the part that does not fit.
+  */
+  overflow: hidden;
+  /*
+  text-overflow: ellipsis shows three dots at the clipped edge, so the user can see that the text continues.
+    - The ellipsis only works when the text is forced onto one line and the overflow is hidden.
+    - Use this carefully. It is fine for compact labels, table cells, filenames, and cards where the full text is available somewhere else. It is a poor choice for important instructions or body text.
+  */
+  text-overflow: ellipsis;
+}
+
+.message-panel {
+  width: 320px;
+}
 /*
 Overflow needs a constrained box:
   - Overflow problems happen when you have more content than a constrained box can contain. So far, most of the pages in this pack have simply grown taller when they needed more vertical space.
@@ -100,62 +204,46 @@ Overflow needs a constrained box:
     - Prefer auto for real content - If the content matters and the box has a size limit, start with overflow: auto. It preserves access to the content while keeping the layout under control
   */
   overflow: auto;
+  /*
+  ^ There is also overflow-y for vertical overflow. The messages list could be written like this:
+    overflow-y: auto;
+  - overflow-y: auto focuses the scroll behavior on the vertical direction.
+  */
 }
+
 
 /*
-Use hidden only when clipping is intentional:
-  - Sometimes overflow should be clipped. For example, a decorative image inside a rounded card might need to stay inside the rounded corners, a badge glow might need to stay inside a compact component, or a preview thumbnail might crop extra visual detail.
-  - That is when overflow: hidden can make sense.
-  - Add a small clipped preview to the card:
-    <div class="preview-box">
-      <div class="preview-shape"></div>
-    </div>
-  - Place it inside .release-card, above the code sample, then add this CSS.
+Alina added below to capture notes from roadmap.sh:
 */
-.preview-box {
-  height: 120px;
-  margin-bottom: 16px;
-  background-color: #dbeafe;
-  border-radius: 12px;
-  /*
-  The circle is taller than the preview box. overflow: hidden clips the part that sticks out.
-    - This works because the extra part is decorative. The user is not losing an important message or control.
-    - That distinction matters because overflow: hidden does not delete content from the HTML. It only makes the overflowing part invisible and unreachable visually.
-    - Do not hide important content - Avoid using overflow: hidden to make real text, form fields, buttons, or warnings disappear. If users need the content, use a layout that fits it or use scrolling.
-  */
-  overflow: hidden;
-}
-.preview-shape {
-  width: 180px;
-  height: 180px;
-  margin-left: auto;
-  background-color: #60a5fa;
-  border-radius: 999px;
+.layout-stack {
+  display: block;
 }
 
-.layout {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.release-card {
-  flex: 1;
-}
-
-.message-panel {
-  width: 320px;
-}
-
-.code-sample {
-  padding: 16px;
-  color: #e5e7eb;
-  background-color: #111827;
+.lesson-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
 }
 
-.long-title {
-  padding: 12px;
-  background-color: #eff6ff;
-  border-radius: 8px;
+.overflow-visible-html-image,
+.visible-overflow-image,
+.overflowx-html-image,
+.overflowx-image {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: auto;
+}
+
+table, th, td {
+  border: 1px solid #adadad;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
 }

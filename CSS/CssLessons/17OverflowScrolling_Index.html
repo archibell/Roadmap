@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Overflow practice</title>
+    <title>Overflow & Scrolling Practice</title>
     <link rel="stylesheet" href="17OverflowScrolling_Style.css">
   </head>
   <body>
@@ -18,12 +18,12 @@
         <article class="release-card">
           <h2>Release notes</h2>
           <p>Version 2.4 improves layout tools, fixes several mobile spacing issues, and adds clearer empty states for lesson dashboards.</p>
-          
+
+          <pre class="code-sample"><code>pnpm roadmap lesson publish --pack css --lesson overflow-and-scrolling --environment production --verify-rendered-output --alina-adding-more-to-trigger-overflow</code></pre>
+
           <div class="preview-box">
             <div class="preview-shape"></div>
           </div>
-
-          <pre class="code-sample"><code>pnpm roadmap lesson publish --pack css --lesson overflow-and-scrolling --environment production --verify-rendered-output</code></pre>
 
           <h3 class="long-title">A very long lesson title that needs to stay on one line inside a compact card header</h3>
           <p>The title above is not a paragraph. It is a compact label, so it may need a different overflow strategy from normal body text.</p>
@@ -42,6 +42,64 @@
           </div>
         </aside>
       </section>
+
+      <section class="layout-stack">
+        <article class="lesson-card">
+          <h2>The default is visible overflow:</h2>
+          <p>The default value is overflow: visible, which means content is allowed to paint outside the box.</p>
+          <p>Add it explicitly so you can see the default:</p>
+          <img class="overflow-visible-html-image" src="OverflowVisibleHtml.png" alt="Overflow Visible Html">
+          <p>The list has a height limit, but the extra messages may still spill out visually.</p>
+          <p>That can be useful for some decorative effects, but it is not good for a message panel. The panel now says it has one size while its content paints outside that space.</p>
+          <img class="visible-overflow-image" src="VisibleOverflow.png" alt="Visible Overflow">
+        </article>
+
+        <article class="lesson-card">
+          <h2>Control One direction when needed:</h2>
+          <p>Sometimes only one direction is the problem.</p>
+          <p>The code sample is a good example. The command is one long line. You do not want the whole page to become wider just because one command is wide.</p>
+          <p>The fix is horizontal scrolling on the code box:</p>
+          <img class="overflowx-html-image" src="OverflowXHtml.png" alt="Overflow-X Html">
+          <p>overflow-x controls horizontal overflow, and auto means the browser only adds horizontal scrolling when the content is wider than the box.</p>
+          <p>Use directional overflow when the problem is clearly one direction: wide tables, long code lines, tag rows, or tall panels.</p>
+          <img class="overflowx-image" src="OverflowX.png" alt="Overflow-X">
+        </article>
+
+        <article class="lesson-card">
+          <h2>Overflow values in one place:</h2>
+          <p>Here is the practical map:</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th>What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>visible</td>
+                <td>Lets content paint outside the box. This is the default.</td>
+              </tr>
+              <tr>
+                <td>auto</td>
+                <td>Adds scrolling only when the content needs it.</td>
+              </tr>
+              <tr>
+                <td>scroll</td>
+                <td>Shows scrollbars even when they may not be needed.</td>
+              </tr>
+              <tr>
+                <td>hidden</td>
+                <td>Clips overflowing content and does not show scrollbars.</td>
+              </tr>
+            </tbody>
+          </table><br>
+          <p>You can apply the idea to both directions with overflow-x and overflow-y.</p>
+          <p>The useful question is: should the user still be able to reach the content?</p>
+          <p>If yes, use scrolling or let the layout grow. If no, clipping may be acceptable.</p>
+        </article>
+      </section>
+
     </main>
   </body>
 </html>
