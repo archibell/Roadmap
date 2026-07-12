@@ -3,3 +3,102 @@ Styling forms:
   - Forms are where CSS stops being only visual polish. A form is something a user has to complete. Styling should help them understand what to fill in, which field they are on, what went wrong, and what action they can take next.
   - That gives this lesson a practical goal: Can the user read the form, fill it in, notice focus, spot errors, and submit it without guessing?
 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.intro,
+.support-form {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro {
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+/*
+Keep labels visible:
+  - Labels tell users what each field is for.
+  - Placeholders can help with examples, but they are not a replacement for labels. Placeholder text disappears when the user types, and it is easy to forget what the field was asking for.
+  - Style the labels and helper text:
+*/
+.eyebrow {
+  margin-top: 0;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
+.summary,
+.field-hint,
+.field-error {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+label {
+  color: #374151;
+  /*
+  font-weight: 700 makes labels easy to find while scanning.
+  */
+  font-weight: 700;
+}
+
+.field-hint,
+.field-error {
+  margin: 0;
+  /*
+  The hint and error text use smaller type because they support the field. They should be readable, but they should not compete with the label.
+  */
+  font-size: 14px;
+}
+/*
+^ Do not use placeholder text as the only label - If the only label is inside the input, the user loses that label once they type. Keep a real visible label for normal form fields.
+*/
+
+/*
+.support-form becomes a one-column grid so the fields have consistent space between them.
+*/
+.support-form {
+  padding: 24px;
+  display: grid;
+  gap: 18px;
+}
+
+/*
+.field also uses a small grid. That keeps each label, control, hint, and error message grouped together.
+*/
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+/*
+.form-actions uses Flexbox because the buttons are a small row of related actions. flex-wrap: wrap lets them move to another line if the available width gets tight.
+*/
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
