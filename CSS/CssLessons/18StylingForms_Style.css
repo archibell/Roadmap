@@ -133,14 +133,6 @@ Make Controls Match the Page:
   line-height: 1;
 }
 
-.main-text-controls-html-image,
-.control-diagram-image {
-  display: block;
-  width: 75%;
-  height: auto;
-  margin: auto;
-}
-
 /*
 Let textareas grow in the right direction:
   - A textarea is meant for longer text. It needs more room than a single-line input.
@@ -256,3 +248,60 @@ Style checkboxes without rebuilding them:
 /*
 ^ That is a good beginner default: style the native control before trying to rebuild it.
 */
+
+/*
+Buttons need states too:
+  - The submit button is the main action. The disabled "Save draft" button shows that an action can exist but not be available.
+  - Add the button styles:
+*/
+button {
+  /*
+  font: inherit keeps button text consistent with the page.
+  */
+  font: inherit;
+  /*
+  border: 0 removes the browser's default button border because this design uses background color and shape instead.
+  */
+  border: 0;
+  /*
+  border-radius and padding make the button feel like a clickable control.
+  */
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  /*
+  cursor: pointer gives mouse users a familiar cue on enabled buttons.
+  */
+  cursor: pointer;
+}
+/*
+button[type="submit"] targets the main submit action.
+*/
+button[type="submit"] {
+  color: white;
+  background-color: #2563eb;
+}
+/*
+.secondary-button targets the lower-priority button.
+*/
+.secondary-button {
+  color: #374151;
+  background-color: #e5e7eb;
+}
+/*
+button:disabled styles real disabled buttons. The behavior comes from the HTML disabled attribute, and CSS only changes how that state looks.
+*/
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.main-text-controls-html-image,
+.control-diagram-image,
+.button-styles-html-image,
+.button-styles-diagram-image {
+  display: block;
+  width: 85%;
+  height: auto;
+  margin: auto;
+}

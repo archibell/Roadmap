@@ -96,6 +96,21 @@ CSS should improve that structure, not replace it.
         <p>color controls the typed text, background-color controls the inside of the control, and border makes the editable area visible. border-radius softens the corners, padding gives text room inside the control, and line-height keeps typed text comfortable to read.</p>
         <img class="control-diagram-image" src="ControlDiagram.png" alt="Control Diagram">
       </section>
+
+      <section class="notes">
+        <h2>Buttons Needs States Too:</h2>
+        <p>The submit button is the main action. The disabled "Save draft" button shows that an action can exist but not be available.</p>
+        <p>Add the button styles:</p>
+        <img class="button-styles-html-image" src="ButtonStylesHtml.png" src="Button Styles Html">
+        <p>font: inherit keeps button text consistent with the page.</p>
+        <p>border: 0 removes the browser's default button border because this design uses background color and shape instead.</p>
+        <p>border-radius and padding make the button feel like a clickable control.</p>
+        <p>cursor: pointer gives mouse users a familiar cue on enabled buttons.</p>
+        <p>button[type="submit"] targets the main submit action.</p>
+        <p>.secondary-button targets the lower-priority button.</p>
+        <p>button:disabled styles real disabled buttons. The behavior comes from the HTML disabled attribute, and CSS only changes how that state looks.</p>
+        <img class="button-styles-diagram-image" src="ButtonStylesDiagram.png" alt="Button Styles Diagram">
+      </section>
     </main>
   </body>
 </html>
