@@ -172,3 +172,87 @@ Keep placeholder text quiet:
   */
   color: #9ca3af;
 }
+
+/*
+Make focus impossible to miss:
+  - Focus tells the user which control is active. This matters for everyone, but it is especially important for people using a keyboard. When they press Tab through the form, the focus style is their map.
+  - Add a clear focus style:
+*/
+/*
+:focus-visible matches when the browser decides a focus indicator should be shown, especially during keyboard navigation.
+*/
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible,
+.check-field input:focus-visible,
+button:focus-visible {
+  /*
+  outline draws a visible ring outside the control.
+  */
+  outline: 3px solid #bfdbfe;
+  /*
+  outline-offset creates a little space between the control and the ring.
+  */
+  outline-offset: 2px;
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  border-color: #2563eb;
+}
+
+/*
+Show error states near the field:
+  - The email field in the HTML has class="field has-error". In a real app, a validation system might add that class after checking the user's input. The class gives CSS a clear hook: style this field as a problem.
+  - Add the error styles:
+*/
+.field-error {
+  color: #b91c1c;
+  font-weight: 700;
+}
+.field.has-error input {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+/*
+^ The border and background both change, so the error is not communicated by text alone and not communicated by color alone. The user sees the message and the field that needs attention.
+  - CSS also has pseudo-classes like :invalid, but they can match before the user has had a fair chance to type. A class-based error state is often easier to control when you are learning or building app forms.
+*/
+
+/*
+Style checkboxes without rebuilding them:
+  - Checkboxes and radio buttons are special controls. They have a native shape and behavior that users already understand.
+  - For now, keep that native control and adjust the spacing and accent color:
+*/
+.check-field {
+  /*
+  .check-field uses Flexbox because the checkbox and its text sit side by side.
+  */
+  display: flex;
+  /*
+  align-items: flex-start keeps the checkbox aligned with the first line of text.
+  */
+  align-items: flex-start;
+  gap: 10px;
+  color: #374151;
+  font-weight: 500;
+}
+.check-field input {
+  /*
+  The checkbox gets a clear width and height so it is easy to click.
+  */
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  /*
+  flex: none keeps the checkbox from stretching or shrinking strangely inside the row.
+  */
+  flex: none;
+  /*
+  accent-color changes the native checked color without replacing the real checkbox with custom HTML.
+  */
+  accent-color: #2563eb;
+}
+/*
+^ That is a good beginner default: style the native control before trying to rebuild it.
+*/
