@@ -21,13 +21,16 @@ body {
 }
 
 .intro,
-.support-form {
+.support-form,
+.notes {
   background-color: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
 }
 
-.intro {
+.intro,
+.support-form,
+.notes {
   margin-bottom: 24px;
   padding: 24px;
 }
@@ -123,9 +126,49 @@ Make Controls Match the Page:
   color controls the typed text, background-color controls the inside of the control, and border makes the editable area visible. border-radius softens the corners, padding gives text room inside the control, and line-height keeps typed text comfortable to read.
   */
   color: #111827;
-  background-color: white;
-  border: 1px solid #d1d5db;
+  background-color: rgb(215, 255, 212);
+  border: 1px solid #49c47a;
   border-radius: 8px;
   padding: 10px 12px;
-  line-height: 1.5;
+  line-height: 1;
+}
+
+.main-text-controls-html-image,
+.control-diagram-image {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: auto;
+}
+
+/*
+Let textareas grow in the right direction:
+  - A textarea is meant for longer text. It needs more room than a single-line input.
+*/
+.field textarea {
+  /*
+  min-height: 140px gives the message box a useful starting height.
+  */
+  min-height: 140px;
+  /*
+  resize: vertical lets the user make the textarea taller if they need more room. It also prevents sideways resizing, which can break the form layout.
+  */
+  resize: vertical;
+  /*
+  ^ That is a good example of form styling: you are not only changing appearance. You are preserving a useful behavior and guiding it so it fits the layout.
+  */
+}
+
+/*
+Keep placeholder text quiet:
+  - Placeholder text is an example, not the main instruction.
+  - Style it so it feels secondary:
+*/
+.field input::placeholder,
+.field textarea::placeholder {
+  /*
+  ::placeholder targets placeholder text inside inputs and textareas.
+  - The color is lighter than normal text, so the user can tell it is not a real value.
+  */
+  color: #9ca3af;
 }
