@@ -243,7 +243,7 @@ Style checkboxes without rebuilding them:
   /*
   accent-color changes the native checked color without replacing the real checkbox with custom HTML.
   */
-  accent-color: #2563eb;
+  accent-color: #8b25eb;
 }
 /*
 ^ That is a good beginner default: style the native control before trying to rebuild it.
@@ -279,7 +279,7 @@ button[type="submit"] targets the main submit action.
 */
 button[type="submit"] {
   color: white;
-  background-color: #2563eb;
+  background-color: #253ceb;
 }
 /*
 .secondary-button targets the lower-priority button.
@@ -304,4 +304,21 @@ button:disabled {
   width: 85%;
   height: auto;
   margin: auto;
+}
+
+/*
+Native form controls will not all look identical:
+  - Different browsers and operating systems can draw form controls slightly differently, especially select menus, date inputs, file inputs, checkboxes, and radio buttons, and that is normal.
+  - Your first job is not to force every control to look identical everywhere. Your first job is to make the form readable, aligned, focused, and understandable while keeping the native behavior intact.
+  - You will see CSS like appearance: none in custom form components. That property removes some native browser styling, but then you are responsible for rebuilding the missing visual states, so save that for later.
+*/
+
+/*
+Form Styling Map:
+*/
+table, th, td {
+  border: 1px solid #adadad;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
 }
