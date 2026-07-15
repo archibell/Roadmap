@@ -131,3 +131,10 @@ Now style the advanced card using its data attribute:
   padding-left: 20px;
   margin-bottom: 0;
 }
+
+/*
+Select structure instead of adding edge-case classes:
+  - Sometimes the useful clue is not an attribute. It is the element's position in a group.
+  - The task list has several list items. If you want space between items, you could add a class to every item after the first one, but the structure already tells CSS what to do.
+  - Add spacing between list items with the adjacent sibling selector:
+*/
