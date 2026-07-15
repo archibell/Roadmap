@@ -87,8 +87,7 @@ Select attributes when the HTML already says something useful:
 */
 /*
 a[aria-current="page"] means "match an <a> element whose aria-current attribute is exactly page."
-
-The selector is scoped under .lesson-nav so it only styles the current link in this navigation area.
+  - The selector is scoped under .lesson-nav so it only styles the current link in this navigation area.
 */
 .lesson-nav a[aria-current="page"] {
   color: white;
@@ -97,7 +96,6 @@ The selector is scoped under .lesson-nav so it only styles the current link in t
   padding: 6px 10px;
   text-decoration: none;
 }
-
 /*
 Match part of an attribute value:
   - Some attribute selectors can match part of a value. The MDN link starts with https://, which tells you it goes to a full external URL.
@@ -110,6 +108,12 @@ Match part of an attribute value:
     - Keep the styling subtle here. The link should still look like a normal link, and the color only adds a small distinction.
   */
   color: #7c3aed;
+}
+
+.lesson-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 /*
@@ -125,10 +129,37 @@ Now style the advanced card using its data attribute:
   background-color: #fffbeb;
 }
 
-.lesson-board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+/*
+Use :not() to exclude a case:
+  - Sometimes the useful question is negative: "match cards except this kind." For example, you may want a quieter border on every card that is not advanced:
+*/
+.lesson-card:not([data-level="advanced"]) {
+  /*
+  ^ :not(...) means "match this element only if it does not match the selector inside the parentheses."
+    - Here, .lesson-card:not([data-level="advanced"]) matches lesson cards that are not advanced.
+    - Use this when the exception is clear. Do not build long negative selectors that become hard to read. A simple class is often better when the logic gets complicated.
+  */
+  border-color: #dbeafe;
+}
+
+/*
+Use :is() to group selector options:
+  - Sometimes several selectors should receive the same style. You already know comma grouping:
+    .lesson-card h2,
+    .lesson-card p,
+    .lesson-card ul {
+      margin-bottom: 12px;
+    }
+  - :is() gives you another way to write that group:
+*/
+.lesson-card :is(h2, p, ul) {
+  /*
+  ^ :is(h2, p, ul) means "match any of these options."
+    - The full selector means "inside .lesson-card, match any h2, p, or ul."
+    - This is useful when the shared part of the selector is long. Instead of repeating .lesson-card three times, you write it once.
+    - Use :is() for readability, not to make selectors look clever.
+  */
+  margin-bottom: 12px;
 }
 
 .task-list {
@@ -149,7 +180,6 @@ Select structure instead of adding edge-case classes:
   */
   margin-top: 8px;
 }
-
 /*
 You can also select the last item in a group:
 */
@@ -160,8 +190,6 @@ You can also select the last item in a group:
   */
   font-weight: 700;
 }
-
-
 .li-plus-li--html-image,
 .li-last-child--html-image,
 .li-plus-li-diagram-image {
