@@ -1,0 +1,133 @@
+/*
+Modern selectors:
+  - Back in the selectors lesson, you learned the basics: element selectors, class selectors, ID selectors, groups, and descendants.
+  - Modern CSS gives you more precise ways to ask questions about the HTML:
+    - Does this element have a certain attribute?
+    - Is this the current navigation link?
+    - Is this card marked as advanced?
+    - Is this item the last one in a list?
+    - Does this card contain a checked task?
+  - That is the point of modern selectors. They help you use information that is already in the HTML, instead of adding a new class for every small styling case.
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.intro,
+.lesson-nav,
+.lesson-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.intro,
+.lesson-nav,
+.lesson-card {
+  padding: 24px;
+}
+
+.intro,
+.lesson-nav {
+  margin-bottom: 24px;
+}
+
+.eyebrow,
+.card-label {
+  margin-top: 0;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+p,
+.task-list {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.lesson-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.lesson-nav a {
+  color: #2563eb;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+/*
+Select attributes when the HTML already says something useful:
+  - An attribute selector matches an element by one of its HTML attributes.
+  - The current nav link already says aria-current="page". You do not need to add a class like .active-link just to style it. Add this CSS to make the active link visible:
+*/
+/*
+a[aria-current="page"] means "match an <a> element whose aria-current attribute is exactly page."
+
+The selector is scoped under .lesson-nav so it only styles the current link in this navigation area.
+*/
+.lesson-nav a[aria-current="page"] {
+  color: white;
+  background-color: #2563eb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  text-decoration: none;
+}
+
+/*
+Match part of an attribute value:
+  - Some attribute selectors can match part of a value. The MDN link starts with https://, which tells you it goes to a full external URL.
+  - Add a selector for links that start with https://:
+*/
+.lesson-nav a[href^="https://"] {
+  /*
+  ^ [href^="https://"] means "match links whose href value starts with https://."
+    - The ^= operator means "starts with." This kind of selector is useful for styling external links, file links, email links, or download links when the attribute value already reveals the type.
+    - Keep the styling subtle here. The link should still look like a normal link, and the color only adds a small distinction.
+  */
+  color: #7c3aed;
+}
+
+/*
+Now style the advanced card using its data attribute: 
+*/
+.lesson-card[data-level="advanced"] {
+  /*
+  ^ [data-level="advanced"] matches a card with that exact custom data attribute.
+    - Data attributes are useful when the HTML carries app-specific information that CSS can safely style. Here, data-level tells CSS whether a card is beginner or advanced.
+    - Prefer meaningful existing hooks - If the HTML already has a meaningful attribute like aria-current, disabled, required, or a clear data-* value, an attribute selector can be better than adding another styling-only class.
+  */
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.lesson-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.task-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+}

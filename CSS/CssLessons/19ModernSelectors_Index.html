@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Selector - Practice</title>
+    <link rel="stylesheet" href="19ModernSelectors_Style.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CSS practice</p>
+        <h1>Use selectors that match real HTML clues</h1>
+        <p class="summary">Modern selectors can match attributes, states, structure, and parent-child relationships.</p>
+      </section>
+
+      <nav class="lesson-nav" aria-label="CSS lessons">
+        <a href="/css/selectors">Selectors</a>
+        <!--
+        ARIA stands for Accessible Rich Internet Applications. It is a set of attributes that define ways to make web content and web applications more accessible to people with disabilities.
+
+        ARIA attributes help bridge the gap when standard HTML elements (like <a>, <button>, or <div>) cannot fully describe a component's role, state, or properties to assistive technologies. In the case of aria-current, the "aria-" prefix identifies it as part of this W3C standard for accessible markup.
+        -->
+        <a href="/css/modern-selectors" aria-current="page">Modern selectors</a>
+        <a href="https://developer.mozilla.org/">MDN reference</a>
+      </nav>
+
+      <section class="lesson-board" aria-label="Lesson cards">
+        <article class="lesson-card" data-level="beginner">
+          <p class="card-label">Beginner</p>
+          <h2>Selectors recap</h2>
+          <p>Review class selectors, group selectors, and descendant selectors.</p>
+          <ul class="task-list">
+            <li><label><input type="checkbox" checked> Read the lesson</label></li>
+            <li><label><input type="checkbox"> Try the exercises</label></li>
+          </ul>
+        </article>
+
+        <article class="lesson-card" data-level="advanced">
+          <p class="card-label">Advanced</p>
+          <h2>Modern selectors</h2>
+          <p>Use attributes, structure, and parent-aware selectors carefully.</p>
+          <p class="card-note">Best after you understand specificity.</p>
+          <ul class="task-list">
+            <li><label><input type="checkbox"> Read the lesson</label></li>
+            <li><label><input type="checkbox"> Inspect the matches</label></li>
+          </ul>
+        </article>
+
+        <article class="lesson-card" data-level="beginner">
+          <p class="card-label">Beginner</p>
+          <h2>Practice project</h2>
+          <p>Apply selectors to a small lesson dashboard.</p>
+          <ul class="task-list">
+            <li><label><input type="checkbox" checked> Build the layout</label></li>
+            <li><label><input type="checkbox" checked> Style the cards</label></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
