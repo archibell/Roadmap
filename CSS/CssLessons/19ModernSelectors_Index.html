@@ -61,6 +61,21 @@
           </ul>
         </article>
       </section>
+
+      <section class="notes">
+        <h2>Select structure instead of adding edge-case classes:</h2>
+        <p>Sometimes the useful clue is not an attribute. It is the element's position in a group.</p>
+        <p>The task list has several list items. If you want space between items, you could add a class to every item after the first one, but the structure already tells CSS what to do.</p>
+        <p>Add spacing between list items with the adjacent sibling selector:</p>
+        <img class="li-plus-li--html-image" src="LiPlusLi.png" alt="li + li">
+        <p>li + li means "match a list item that comes immediately after another list item." The first item does not match, because it does not come after a previous item. The later items match, so they get top margin.</p>
+        <p>This is useful for spacing repeated items because it only creates space between items, not before the first item.</p>
+        <p>You can also select the last item in a group:</p>
+        <img class="li-last-child--html-image" src="LiLastChild.png" alt=":last-child">
+        <p>:last-child matches an element when it is the last child inside its parent.</p>
+        <p>This example makes the last task heavier so you can see the match. In real projects, structural selectors are often used for spacing, borders, dividers, and small layout adjustments.</p>
+        <img class="li-plus-li-diagram-image" src="LiDiagram.png" alt="li + li diagram">
+      </section>
     </main>
   </body>
 </html>
