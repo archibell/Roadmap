@@ -159,7 +159,7 @@ Keep placeholder text quiet:
 .field input::placeholder,
 .field textarea::placeholder {
   /*
-  ::placeholder targets placeholder text inside inputs and textareas.
+  ::placeholder is a pseudo-element that targets placeholder text inside inputs and textareas.
   - The color is lighter than normal text, so the user can tell it is not a real value.
   */
   color: #9ca3af;
@@ -278,6 +278,9 @@ button {
 button[type="submit"] targets the main submit action.
 */
 button[type="submit"] {
+  /*
+  ^ button[type="submit"] is an attribute selector.
+  */
   color: white;
   background-color: #253ceb;
 }
