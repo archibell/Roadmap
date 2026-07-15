@@ -35,7 +35,7 @@
           <h2>Selectors recap</h2>
           <p>Review class selectors, group selectors, and descendant selectors.</p>
           <ul class="task-list">
-            <li><label><input type="checkbox" checked> Read the lesson</label></li>
+            <li><label><input type="checkbox"> Read the lesson</label></li>
             <li><label><input type="checkbox"> Try the exercises</label></li>
           </ul>
         </article>
@@ -75,6 +75,73 @@
         <p>:last-child matches an element when it is the last child inside its parent.</p>
         <p>This example makes the last task heavier so you can see the match. In real projects, structural selectors are often used for spacing, borders, dividers, and small layout adjustments.</p>
         <img class="li-plus-li-diagram-image" src="LiDiagram.png" alt="li + li diagram">
+      </section>
+
+      <section class="notes">
+        <h2>Use :has() when the parent depends on its contents:</h2>
+        <p>Most selectors match an element based on itself or its ancestors.</p>
+        <p>:has() lets you match a parent based on something inside it.</p>
+        <p>In the lesson cards, some tasks are already checked. You can style a card differently when it contains at least one checked task:</p>
+        <img class="has-html-image" src="HasHtml.png" alt=".lesson-card:has()">
+        <p>:has(.task-list input:checked) means "match this card if it has a checked input inside .task-list."</p>
+        <p>The selector reads like a condition:</p>
+        <img class="selector-condition-image" src="SelectorCondition.png" alt="Selector Condition">
+        <p>That is useful for parent styling. The card can react to something inside it without adding a separate .has-progress class.</p>
+        <p>Use :has() when the parent truly depends on a child or descendant. If the parent already has a meaningful class or data attribute, that simpler hook may still be better.</p>
+        <img class="has-diagram-image" src="HasDiagram.png" alt="Has Diagram">
+      </section>
+
+      <section class="notes">
+        <h2>Modern selector map</h2>
+        <p>Here is the practical map:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Selector</th>
+              <th>Question it asks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>[aria-current="page"]</td>
+              <td>Does this element have this exact attribute value?</td>
+            </tr>
+            <tr>
+              <td>[href^="https://"]</td>
+              <td>Does this attribute value start with this text?</td>
+            </tr>
+            <tr>
+              <td>li + li</td>
+              <td>Does this element come immediately after another matching element?</td>
+            </tr>
+            <tr>
+              <td>:last-child</td>
+              <td>Is this element the last child of its parent?</td>
+            </tr>
+            <tr>
+              <td>:not(...)</td>
+              <td>Does this element not match this condition?</td>
+            </tr>
+            <tr>
+              <td>:is(...)</td>
+              <td>Does this element match any option in this group?</td>
+            </tr>
+            <tr>
+              <td>:where(...)</td>
+              <td>Does this element match any option, without adding selector strength?</td>
+            </tr>
+            <tr>
+              <td>:has(...)</td>
+              <td>Does this element contain something that matches?</td>
+            </tr>
+          </tbody>
+        </table><br>
+        <p>The useful habit is not to use the newest selector everywhere. The useful habit is to use what is clearer and makes sense.</p>
+      </section>
+
+      <section class="notes">
+        <h2>Modern Selectors - Takeaway:</h2>
+        <p>Modern selectors are best when they make your CSS match the real meaning or structure already in the HTML. If a selector becomes hard to explain out loud, it is probably too clever.</p>
       </section>
     </main>
   </body>

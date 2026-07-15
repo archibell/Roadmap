@@ -162,6 +162,48 @@ Use :is() to group selector options:
   margin-bottom: 12px;
 }
 
+/*
+Use :where() for low-specificity defaults:
+  - :where() looks similar to :is(), but it has a different specificity behavior.
+  - Specificity is selector strength, and you learned earlier that stronger selectors can override weaker selectors.
+  - :where() matches elements like :is(), but the part inside :where() adds no specificity. That makes it useful for broad defaults you want to keep easy to override:
+*/
+.lesson-card :where(h2, p, ul) {
+  /*
+  ^ This sets simple spacing defaults inside cards without making the selector stronger than it needs to be.
+  */
+  margin-top: 0;
+}
+/*
+Later, a normal class like .card-note can override those defaults easily:
+*/
+.card-note {
+  margin-top: 16px;
+  color: #92400e;
+  font-weight: 700;
+}
+/*
+^ .card-note can set its own margin because the default came from :where() instead of a stronger selector.
+  - The practical habit is simple: use :where() when you are writing gentle defaults. Use normal classes when you are styling a specific component part.
+  - Do not fight yourself with overly strong selectors - Modern selectors can become very specific if you chain too much together. If you need three ancestors, two attributes, and a state to style something, ask whether a clear class would be easier.
+*/
+
+/*
+Use :has() when the parent depends on its contents:
+  - Most selectors match an element based on itself or its ancestors.
+  - :has() lets you match a parent based on something inside it.
+*/
+.lesson-card:has(.task-list input:checked) {
+  /*
+  ^ :has(.task-list input:checked) means "match this card if it has a checked input inside .task-list."
+    - The selector reads like a condition:
+      ```Select a lesson card if it has a checked task.```
+    - That is useful for parent styling. The card can react to something inside it without adding a separate .has-progress class.
+    - Use :has() when the parent truly depends on a child or descendant. If the parent already has a meaningful class or data attribute, that simpler hook may still be better.
+  */
+  box-shadow: 0 12px 24px rgba(52, 25, 86, 0.25);
+}
+
 .task-list {
   padding-left: 20px;
   margin-bottom: 0;
@@ -192,9 +234,23 @@ You can also select the last item in a group:
 }
 .li-plus-li--html-image,
 .li-last-child--html-image,
-.li-plus-li-diagram-image {
+.li-plus-li-diagram-image,
+.has-html-image,
+.selector-condition-image,
+.has-diagram-image {
   display: block;
   width: 85%;
   height: auto;
   margin: auto;
+}
+
+table, th, td {
+  border: 1px solid #adadad;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
 }
