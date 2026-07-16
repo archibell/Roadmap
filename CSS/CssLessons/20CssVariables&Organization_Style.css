@@ -28,6 +28,19 @@ Give repeated values names:
   - In this rule, --color-brand is the custom property name, and #2563eb is the value stored inside that name.
   - The name is yours, but it must start with --.
 */
+/*
+Organize the stylesheet by job:
+  - Variables help values stay consistent, and organization helps people find the right rule later.
+  - The browser ignores comments because they are for people reading the file.
+  - The exact section names can change by project. The useful habit is to group rules by job:
+    - Design values first.
+    - Base element styles next.
+    - Layout rules near other layout rules.
+    - Component rules near the component.
+    - Variants and state rules close enough that they are easy to find.
+  - Do not over-organize a tiny file. But once a stylesheet grows, sections help you avoid hunting.
+*/
+/* 1. Design values */
 :root {
   /*
   Now add a small set of variables at the top of the stylesheet:
@@ -56,6 +69,7 @@ Give repeated values names:
   */
 }
 
+/* 2. Base styles */
 * {
   box-sizing: border-box;
 }
@@ -88,6 +102,7 @@ body {
   */
 }
 
+/* 3. Layout */
 .page {
   max-width: 960px;
   margin: 40px auto;
@@ -122,7 +137,8 @@ Replace the repeated brand values:
 */
 .intro,
 .course-grid,
-.notice {
+.notice,
+.notes {
   /*
   margin-bottom: 24px;
   */
@@ -164,6 +180,7 @@ p {
   gap: var(--space-md);
 }
 
+/* 4. Components */
 /*
 Variables follow the cascade:
   - CSS variables are still CSS, which means they follow the cascade and can be scoped to part of the page.
@@ -184,8 +201,9 @@ Variables follow the cascade:
   /*
   border-top: 4px solid #2563eb;
   */
-  border-top: 4px solid var(--color-brand);
+  border-top: 4px solid var(--card-accent);
 }
+/* 5. Variants */
 .course-card.is-success {
   /*
   The success card overrides only --card-accent:
@@ -210,21 +228,47 @@ Variables follow the cascade:
   - This is one of the best uses of CSS variables: define a component once, then change a small set of local values for variants.
 */
 
+/* 6. Stylesheet below are not organized by job */
 .card-action {
   display: inline-block;
   /*
   margin-top: 16px;
   */ 
   margin-top: var(--space-md);
+  /*
+  Do not turn every value into a variable:
+    - CSS variables are useful, but using too many can make CSS harder to read. This is probably not worth a variable:
+  */
   padding: 10px 14px;
+  /*
+  ^ The two values are specific to this button shape. If they are not reused elsewhere, leaving them directly in the rule is fine.
+    - This is more likely worth a variable:
+      :root {
+        --radius-card: 8px;
+      }
+    - The same radius appears on cards, notices, and buttons. If the design changes from 8px to 10px, one variable can update the shared shape.
+    - Use variables for repeated values, meaningful design decisions, theme values, and component variants.
+    - Leave one-off details alone until they actually need a name.
+    - Variables do not fix unclear design decisions - A variable name should make the CSS easier to understand. If --thing, --blue-2, or --random-space makes you stop and guess, the variable is not helping yet.
+  */
   /*
   color: white;
   */ 
   color: var(--color-surface);
   /*
   background-color: #2563eb;
-  */
   background-color: var(--color-brand);
+  Use fallbacks when a value might be missing:
+    - var() can include a fallback value. The fallback is used if the custom property is missing or invalid.
+  */
+  background-color: var(--color-action, #2563eb);
+  /*
+  ^ This means: use --color-action if it exists. If it does not exist, use #2563eb.)
+  Fallbacks are useful when:
+    - A component may be used on pages that do not define every variable.
+    - A theme may provide optional values.
+    - You want a safe default while the stylesheet is being refactored.
+  For this lesson, most values live in :root, so fallbacks are not required everywhere. Use them where a missing value would make the component hard to read or use.
   /*
   border-radius: 8px;
   */
@@ -251,9 +295,23 @@ Variables follow the cascade:
 
 .accent-color-old-html-image,
 .accent-color-new-html-image,
-.accent-color-diagram-image {
+.accent-color-diagram-image,
+.var-fallback-html-image,
+.organize-stylesheet-html-image,
+.organize-stylesheet-sample-html-image {
   display: block;
   width: 85%;
   height: auto;
   margin: auto;
+}
+
+table, th, td {
+  border: 1px solid #adadad;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 8px;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
 }

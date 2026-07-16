@@ -48,6 +48,78 @@
         <p>This is one of the best uses of CSS variables: define a component once, then change a small set of local values for variants.</p>
         <img class="accent-color-diagram-image" src="AccentColorDiagram.png" al="Accent Color Diagram">
       </section>
+
+      <section class="notes">
+        <h2>Use fallbacks when a value might be missing:</h2>
+        <p>var() can include a fallback value. The fallback is used if the custom property is missing or invalid.</p>
+        <img class="var-fallback-html-image" src="VarFallBackHtml.png" alt="Var Fallback Html">
+        <p>This means: use --color-action if it exists. If it does not exist, use #2563eb.</p>
+        <p>Fallbacks are useful when:</p>
+        <ul>
+          <li>A component may be used on pages that do not define every variable.</li>
+          <li>A theme may provide optional values.</li>
+          <li>You want a safe default while the stylesheet is being refactored.</li>
+        </ul>
+        <p>For this lesson, most values live in :root, so fallbacks are not required everywhere. Use them where a missing value would make the component hard to read or use.</p>
+      </section>
+
+      <section class="notes">
+        <h2>Organize the stylesheet by job:</h2>
+        <p>Variables help values stay consistent, and organization helps people find the right rule later.</p>
+        <p>CSS comments use this syntax:</p>
+        <img class="organize-stylesheet-html-image" src="OrganizeStylesheetHtml.png" alt="Organize Stylesheet Html">
+        <p>The browser ignores comments because they are for people reading the file.</p>
+        <p>A small stylesheet can be organized like this:</p>
+        <img class="organize-stylesheet-sample-html-image" src="OrganizeStylesheetSampleHtml.png" alt="Organize Stylesheet Sample">
+        <p>The exact section names can change by project. The useful habit is to group rules by job:</p>
+        <ol>
+          <li>Design values first.</li>
+          <li>Base element styles next.</li>
+          <li>Layout rules near other layout rules.</li>
+          <li>Component rules near the component.</li>
+          <li>Variants and state rules close enough that they are easy to find.</li>
+        </ol>
+        <p>Do not over-organize a tiny file. But once a stylesheet grows, sections help you avoid hunting.</p>
+      </section>
+
+      <section class="notes">
+        <h2>CSS Variable Map:</h2>
+        <p>Here is the practical map:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>What it does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>:root { ... }</td>
+              <td>Stores values that should be available across the page.</td>
+            </tr>
+            <tr>
+              <td>--color-brand: #2563eb;</td>
+              <td>Defines a custom property.</td>
+            </tr>
+            <tr>
+              <td>var(--color-brand)</td>
+              <td>Uses the custom property value.</td>
+            </tr>
+            <tr>
+              <td>var(--color-brand, #2563eb)</td>
+              <td>Uses a fallback if the custom property is missing.</td>
+            </tr>
+            <tr>
+              <td>.course-card { --card-accent: ... }</td>
+              <td>Creates a local component value.</td>
+            </tr>
+            <tr>
+              <td>.is-success { --card-accent: ... }</td>
+              <td>Overrides the local value for a variant.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
   </body>
 </html>
