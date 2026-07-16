@@ -33,6 +33,21 @@
       <aside class="notice">
         <strong>Reminder:</strong> Keep class names meaningful and keep repeated design values easy to change.
       </aside>
+
+      <section class="notes">
+        <h2>Variables follow the cascade:</h2>
+        <p>CSS variables are still CSS, which means they follow the cascade and can be scoped to part of the page.</p>
+        <p>Right now, the success card needs a different accent color. The old CSS did this by styling each piece separately:</p>
+        <img class="accent-color-old-html-image" src="AccentColorOldHtml.png" alt="Accent Color Old Html">
+        <p>That works, but it repeats the idea: this card's accent should be green. Instead, replace those separate success-card rules with a local accent variable on each card:</p>
+        <img class="accent-color-new-html-image" src="AccentColorNewHtml.png" alt="Accent Color New Html">
+        <p>The normal card sets --card-accent to the brand color.</p>
+        <p>The card border and card label both use var(--card-accent).</p>
+        <p>The success card overrides only --card-accent.</p>
+        <p>Because custom properties inherit, the .card-label inside the success card can use the green value from its parent card.</p>
+        <p>This is one of the best uses of CSS variables: define a component once, then change a small set of local values for variants.</p>
+        <img class="accent-color-diagram-image" src="AccentColorDiagram.png" al="Accent Color Diagram">
+      </section>
     </main>
   </body>
 </html>
