@@ -211,10 +211,10 @@ Variables follow the cascade:
   --card-accent: var(--color-success);
   /*
   border-top-color: #059669;
-  */
   border-top-color: var(--color-success);
+  */
 }
-.course-card.is-success .card-label {
+.course-card .card-label {
   /*
   color: #059669;
   */
