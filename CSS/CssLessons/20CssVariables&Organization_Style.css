@@ -1,0 +1,223 @@
+/*
+CSS variables and organization:
+  - Once a stylesheet grows, one of the hard parts is keeping repeated decisions consistent:
+    - The same blue appears in links, buttons, labels, and borders.
+    - The same spacing values appear in cards, sections, and rows.
+    - The same radius appears on every panel.
+    - A component variant needs a different accent color without rewriting the whole component.
+  - CSS variables help with that by giving a value a name, so you can reuse it and change it from one place.
+*/
+
+/*
+Start with repeated values:
+  - Use a small dashboard where the same design choices appear in several places. The page works, but the CSS repeats the same colors, spacing, and radius values many times.
+  - Now add this deliberately repetitive CSS.
+  - Open the page. It should look like a small dashboard with two cards and a notice. Now look at the CSS as a maintenance problem.
+  - The blue #2563eb, the radius 8px, and the spacing values 16px and 24px all appear in several places.
+  - If the brand color changes, you have to hunt through the stylesheet and replace the same value in multiple rules.
+  - That is the problem CSS variables solve.
+*/
+
+/*
+Give repeated values names:
+  - A CSS variable is written as a custom property. Custom property names start with two dashes:
+    :root {
+      --color-brand: #2563eb;
+    }
+  - :root selects the top-level element of the page. For normal HTML pages, you can think of it as the highest place to put values that should be available everywhere.
+  - In this rule, --color-brand is the custom property name, and #2563eb is the value stored inside that name.
+  - The name is yours, but it must start with --.
+*/
+:root {
+  /*
+  Now add a small set of variables at the top of the stylesheet:
+  */
+  --color-text: #111827;
+  --color-muted: #4b5563;
+  --color-page: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-brand: #2563eb;
+  --color-brand-soft: #dbeafe;
+  --color-brand-border: #93c5fd;
+  --color-success: #059669;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --radius-card: 8px;
+  /*
+  ^ These names describe design decisions:
+      --color-brand is the main brand color.
+      --color-muted is for quieter text.
+      --space-md is a reusable spacing value.
+      --radius-card is the radius used on card-like surfaces.
+    -The point is not to make a variable for every single value. The point is to name values that repeat or carry meaning.
+    - Name values by job - Prefer names like --color-brand, --color-border, and --space-lg over names like --blue or --twenty-four. A job-based name can survive a design change.
+  */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+Use variables with var():
+  - Defining a variable does not change the page by itself. To use the value, call it with var(...).
+*/
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  /*
+  color: #111827;
+  */
+  color: var(--color-text);
+  /*
+  ^ var(--color-text) means "use the value stored in --color-text."
+  */
+  /*
+  background-color: #f3f4f6;
+  */
+  background-color: var(--color-page)
+  /*
+   var(--color-page) means "use the value stored in --color-page."
+  */
+  /*
+  The browser replaces each var(...) with the custom property value when it computes the final CSS.
+    - Now the page should look the same, but the stylesheet is easier to change.
+    - If you change --color-page in :root, every place using var(--color-page) updates.
+  */
+}
+
+.page {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.intro,
+.course-card,
+.notice {
+  /*
+  background-color: white;
+  */
+  background-color: var(--color-surface);
+  /*
+  border: 1px solid #e5e7eb;
+  */
+  border: 1px solid var(--color-border);
+  /*
+  border-radius: 8px;
+  */
+  border-radius: var(--space-sm);
+  /*
+  padding: 24px;
+  */
+  padding: var(--space-lg);
+}
+
+/*
+Replace the repeated brand values:
+  - Now replace more repeated values with variables:
+*/
+.intro,
+.course-grid {
+  /*
+  margin-bottom: 24px;
+  */
+  margin-bottom: var(--space-lg);
+}
+
+.eyebrow,
+.card-label {
+  margin-top: 0;
+  /*
+  color: #2563eb;
+  */ 
+  color: var(--color-brand);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.summary,
+.card-description {
+  /*
+  color: #4b5563;
+  */ 
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*
+  gap: 16px;
+  */
+  gap: var(--space-md);
+}
+
+.course-card {
+  /*
+  border-top: 4px solid #2563eb;
+  */
+  border-top: 4px solid var(--color-brand);
+}
+
+.course-card.is-success {
+  /*
+  border-top-color: #059669;
+  */
+  border-top-color: var(--color-success);
+}
+
+.course-card.is-success .card-label {
+  /*
+  color: #059669;
+  */
+  color: var(--color-success);
+}
+
+.card-action {
+  display: inline-block;
+  /*
+  margin-top: 16px;
+  */ 
+  margin-top: var(--space-md);
+  padding: 10px 14px;
+  /*
+  color: white;
+  */ 
+  color: var(--color-surface);
+  /*
+  background-color: #2563eb;
+  */
+  background-color: var(--color-brand);
+  /*
+  border-radius: 8px;
+  */
+  border-radius: var(--radius-card);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.notice {
+  color: #1e3a8a;
+  /*
+  background-color: #dbeafe;
+  */
+  background-color: var(--color-brand-soft);
+  /*
+  border-color: #93c5fd;
+  */
+  border-color: var(--color-brand-border);
+}
+
+/*
+^ The result should still look the same. That is an important point: variables do not have to change the design immediately. They make the design easier to maintain.
+*/
