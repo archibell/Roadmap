@@ -162,6 +162,10 @@ p {
   margin-top: 0;
 }
 
+.warning {
+  color: red;
+  font-weight: 700;
+}
 .summary,
 .card-description {
   /*
