@@ -57,9 +57,10 @@ h3 {
   padding: 16px;
 }
 
-/* 4. Components */
+.nav-links {
+  font-weight: 500;
+}
 
-/* 5. Variants */
 .text-gray {
   color: var(--color-text-grey);
   margin: 0px;
