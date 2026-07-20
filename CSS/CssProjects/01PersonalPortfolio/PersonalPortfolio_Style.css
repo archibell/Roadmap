@@ -1,0 +1,66 @@
+/* 1. Design values */
+:root {
+  --color-text-grey: #959595;
+}
+
+/* 2. Base styles */
+/*
+Use border-box sizing:
+  - * is the universal selector, and it matches every element. box-sizing: border-box tells the browser to include content, padding, and border inside the set width.
+  - The default behavior has a name too: box-sizing: content-box. With content-box, width applies to the content only, and padding and border are added outside it.
+      * {
+        box-sizing: content-box;
+      }
+  - border-box flips that: padding and border are pulled inside the width.
+  - Most modern projects make sizing easier with this rule (add it near the top of your CSS).
+  - Use border-box in real projects - box-sizing: border-box is a practical default because it makes width and height include padding and border, which usually matches how people expect boxes to behave.
+*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 1040px;
+  margin: 40px auto;
+}
+
+/* 3. Layout */
+h3 {
+  margin: 0px;
+}
+.dashboard {
+  /*
+  display: grid turns .dashboard into a grid container.
+  */
+  display: grid;
+  /*
+  grid-template-columns defines the columns. In this case, the first column is 220px wide for the sidebar. The second column is 1fr for the workspace.
+    - fr means a fraction of the available space. After the fixed 320px sidebar and the gap are accounted for, 1fr takes the remaining space.
+  */
+  grid-template-columns: 320px 1fr;
+  /*
+  gap creates space between grid tracks. You already used gap with Flexbox. In Grid, it creates space between rows and columns.
+  */
+  gap: 24px;
+}
+
+.sidebar {
+  border: 1px solid #e5e7eb;
+  margin: 0px;
+}
+
+.sidebar-intro,
+.sidebar-projects {
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  padding: 16px;
+}
+
+/* 4. Components */
+
+/* 5. Variants */
+.text-gray {
+  color: var(--color-text-grey);
+  margin: 0px;
+}
