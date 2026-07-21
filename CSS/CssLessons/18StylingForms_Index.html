@@ -17,11 +17,12 @@ CSS should improve that structure, not replace it.
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Styling Forms Practice</title>
+    <title>18StylingForms</title>
     <link rel="stylesheet" href="18StylingForms_Style.css">
   </head>
   <body>
     <main class="page">
+      <h1>18 Styling Forms</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Style a form people can actually use</h1>
@@ -89,19 +90,19 @@ CSS should improve that structure, not replace it.
         <h2>Make Controls Match the Page:</h2>
         <p>Browsers give form controls their own default styling. That is useful because the controls work immediately, but the defaults may not match your page font, spacing, or borders.</p>
         <p>Start with the main text controls:</p>
-        <img class="main-text-controls-html-image" src="MainTextControlsHtml.png" alt="Main Text Controls Html">
+        <img class="main-text-controls-html-image" src="./ReferenceImages/MainTextControlsHtml.png" alt="Main Text Controls Html">
         <p>.field input, .field select, and .field textarea target the controls that sit inside normal form fields. The checkbox is not inside .field, so it will not accidentally become width: 100%.</p>
         <p>width: 100% makes each control fill the form column. That creates a clean edge for the user to scan.</p>
         <p>font: inherit makes the controls use the same font as the page. Form controls often have browser-specific font defaults, so this line keeps the form visually consistent.</p>
         <p>color controls the typed text, background-color controls the inside of the control, and border makes the editable area visible. border-radius softens the corners, padding gives text room inside the control, and line-height keeps typed text comfortable to read.</p>
-        <img class="control-diagram-image" src="ControlDiagram.png" alt="Control Diagram">
+        <img class="control-diagram-image" src="./ReferenceImages/ControlDiagram.png" alt="Control Diagram">
       </section>
 
       <section class="notes">
         <h2>Buttons Needs States Too:</h2>
         <p>The submit button is the main action. The disabled "Save draft" button shows that an action can exist but not be available.</p>
         <p>Add the button styles:</p>
-        <img class="button-styles-html-image" src="ButtonStylesHtml.png" src="Button Styles Html">
+        <img class="button-styles-html-image" src="./ReferenceImages/ButtonStylesHtml.png" src="Button Styles Html">
         <p>font: inherit keeps button text consistent with the page.</p>
         <p>border: 0 removes the browser's default button border because this design uses background color and shape instead.</p>
         <p>border-radius and padding make the button feel like a clickable control.</p>
@@ -109,7 +110,7 @@ CSS should improve that structure, not replace it.
         <p>button[type="submit"] targets the main submit action.</p>
         <p>.secondary-button targets the lower-priority button.</p>
         <p>button:disabled styles real disabled buttons. The behavior comes from the HTML disabled attribute, and CSS only changes how that state looks.</p>
-        <img class="button-styles-diagram-image" src="ButtonStylesDiagram.png" alt="Button Styles Diagram">
+        <img class="button-styles-diagram-image" src="./ReferenceImages/ButtonStylesDiagram.png" alt="Button Styles Diagram">
       </section>
 
       <section class="notes">

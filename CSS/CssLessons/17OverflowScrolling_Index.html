@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Overflow & Scrolling Practice</title>
+    <title>17OverflowScrolling</title>
     <link rel="stylesheet" href="17OverflowScrolling_Style.css">
   </head>
   <body>
     <main class="page">
+      <h1>17 Overflow Scrolling</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Decide what happens when content does not fit</h1>
@@ -48,10 +49,10 @@
           <h2>The default is visible overflow:</h2>
           <p>The default value is overflow: visible, which means content is allowed to paint outside the box.</p>
           <p>Add it explicitly so you can see the default:</p>
-          <img class="overflow-visible-html-image" src="OverflowVisibleHtml.png" alt="Overflow Visible Html">
+          <img class="overflow-visible-html-image" src="./ReferenceImages/OverflowVisibleHtml.png" alt="Overflow Visible Html">
           <p>The list has a height limit, but the extra messages may still spill out visually.</p>
           <p>That can be useful for some decorative effects, but it is not good for a message panel. The panel now says it has one size while its content paints outside that space.</p>
-          <img class="visible-overflow-image" src="VisibleOverflow.png" alt="Visible Overflow">
+          <img class="visible-overflow-image" src="./ReferenceImages/VisibleOverflow.png" alt="Visible Overflow">
         </article>
 
         <article class="lesson-card">
@@ -59,10 +60,10 @@
           <p>Sometimes only one direction is the problem.</p>
           <p>The code sample is a good example. The command is one long line. You do not want the whole page to become wider just because one command is wide.</p>
           <p>The fix is horizontal scrolling on the code box:</p>
-          <img class="overflowx-html-image" src="OverflowXHtml.png" alt="Overflow-X Html">
+          <img class="overflowx-html-image" src="./ReferenceImages/OverflowXHtml.png" alt="Overflow-X Html">
           <p>overflow-x controls horizontal overflow, and auto means the browser only adds horizontal scrolling when the content is wider than the box.</p>
           <p>Use directional overflow when the problem is clearly one direction: wide tables, long code lines, tag rows, or tall panels.</p>
-          <img class="overflowx-image" src="OverflowX.png" alt="Overflow-X">
+          <img class="overflowx-image" src="./ReferenceImages/OverflowX.png" alt="Overflow-X">
         </article>
 
         <article class="lesson-card">

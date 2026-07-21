@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Positioning practice</title>
+    <title>16PositioningAndLayers</title>
     <link rel="stylesheet" href="16PositioningAndLayers_Style.css">
   </head>
   <body>
@@ -15,6 +15,7 @@
     </header>
 
     <main class="page">
+      <h1>16 Positioning And Layers</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Position small pieces without breaking the page</h1>
@@ -44,12 +45,12 @@
       <section class="notes">
         <h2>Position the badge inside the card image:</h2>
         <p>Modify the CSS like this:</p>
-        <img class="position-badge-html-image" src="PositionBadgeHtml.png" alt="Position Badge Inside Card Html">
+        <img class="position-badge-html-image" src="./ReferenceImages/PositionBadgeHtml.png" alt="Position Badge Inside Card Html">
         <p>Now the badge should sit correctly over the image.</p>
         <p>position: relative does not move .card-media by itself. The card is still where it was, but it can now act as the reference box for absolute children.</p>
         <p>position: absolute removes .status-badge from normal flow. The badge no longer takes up a row below the image; it is placed 12px from the top and 12px from the right of .card-media.</p>
         <p>In CSS, a positioned element is any element whose position value is not static, which is the default.</p>
-        <img class="absolutely-positioned-image" src="AbsolutelyPositioned.png" alt="Absolutely Positioned Elements">
+        <img class="absolutely-positioned-image" src="./ReferenceImages/AbsolutelyPositioned.png" alt="Absolutely Positioned Elements">
       </section>
 
       <section class="notes">
@@ -57,7 +58,7 @@
         <p>Positioned elements can overlap. When that happens, the browser needs to know which one should appear closer to the user, and that is what z-index controls.</p>
         <p>z-index only matters when elements are in layers that can overlap. A higher z-index usually appears above a lower one.</p>
         <p>The numbers are not magic; they are just a small scale. You usually do not need values like 999999. If you feel tempted to use a huge number, inspect the elements and find out which layer is actually competing.</p>
-        <img class="z-index-image" src="ZIndex.png" alt="Z-Index">
+        <img class="z-index-image" src="./ReferenceImages/ZIndex.png" alt="Z-Index">
       </section>
 
       <section class="notes">

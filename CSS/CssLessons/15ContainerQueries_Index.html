@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Container query practice</title>
+    <title>15ContainerQueries</title>
     <link rel="stylesheet" href="15ContainerQueries_Style.css">
   </head>
   <body>
     <main class="page">
+      <h1>15 Container Queries</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Make a card respond to its container</h1>
@@ -52,11 +53,11 @@
                 <h3>Mark the Container:</h3>
                 <p>Before CSS can query an element's size, you need to mark that element as a query container.</p>
                 <p>Mark .card-shell as the container:</p>
-                <img class="card-shell-html-image" src="CardShell.png" alt="Card Shell Html">
+                <img class="card-shell-html-image" src="./ReferenceImages/CardShell.png" alt="Card Shell Html">
                 <p>container-type: inline-size says this element can be queried by its inline size.</p>
                 <p>In normal English-language pages, inline size means width. So for this lesson, read it as: "allow CSS to query how wide .card-shell is."</p>
                 <p>This rule does not style the card visually by itself. It gives the browser permission to use .card-shell as a measurable container.</p>
-                <img class="container-query-image" src="ContainerQuery.png" alt="Container Query">
+                <img class="container-query-image" src="./ReferenceImages/ContainerQuery.png" alt="Container Query">
               </div>
             <article>
           </div>
@@ -67,7 +68,7 @@
                 <h3>Query the container:</h3>
                 <p>Now that .card-shell is a query container, CSS can ask whether that container is wide enough for a different card layout.</p>
                 <p>Add the container query:</p>
-                <img class="container-query-2-image" src="ContainerQuery2.png" alt="Container Query2">
+                <img class="container-query-2-image" src="./ReferenceImages/ContainerQuery2.png" alt="Container Query2">
                 <p>@container (min-width: 520px) means "use these rules when the nearest query container is at least 520px wide."</p>
                 <p>The sidebar .card-shell is narrower than 520px, so its card stays stacked.</p>
                 <p>The workspace .card-shell is wider than 520px, so its card becomes a side-by-side layout.</p>

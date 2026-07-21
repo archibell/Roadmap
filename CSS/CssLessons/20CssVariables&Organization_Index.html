@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS variables practice</title>
+    <title>20CssVariables&Organization</title>
     <link rel="stylesheet" href="20CssVariables&Organization_Style.css">
   </head>
   <body>
     <main class="page">
+      <h1>20 Css Variables & Organization</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Keep repeated design values under control</h1>
@@ -39,21 +40,21 @@
         <p class="warning">I can't get this to work.</p>
         <p>CSS variables are still CSS, which means they follow the cascade and can be scoped to part of the page.</p>
         <p>Right now, the success card needs a different accent color. The old CSS did this by styling each piece separately:</p>
-        <img class="accent-color-old-html-image" src="AccentColorOldHtml.png" alt="Accent Color Old Html">
+        <img class="accent-color-old-html-image" src="./ReferenceImages/AccentColorOldHtml.png" alt="Accent Color Old Html">
         <p>That works, but it repeats the idea: this card's accent should be green. Instead, replace those separate success-card rules with a local accent variable on each card:</p>
-        <img class="accent-color-new-html-image" src="AccentColorNewHtml.png" alt="Accent Color New Html">
+        <img class="accent-color-new-html-image" src="./ReferenceImages/AccentColorNewHtml.png" alt="Accent Color New Html">
         <p>The normal card sets --card-accent to the brand color.</p>
         <p>The card border and card label both use var(--card-accent).</p>
         <p>The success card overrides only --card-accent.</p>
         <p>Because custom properties inherit, the .card-label inside the success card can use the green value from its parent card.</p>
         <p>This is one of the best uses of CSS variables: define a component once, then change a small set of local values for variants.</p>
-        <img class="accent-color-diagram-image" src="AccentColorDiagram.png" al="Accent Color Diagram">
+        <img class="accent-color-diagram-image" src="./ReferenceImages/AccentColorDiagram.png" al="Accent Color Diagram">
       </section>
 
       <section class="notes">
         <h2>Use fallbacks when a value might be missing:</h2>
         <p>var() can include a fallback value. The fallback is used if the custom property is missing or invalid.</p>
-        <img class="var-fallback-html-image" src="VarFallBackHtml.png" alt="Var Fallback Html">
+        <img class="var-fallback-html-image" src="./ReferenceImages/VarFallBackHtml.png" alt="Var Fallback Html">
         <p>This means: use --color-action if it exists. If it does not exist, use #2563eb.</p>
         <p>Fallbacks are useful when:</p>
         <ul>
@@ -68,10 +69,10 @@
         <h2>Organize the stylesheet by job:</h2>
         <p>Variables help values stay consistent, and organization helps people find the right rule later.</p>
         <p>CSS comments use this syntax:</p>
-        <img class="organize-stylesheet-html-image" src="OrganizeStylesheetHtml.png" alt="Organize Stylesheet Html">
+        <img class="organize-stylesheet-html-image" src="./ReferenceImages/OrganizeStylesheetHtml.png" alt="Organize Stylesheet Html">
         <p>The browser ignores comments because they are for people reading the file.</p>
         <p>A small stylesheet can be organized like this:</p>
-        <img class="organize-stylesheet-sample-html-image" src="OrganizeStylesheetSampleHtml.png" alt="Organize Stylesheet Sample">
+        <img class="organize-stylesheet-sample-html-image" src="./ReferenceImages/OrganizeStylesheetSampleHtml.png" alt="Organize Stylesheet Sample">
         <p>The exact section names can change by project. The useful habit is to group rules by job:</p>
         <ol>
           <li>Design values first.</li>

@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modern Selector - Practice</title>
+    <title>19ModernSelectors</title>
     <link rel="stylesheet" href="19ModernSelectors_Style.css">
   </head>
   <body>
     <main class="page">
+      <h1>19 Modern Selectors</h1>
       <section class="intro">
         <p class="eyebrow">CSS practice</p>
         <h1>Use selectors that match real HTML clues</h1>
@@ -67,14 +68,14 @@
         <p>Sometimes the useful clue is not an attribute. It is the element's position in a group.</p>
         <p>The task list has several list items. If you want space between items, you could add a class to every item after the first one, but the structure already tells CSS what to do.</p>
         <p>Add spacing between list items with the adjacent sibling selector:</p>
-        <img class="li-plus-li--html-image" src="LiPlusLi.png" alt="li + li">
+        <img class="li-plus-li--html-image" src="./ReferenceImages/LiPlusLi.png" alt="li + li">
         <p>li + li means "match a list item that comes immediately after another list item." The first item does not match, because it does not come after a previous item. The later items match, so they get top margin.</p>
         <p>This is useful for spacing repeated items because it only creates space between items, not before the first item.</p>
         <p>You can also select the last item in a group:</p>
-        <img class="li-last-child--html-image" src="LiLastChild.png" alt=":last-child">
+        <img class="li-last-child--html-image" src="./ReferenceImages/LiLastChild.png" alt=":last-child">
         <p>:last-child matches an element when it is the last child inside its parent.</p>
         <p>This example makes the last task heavier so you can see the match. In real projects, structural selectors are often used for spacing, borders, dividers, and small layout adjustments.</p>
-        <img class="li-plus-li-diagram-image" src="LiDiagram.png" alt="li + li diagram">
+        <img class="li-plus-li-diagram-image" src="./ReferenceImages/LiDiagram.png" alt="li + li diagram">
       </section>
 
       <section class="notes">
@@ -82,13 +83,13 @@
         <p>Most selectors match an element based on itself or its ancestors.</p>
         <p>:has() lets you match a parent based on something inside it.</p>
         <p>In the lesson cards, some tasks are already checked. You can style a card differently when it contains at least one checked task:</p>
-        <img class="has-html-image" src="HasHtml.png" alt=".lesson-card:has()">
+        <img class="has-html-image" src="./ReferenceImages/HasHtml.png" alt=".lesson-card:has()">
         <p>:has(.task-list input:checked) means "match this card if it has a checked input inside .task-list."</p>
         <p>The selector reads like a condition:</p>
-        <img class="selector-condition-image" src="SelectorCondition.png" alt="Selector Condition">
+        <img class="selector-condition-image" src="./ReferenceImages/SelectorCondition.png" alt="Selector Condition">
         <p>That is useful for parent styling. The card can react to something inside it without adding a separate .has-progress class.</p>
         <p>Use :has() when the parent truly depends on a child or descendant. If the parent already has a meaningful class or data attribute, that simpler hook may still be better.</p>
-        <img class="has-diagram-image" src="HasDiagram.png" alt="Has Diagram">
+        <img class="has-diagram-image" src="./ReferenceImages/HasDiagram.png" alt="Has Diagram">
       </section>
 
       <section class="notes">
