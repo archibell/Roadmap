@@ -66,18 +66,12 @@ p {
 .sidebar .projects,
 .sidebar .work-experience {
   display: grid;
-  border: 2px solid var(--color-border-dark);
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border-bottom: 2px solid var(--color-border-dark);
   text-align: center;
 }
 
 .sidebar .projects .project-links {
-  border: 1px solid var(--color-border-light);
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border-top: 1px solid var(--color-border-light);
   grid-template-columns: 320px, 1fr;
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
@@ -87,10 +81,7 @@ p {
 }
 
 .sidebar .work-experience .work-card {
-  border: 1px solid var(--color-border-light);
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border-top: 1px solid var(--color-border-light);
   grid-template-columns: 320px, 1fr;
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
