@@ -4,6 +4,7 @@
   --color-border-dark: #727272;
   --color-border-light: #848484;
   --color-background-grey: #f0f0f0;
+  --color-background-white: white;
 }
 
 /* 2. Base styles */
@@ -64,29 +65,29 @@ p {
 
 .sidebar .intro,
 .sidebar .projects,
-.sidebar .work-experience {
+.sidebar .work-experience,
+.sidebar .education {
   display: grid;
   border-bottom: 2px solid var(--color-border-dark);
   text-align: center;
 }
 
-.sidebar .projects .project-links {
+.sidebar .projects .project-links,
+.sidebar .work-experience .work-card,
+.sidebar .education .education-card {
   border-top: 1px solid var(--color-border-light);
   grid-template-columns: 320px, 1fr;
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
   margin: 0px;
   background-color: var(--color-background-grey);
-  text-align: center;
 }
 
-.sidebar .work-experience .work-card {
-  border-top: 1px solid var(--color-border-light);
-  grid-template-columns: 320px, 1fr;
-  /* padding: top right bottom left */
-  padding: 8px 16px 8px 16px;
-  margin: 0px;
-  background-color: var(--color-background-grey);
+.sidebar .projects .project-links {
+  text-align: center;
+}
+.sidebar .work-experience .work-card,
+.sidebar .education .education-card {
   text-align: left;
 }
 
@@ -96,7 +97,7 @@ p {
   padding-bottom: 16px;
 }
 
-.text-gray {
+.text-grey {
   color: var(--color-text-grey);
   padding-bottom: 16px;
   margin: 0px;
