@@ -82,7 +82,7 @@ p {
 .sidebar .projects .project-links,
 .sidebar .work-experience .work-card,
 .sidebar .education .education-card {
-  border-top: 1px solid var(--color-border-light);
+  border-top: 1px solid var(--color-border-dark);
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
   margin: 0px;
@@ -98,8 +98,9 @@ p {
 }
 
 .sidebar .reviews .reviews-card {
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-border-dark);
   border-radius: 8px;
+  border-width: 2px;
   padding: 8px 16px 8px 16px;
   text-align: left;
   background-color: var(--color-background-white);
