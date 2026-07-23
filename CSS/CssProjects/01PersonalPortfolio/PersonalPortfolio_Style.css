@@ -1,4 +1,4 @@
-/* 1. Design values */
+/* 1. DESIGN VALUES */
 :root {
   --color-text-grey: #959595;
   --color-border-dark: #727272;
@@ -7,7 +7,7 @@
   --color-background-white: white;
 }
 
-/* 2. Base styles */
+/* 2. BASE STYLES */
 /*
 Use border-box sizing:
   - * is the universal selector, and it matches every element. box-sizing: border-box tells the browser to include content, padding, and border inside the set width.
@@ -39,7 +39,7 @@ p {
  margin: 0px;
 }
 
-/* 3. Layout */
+/* 3. LAYOUT */
 
 .dashboard {
   /*
@@ -66,17 +66,23 @@ p {
 .sidebar .intro,
 .sidebar .projects,
 .sidebar .work-experience,
-.sidebar .education {
+.sidebar .education,
+.sidebar .reviews {
   display: grid;
   border-bottom: 2px solid var(--color-border-dark);
   text-align: center;
+}
+
+.sidebar .reviews {
+  border-bottom: none;
+  margin-left: 24px;
+  margin-right: 24px; 
 }
 
 .sidebar .projects .project-links,
 .sidebar .work-experience .work-card,
 .sidebar .education .education-card {
   border-top: 1px solid var(--color-border-light);
-  grid-template-columns: 320px, 1fr;
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
   margin: 0px;
@@ -91,7 +97,16 @@ p {
   text-align: left;
 }
 
-/* 4. Components */
+.sidebar .reviews .reviews-card {
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 8px 16px 8px 16px;
+  text-align: left;
+  background-color: var(--color-background-white);
+  margin-bottom: 24px;
+}
+
+/* 4. COMPONENTS */
 .nav-links {
   font-weight: 500;
   padding-bottom: 16px;
