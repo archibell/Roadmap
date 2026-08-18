@@ -29,6 +29,8 @@ body {
   margin: 40px auto;
 }
 
+h1,
+h2,
 h3 {
   margin: 0px;
   /* padding: top right bottom left */
@@ -57,7 +59,8 @@ p {
   gap: 24px;
 }
 
-.sidebar {
+.sidebar,
+.workspace {
   border: 2px solid var(--color-border-dark);
   border-width: medium;
   margin: 0px;
@@ -67,7 +70,8 @@ p {
 .sidebar .projects,
 .sidebar .work-experience,
 .sidebar .education,
-.sidebar .reviews {
+.sidebar .reviews,
+.workspace .intro {
   display: grid;
   border-bottom: 2px solid var(--color-border-dark);
   text-align: center;
@@ -102,6 +106,30 @@ p {
   padding: 8px 16px 8px 16px;
   text-align: left;
   background-color: var(--color-background-white);
+}
+
+.workspace .intro .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.workspace .intro .contact-grid .name {
+  margin: 0px;
+  text-align: left;
+}
+
+.workspace .intro .contact-grid .links {
+  margin: 0px;
+  /* padding: top right bottom left */
+  padding: 12px 16px 8px 16px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.workspace .intro .description {
+  margin-bottom: 24px;
 }
 
 /* 4. COMPONENTS */
