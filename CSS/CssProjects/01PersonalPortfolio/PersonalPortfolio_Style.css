@@ -132,6 +132,38 @@ p {
   margin-bottom: 24px;
 }
 
+.workspace .content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.workspace .project-grid,
+.workspace .work-experience-grid,
+.workspace .education-grid {
+  display: grid;
+  border-left: 2px solid var(--color-border-dark);
+  border-bottom: 2px solid var(--color-border-dark);
+  text-align: left;
+}
+
+.workspace .project-grid {
+  display: grid;
+  border-left: none;
+}
+
+.workspace .project-grid .project-card-left,
+.workspace .work-experience-grid .work-card-left,
+.workspace .education-grid .education-card-left {
+  border-top: 1px solid var(--color-border-dark);
+  /* padding: top right bottom left */
+  padding: 8px 16px 8px 16px;
+  margin: 0px;
+  text-align: left;
+  background-color: var(--color-background-grey);
+}
+
+
 /* 4. COMPONENTS */
 .nav-links {
   font-weight: 500;
