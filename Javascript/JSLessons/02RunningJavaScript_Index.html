@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Running JavaScript</title>
+  </head>
+  <body>
+    <button>Click me</button>
+    <p id="message">Waiting...</p>
+
+    <script>
+      const button = document.querySelector("button");
+      const message = document.querySelector("#message");
+
+      button.addEventListener("click", () => {
+        message.textContent = "The button was clicked";
+      });
+    </script>
+  </body>
+</html>
