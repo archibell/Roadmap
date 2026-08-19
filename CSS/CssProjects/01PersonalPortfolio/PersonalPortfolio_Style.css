@@ -68,13 +68,12 @@ p {
 
 .sidebar,
 .workspace,
-.contact-dashboard {
+.contact-workspace {
   border: 3px solid var(--color-border-black);
   margin: 0px;
 }
 
 .contact-dashboard {
-  display: grid;
   text-align: center;
 }
 
@@ -92,6 +91,11 @@ p {
   border-bottom: none;
   margin-left: 24px;
   margin-right: 24px; 
+}
+
+.contact-workspace .intro {
+  display: grid;
+  text-align: center;
 }
 
 .sidebar .projects .project-card,
@@ -120,19 +124,22 @@ p {
   background-color: var(--color-background-white);
 }
 
-.workspace .intro .contact-grid {
+.workspace .intro .contact-grid,
+.contact-workspace .intro .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.workspace .intro .contact-grid .name {
+.workspace .intro .contact-grid .name,
+.contact-workspace .intro .contact-grid .name {
   margin: 0px;
   text-align: left;
 }
 
-.workspace .intro .contact-grid .links {
+.workspace .intro .contact-grid .links,
+.contact-workspace .intro .contact-grid .links {
   margin: 0px;
   /* padding: top right bottom left */
   padding: 12px 16px 8px 16px;
@@ -178,6 +185,21 @@ p {
   background-color: var(--color-background-grey);
 }
 
+.workspace .workspace-reviews {
+  margin-left: 24px;
+  margin-right: 24px; 
+}
+.workspace .workspace-reviews {
+  text-align: center;
+}
+.workspace .workspace-reviews .workspace-reviews-card {
+  border: 1px solid var(--color-border-dark);
+  border-radius: 8px;
+  border-width: 2px;
+  padding: 8px 16px 8px 16px;
+  text-align: left;
+  background-color: var(--color-background-white);
+}
 
 /* 4. COMPONENTS */
 .nav-links {
