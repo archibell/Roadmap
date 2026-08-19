@@ -2,6 +2,7 @@
 :root {
   --color-text-grey: #959595;
   --color-border-dark: #727272;
+  --color-border-black: #000000;
   --color-border-light: #848484;
   --color-background-grey: #f0f0f0;
   --color-background-white: white;
@@ -25,16 +26,22 @@ Use border-box sizing:
 
 body {
   font-family: system-ui, sans-serif;
-  max-width: 1040px;
+  width: 90%;
   margin: 40px auto;
 }
 
 h1,
-h2,
+h2{
+  margin: 0px;
+  /* padding: top right bottom left */
+  padding: 12px 16px 8px 16px;
+}
+
 h3 {
   margin: 0px;
   /* padding: top right bottom left */
   padding: 12px 16px 8px 16px;
+  background-color: var(--color-background-white);
 }
 
 p {
@@ -60,10 +67,15 @@ p {
 }
 
 .sidebar,
-.workspace {
-  border: 2px solid var(--color-border-dark);
-  border-width: medium;
+.workspace,
+.contact-dashboard {
+  border: 3px solid var(--color-border-black);
   margin: 0px;
+}
+
+.contact-dashboard {
+  display: grid;
+  text-align: center;
 }
 
 .sidebar .intro,
@@ -73,7 +85,7 @@ p {
 .sidebar .reviews,
 .workspace .intro {
   display: grid;
-  border-bottom: 2px solid var(--color-border-dark);
+  border-bottom: 3px solid var(--color-border-dark);
   text-align: center;
 }
 .sidebar .reviews {
@@ -136,25 +148,28 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
+  border-bottom: 2px solid var(--color-border-dark);
 }
 
-.workspace .project-grid,
-.workspace .work-experience-grid,
-.workspace .education-grid {
+.workspace .content-grid .project-grid,
+.workspace .content-grid .work-experience-grid,
+.workspace .content-grid .education-grid {
   display: grid;
+  grid-auto-rows: min-content;
   border-left: 2px solid var(--color-border-dark);
   border-bottom: 2px solid var(--color-border-dark);
   text-align: left;
+  background-color: var(--color-background-grey);
 }
 
-.workspace .project-grid {
+.workspace .content-grid .project-grid {
   display: grid;
   border-left: none;
 }
 
-.workspace .project-grid .project-card-left,
-.workspace .work-experience-grid .work-card-left,
-.workspace .education-grid .education-card-left {
+.workspace .content-grid .project-grid .project-card-left,
+.workspace .content-grid .work-experience-grid .work-card-left,
+.workspace .content-grid .education-grid .education-card-left {
   border-top: 1px solid var(--color-border-dark);
   /* padding: top right bottom left */
   padding: 8px 16px 8px 16px;
