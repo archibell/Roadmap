@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>14 Browser JavaScript</title>
+  </head>
+  <body>
+    <h1>14 Just Enough Browser JavaScript</h1>
+    <script type="module" src="./14BrowserJavaScript_main.js"></script>
+    <p id="message">No task selected</p>
+    <button id="show-task">Show task</button>
+
+    <!-- 
+    Forms move user input into JavaScript:
+      - Forms are how users type information. JavaScript reads that input and uses it like any other value.
+      - The input element has a value property. That property contains the current text inside the input.
+    -->
+    <form id="task-form">
+      <input id="task-input" />
+      <button>Add task</button>
+    </form>
+  </body>
+</html>
